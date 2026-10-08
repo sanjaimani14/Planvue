@@ -1,186 +1,221 @@
-# PLANE VUE — AI Spatial Reconstruction Platform
+# PLANE VUE
 
 > **"See the space. Reconstruct the unseen."**  
 > **HackNEX 2026 Problem Statement:** HNX26EPS06 — 3D Scene Generation from Blueprints and Room Video  
-> **Phase 5 Release:** Research-Grade Unseen Region Completion + Validation + Judge-Ready Mode B  
+> **Status:** Hackathon Ready (Full Mode A & Mode B Pipelines Verified)
 
 ---
 
-## 1. Problem: Why Unseen Room Reconstruction is Difficult
-
-Handheld video capture of indoor rooms is inherently incomplete:
-1. **Limited Camera Trajectories:** Humans rarely pan 360° across every surface. Corners behind doors, areas obscured by furniture, back walls, and ceilings are routinely unobserved.
-2. **The "Hallucination" Trap in Generative 3D:** Black-box generative models often hallucinate fictitious furniture, non-planar warped walls, and physically impossible geometry without indicating what the camera actually observed versus what was fabricated.
-3. **Loss of Architectural Manifold Integrity:** Standard mesh completion methods leave disconnected floating surfaces, self-intersecting polygons, and arbitrary room dimensions.
-
----
-
-## 2. Solution: PLANE VUE
-
-PLANE VUE is an AI-powered 3D reconstruction platform supporting **two unified modes**:
-- **MODE A (Blueprint → 3D Model):** Converts 2D architectural floor plans (PNG, JPG, PDF) into metric 3D buildings with automated wall, door, window, and room parsing, scale calibration, manifold validation, and binary GLB export.
-- **MODE B (Room Video → 3D Scene + Unseen Region Completion):** Reconstructs indoor rooms from handheld walkthrough video and introduces **Visibility-Aware Constraint Completion** to conservatively complete unseen regions with strict provenance, transparent confidence, and non-overwrite invariants.
+## 1. Problem
+Handheld walkthrough video and 2D blueprints are inherently incomplete spatial records:
+- **Occlusion and Field of View:** Video captures of indoor rooms miss unobserved back walls, areas obscured behind doors, and ceilings.
+- **The Generative "Hallucination" Trap:** Generative 3D neural models often hallucinate fictitious furniture, warped non-planar walls, and physically impossible dimensions without distinguishing observed reality from synthetic fabrication.
+- **Disconnected Blueprint Meshes:** Standard 2D-to-3D extruders fail to preserve architectural manifold integrity, leaving gaps, self-intersecting geometries, and missing semantic room boundaries.
 
 ---
 
-## 3. Core Research Contribution: Visibility-Aware Constraint Completion
+## 2. Solution
+**PLANE VUE** is an end-to-end spatial reconstruction platform uniting two complementary pipelines:
+- **Mode A (Blueprint → 3D Model):** Converts 2D architectural drawings (PNG, JPG, PDF) into metric, watertight 3D building models with automated wall/door/window detection, OCR room segmentation, and 3D furniture placement.
+- **Mode B (Room Video → 3D Scene + Unseen Completion):** Reconstructs indoor rooms from handheld video streams, analyzes visibility via 3D voxel frustum raycasting, and performs **Visibility-Aware Constraint Completion** with strict scientific provenance and refusal to hallucinate.
 
-> *"Generate only what is structurally justified by the observed scene and clearly distinguish observed geometry from inferred/generated geometry."*
+---
 
-Instead of ungrounded generative hallucination, PLANE VUE implements a 9-stage scientific pipeline:
+## 3. Key Innovation: Visibility-Aware Constraint Completion
+Unlike black-box generative models that invent arbitrary geometry, PLANE VUE introduces:
+1. **Estimated View Coverage:** Quantitative mapping of spatial visibility using 3D voxel grids intersected with estimated camera frustums.
+2. **Refusal-to-Hallucinate Policy:** Completion is gated by structural eligibility. If structural evidence (adjacent walls, collinear planes, corner snaps) is absent, the system refuses completion and marks the region as `UNRESOLVED` rather than guessing.
+3. **Non-Overwrite Invariant:** Generated candidate geometry is strictly validated against observed 3D points. It can never overwrite or distort observed physical surfaces.
+4. **Strict Provenance & Confidence Decomposition:** Every surface carries an immutable tag (`OBSERVED`, `INFERRED`, `GENERATED`, or `CORRECTED`) with an explainable multi-factor confidence breakdown.
+
+---
+
+## 4. Mode A: Blueprint → 3D Model
+- **Input:** 2D Floor plan image (e.g., `data/demo/hospital_wing_blueprint.png`).
+- **Pipeline:**
+  1. Image preprocessing and morphological thresholding.
+  2. Structural wall detection and polygon skeletonization.
+  3. Door and window aperture detection with orientation tagging.
+  4. Room and zone boundary segmentation with OCR semantic labeling.
+  5. Metric scale calibration ($0.05\text{ m/px}$ calibrated architectural scale).
+  6. Topological constraint verification (collinearity snapping, gap closure).
+  7. Deterministic 3D extrusion with ceiling cutouts.
+  8. Placement of 3D architectural/medical furniture aligned to functional room zones.
+  9. Binary glTF (GLB) export.
+
+---
+
+## 5. Mode B: Room Video → 3D Scene + Unseen Completion
+- **Input:** Handheld room walkthrough video (`sample_room_demo.mp4`).
+- **Pipeline:**
+  1. Video validation & Laplacian sharpness keyframe selection.
+  2. ORB feature detection and multi-view temporal tracking.
+  3. Essential matrix 5-point RANSAC camera pose estimation (6-DOF trajectories).
+  4. DLT triangulation and planar surface fitting.
+  5. 3D voxel coverage analysis (*Estimated View Coverage*).
+  6. Perimeter ray-intersection unseen region detection.
+  7. Hierarchical constraint-based completion (Level 1 Collinear $\to$ Level 2 Symmetry $\to$ Level 3 Corner $\to$ Level 4 Room Shell).
+  8. Geometric validation enforcing the non-overwrite invariant.
+  9. Dual-layer 3D scene rendering with layer toggles and GLB export.
+
+---
+
+## 6. Architecture
 
 ```text
-Room Video Stream
-       │
-       ▼
-Intelligent Keyframe Selection (Laplacian sharpness & blur rejection)
-       │
-       ▼
-Camera Trajectory Estimation (5-point Essential Matrix RANSAC solver, 6-DOF poses)
-       │
-       ▼
-Observed 3D Geometry (DLT triangulation + RANSAC planar fitting)
-       │
-       ▼
-Visibility & Coverage Analysis (3D voxel grid + camera frustum raycasting)
-       │
-       ▼
-Unseen-Region Identification (Cardinal sector perimeter occlusion classification)
-       │
-       ▼
-Structural Constraint Engine (Wall continuity, parallelism, corner snap, room envelope)
-       │
-       ▼
-Candidate Completion Synthesis (Level 1 continuation -> Level 2 symmetry -> Level 4 room shell)
-       │
-       ▼
-Geometric Validation & Non-Overwrite Invariant (Trims overlaps; never replaces observed data)
-       │
-       ▼
-Completed 3D Scene with Strict Provenance & Confidence Decomposition
+                           PLANE VUE
+                               |
+             +-----------------+-----------------+
+             |                                   |
+          MODE A                              MODE B
+      Blueprint → 3D                     Video → 3D Scene
+             |                                   |
+       Parse blueprint                     Extract frames
+             |                                   |
+       Detect geometry                     Estimate camera
+             |                                   |
+       Metric scale                        Reconstruct scene
+             |                                   |
+       Topology checks                     Coverage analysis
+             |                                   |
+       3D generation                       Unseen detection
+             |                                   |
+       Validation                          Completion
+             |                                   |
+             +-----------------+-----------------+
+                               |
+                        3D Scene Model
+                               |
+          +--------------------+--------------------+
+          |                    |                    |
+       Viewer              Validation           Provenance
+          |                    |                    |
+       Orbit / Pan         Topology / Non-      Observed vs
+       Layer Toggles       Overwrite Check      Generated
+          |
+       GLB Export
 ```
 
 ---
 
-## 4. Strict Provenance System
+## 7. Installation
 
-Every object and completion region in PLANE VUE carries explicit provenance:
+### Prerequisites
+- Python 3.10+ (tested on Python 3.13.5)
+- Node.js 18+ (tested on Node.js v22.14.0)
 
-| Provenance Tag | Scientific Definition | Visual Indicator |
-| :--- | :--- | :--- |
-| **`OBSERVED`** | Directly supported by multi-view camera keyframe observations and triangulated 3D points. | Emerald Green |
-| **`INFERRED`** | Not completely visible, but strongly supported by collinearity with observed walls or structural symmetry. | Royal Blue |
-| **`GENERATED`** | Synthesized to close the room-shell envelope boundary where direct observation was occluded. | Purple |
-| **`CORRECTED`** | Synthesized candidate trimmed or adjusted by deterministic geometric constraints to prevent overwriting observed data. | Amber |
+### Setup
+```bash
+# Clone the repository
+git clone https://github.com/sanjaimani14/Planvue.git
+cd Planvue
 
----
+# Install Python backend dependencies
+pip install -r requirements.txt
 
-## 5. Completion Eligibility Engine
-
-Before generating any geometry, `completion_eligibility.py` evaluates whether completion is mathematically and structurally justified:
-- **Decision Logic:**
-  - $\text{Eligible}$ if and only if the region lies along the room perimeter shell, nearby geometry is reliable, and structural constraints are available within $7.5\text{m}$.
-- **Refusal to Hallucinate:** If structural evidence is absent (e.g. isolated void with no supporting planes), the system assigns `action_directive = "LEAVE_UNRESOLVED"`. The region is left unresolved rather than fabricating ungrounded geometry.
-
----
-
-## 6. Structural Constraint Hierarchy
-
-Completion proceeds strictly from safest to most speculative:
-- **Level 1 — Collinear Wall Continuation:** Extended along the axis of an observed wall sharing the same plane.
-- **Level 2 — Structural Symmetry:** Inferred from opposing parallel observed walls to maintain room symmetry.
-- **Level 3 — Corner Intersections:** Solved via orthogonal segment-segment intersection snapping.
-- **Level 4 — Room-Shell Enclosure:** Conservative closure of room perimeter bounding box anchored by floor and walls.
-- **Level 5 — Blueprint-Guided Completion:** Aligned to Mode A 2D CAD architectural ground truth (optional).
-- **Level 6 — Generative AI:** Deliberately omitted to prevent hallucinations and preserve scientific explainability.
-
----
-
-## 7. Evaluation & Benchmark Results
-
-### A. Controlled Synthetic Benchmark (`datasets/video_completion/`)
-Evaluated against known CAD ground truth across controlled partial-observation scenes:
-
-| Metric | Proposed System | Naive Baseline | Scientific Impact |
-| :--- | :---: | :---: | :---: |
-| **Chamfer Distance** | **0.000 m** | 0.567 m | **100% error reduction** |
-| **Hausdorff Distance** | **0.000 m** | 1.120 m | **100% error reduction** |
-| **Room Closure Rate** | **100.0%** | 25.0% | **+75.0% closure** |
-| **Topology Defects** | **0 defects** | 3 defects | **3 defects eliminated** |
-| **Completion IoU** | **0.887** | 0.421 | **+110.7% overlap** |
-| **Completion Precision** | **0.942** | 0.612 | **+53.9%** |
-| **Completion Recall** | **0.915** | 0.485 | **+88.7%** |
-
-### B. Progressive Ablation Study (A0 to A5)
-- **A0 (Naive Extension Baseline):** IoU: 0.421 | Chamfer: 0.567m | Defects: 3 | Closure: 25%
-- **A1 (+ Visibility Map):** IoU: 0.542 | Chamfer: 0.412m | Defects: 2 | Closure: 40%
-- **A2 (+ Structural Constraints):** IoU: 0.724 | Chamfer: 0.188m | Defects: 0 | Closure: 75%
-- **A3 (+ Room-Shell Completion):** IoU: 0.887 | Chamfer: 0.042m | Defects: 0 | Closure: 100%
-- **A4 (+ Blueprint Guidance - Optional):** IoU: 0.954 | Chamfer: 0.015m | Defects: 0 | Closure: 100%
-- **A5 (Full Proposed System):** IoU: **0.887 / 0.954** | Chamfer: **0.000m** | Defects: **0** | Closure: **100%**
-
-### C. Real-World Video Demo Execution (`sample_room.mp4`)
-- **Keyframes & Poses:** 6 keyframes, 6 estimated 6-DOF camera poses.
-- **Sparse Points:** 82 triangulated 3D points.
-- **Coverage:** Observed: 32.4%, Unseen: 63.6%, Weakly Observed: 4.0%.
-- **Unseen Regions Detected:** 4 cardinal perimeter sectors.
-- **Completions Synthesized:** 3 conservative room-shell wall segments (Level 4).
-- **Validation:** 3 / 3 candidates passed non-overwrite validation (0 defects).
-- **GLB Binary Export:** 8,624 bytes (`glTF` magic header verified).
-- **Execution Runtime:** ~1.2s on local CPU.
-
-### D. Honest Reporting of Unavailable Metrics
-- Per-pixel SSIM, PSNR, and LPIPS novel-view synthesis metrics are **N/A** for the unobserved sections because physical ground-truth camera viewpoints behind occluded walls do not exist in real-world single-camera capture. We explicitly report `N/A` rather than fabricating numbers.
-
----
-
-## 8. Verification & Test Suite
-
-The automated test suite contains **79 tests** across 16 test suites, all passing with **100% success rate**:
-- Mode A tests (16 tests)
-- Visibility map tests (`test_visibility_map.py`)
-- Unseen region detection tests (`test_unseen_region_detection.py`)
-- Completion eligibility tests (`test_completion_eligibility.py`)
-- Wall, floor, ceiling completion tests (`test_wall_completion.py`, `test_floor_completion.py`, `test_ceiling_completion.py`)
-- Structural constraint math tests (`test_structural_constraints.py`)
-- Non-overwrite completion validation tests (`test_completion_validation.py`)
-- Provenance and confidence decomposition tests (`test_provenance.py`, `test_confidence.py`)
-- Baseline comparison and ablation study tests (`test_baseline.py`, `test_ablation.py`)
-- Deliberate failure case tests (`test_failure_cases.py`)
-- API and E2E integration tests (`test_api_completion.py`, `test_mode_b_api.py`, `test_mode_b_integration.py`)
-- Binary GLB completion export tests (`test_glb_completion_export.py`)
-
-Run full verification:
-```powershell
-python scripts/verify_mode_b_completion.py
+# Install frontend dependencies
+cd frontend
+npm install
+cd ..
 ```
 
 ---
 
-## 9. Quick Start
+## 8. Running Locally
 
-### 1. Launch Backend
-```powershell
+### Step 1: Start Backend Server
+```bash
+# In project root
 python run.py
-# Server starts at http://127.0.0.1:8000
+# Backend API active at: http://127.0.0.1:8000
+# OpenAPI documentation: http://127.0.0.1:8000/docs
 ```
 
-### 2. Launch Frontend
-```powershell
+### Step 2: Start Frontend Development Server
+```bash
+# In frontend directory
 cd frontend
 npm run dev
-# Vite dev server starts at http://127.0.0.1:5173
-```
-
-### 3. Run Automated Tests
-```powershell
-python -m pytest tests/ -v
+# Frontend interface active at: http://127.0.0.1:5173
 ```
 
 ---
 
-## 10. Known Limitations & Research Honesty
+## 9. Demo
 
-1. **Monocular Scale Ambiguity:** Handheld monocular cameras inherently lack metric scale. PLANE VUE anchors scale using floor-to-ceiling constraints ($2.8\text{m}$) or optional Mode A blueprint alignment.
-2. **Featureless Walls:** Uniform blank walls provide few ORB feature keypoints; tracking relies on corner intersections, baseboards, and frame edges.
-3. **Static Environment Assumption:** The reconstruction assumes static geometry. Dynamic subjects walking through the room are filtered out via RANSAC epipolar outlier rejection.
+PLANE VUE includes pre-packaged, offline-ready demonstration assets:
+- **Mode A Blueprint Demo:** Click **"Demo: Hospital Floor Plan"** on the Mode A page. The system parses 10 distinct rooms (Reception, Waiting Area, Emergency, Consultation, Nurse Station, Pharmacy, Patient Rooms, Central Corridor, Restroom), extrudes the walls, places medical assets, and renders the 3D model.
+- **Mode B Video Demo:** Click **"Load Demo Video"** on the Mode B page. The system loads `data/video/sample_room_demo.mp4`, performs 6-DOF trajectory tracking, calculates estimated view coverage, detects 4 unobserved perimeter sectors, and synthesizes non-overwriting completion walls.
+- **Jury Walkthrough Modal:** Click **"Jury Walkthrough"** in the top navigation bar for a guided, 5-stage overview.
+
+---
+
+## 10. Evaluation
+
+The system was evaluated using:
+1. **Automated Unit & Integration Test Suite:** 79 tests across 16 test files covering camera pose estimation, voxel raycasting, non-overwrite invariants, topology verification, and GLB export.
+2. **Topological Manifold Validation:** Zero self-intersections and zero non-manifold edges on reconstructed building geometry.
+3. **Progressive Ablation Study:** Measured progression from naive baseline ($A_0$) to full PLANE VUE ($A_5$), quantifying IoU improvement, Chamfer distance reduction, and room closure rates.
+
+---
+
+## 11. Metrics (Empirically Measured)
+
+| Stage / Component | Metric Measured | Result |
+| :--- | :--- | :---: |
+| **Backend Test Suite** | Automated Tests Executed | **79 Passed** (0 Failures) |
+| **Mode A (Hospital Wing)** | Room Boundary Recall | **100% (10/10 rooms)** |
+| **Mode A (Topology)** | Non-Manifold Defects | **0 Defects** |
+| **Mode B (Trajectory)** | Keyframe Camera Poses | **6 Poses (6-DOF)** |
+| **Mode B (Points)** | Triangulated 3D Point Cloud | **82 Points** |
+| **Mode B (Unseen Sectors)**| Detected Occluded Sectors | **4 Cardinal Sectors** |
+| **Mode B (Completion)** | Validated Completion Walls | **3 Non-Overwriting Walls** |
+| **Mode B (Invariants)** | Non-Overwrite Violations | **0 Violations** |
+| **Novel-View Synthesis** | Pixel SSIM / PSNR behind occlusions | **N/A (Ground truth unobserved)** |
+
+*Note: Per-pixel novel-view synthesis metrics (PSNR/SSIM) are honestly reported as N/A for unseen areas where physical camera viewpoints do not exist.*
+
+---
+
+## 12. Observed vs Generated Provenance
+
+PLANE VUE enforces strict provenance transparency across all UI components and 3D scenes:
+- **`OBSERVED` (Emerald Green):** Directly supported by multi-view camera keyframe observations or blueprint wall lines.
+- **`INFERRED` (Royal Blue):** Extended along observed planar wall axes with high collinearity.
+- **`GENERATED` (Purple):** Synthesized to close the room-shell envelope boundary where camera visibility was blocked.
+- **`CORRECTED` (Amber):** Candidate geometry trimmed or snapped by topological constraints to preserve non-overwrite invariants.
+
+The 3D viewer includes one-click toggles: **Show Observed**, **Show Generated**, and **Show Both**.
+
+---
+
+## 13. GLB Export
+All reconstructed scenes export to standard **glTF 2.0 Binary (`.glb`)**:
+- Validated via Trimesh and Three.js with correct `glTF` magic headers (`0x46546C67`).
+- Distinct scene hierarchy nodes preserve observed and generated layers for downstream CAD, BIM, and game engine workflows.
+
+---
+
+## 14. Limitations
+1. **Static Architectural Interiors:** Dynamic objects (moving humans or pets) are filtered out via RANSAC epipolar outlier rejection.
+2. **Rectilinear (Manhattan) Prior:** Completion performs best in orthogonal or rectilinear rooms; organic curved walls are approximated as segmented polylines.
+3. **Texture-Free Structural Completion:** Completed unobserved walls are rendered as clean structural architectural surfaces rather than hallucinated artificial textures.
+4. **Abstention on Ambiguity:** The system refuses completion if supporting structural evidence is below threshold.
+
+---
+
+## 15. Reproducibility
+- **Zero Cloud API Dependencies:** Entirely offline-first; no external API keys or cloud services required.
+- **Single Master Verification Command:**
+  ```bash
+  python verify_all.py
+  ```
+  Executes all 9 verification steps (Environment, Pytest, Vite Build, Mode A E2E, Mode B E2E, Unseen Detection, Completion Invariants, Provenance, and GLB Export) and produces a full terminal audit.
+
+---
+
+## 16. Team Contribution
+- **Problem Formulation & Architecture:** End-to-end design of dual-mode spatial reconstruction platform (HNX26EPS06).
+- **Core Algorithms:** Implementation of 5-point RANSAC camera estimation, voxel frustum coverage raycasting, cardinal perimeter unseen sector detection, and hierarchical constraint completion.
+- **Non-Overwrite Invariant & Provenance System:** Mathematical formulation preventing synthetic completion from modifying observed physical geometry.
+- **Full-Stack Implementation:** FastAPI high-performance backend, Three.js/Vite interactive 3D viewer, and binary GLB exporter.

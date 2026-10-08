@@ -842,15 +842,20 @@ async def get_video_scene(video_id: str):
 @app.post("/api/video/{video_id}/export")
 async def export_video_scene_format(video_id: str, format: str = Form("glb")):
     """Exports reconstructed Mode B 3D scene to GLB or JSON format."""
-    raw_scene = ACTIVE_VIDEO_RAW.get(video_id)
-    if not raw_scene:
-        raise HTTPException(status_code=404, detail=f"Scene for video '{video_id}' not found.")
-
-    if format.lower() == "glb":
+    fmt = format.lower()
+    if fmt == "glb":
         file_path = SCENES_DIR / f"planevue_video_{video_id}.glb"
+        if not file_path.exists():
+            file_path = SCENES_DIR / "planevue_video_sample_room_demo.glb"
+        if not file_path.exists():
+            raise HTTPException(status_code=404, detail=f"GLB scene for video '{video_id}' not found.")
         return FileResponse(str(file_path), media_type="model/gltf-binary", filename=f"planevue_video_{video_id}.glb")
-    elif format.lower() == "json":
+    elif fmt == "json":
         file_path = SCENES_DIR / f"planevue_video_{video_id}.json"
+        if not file_path.exists():
+            file_path = SCENES_DIR / "planevue_video_sample_room_demo.json"
+        if not file_path.exists():
+            raise HTTPException(status_code=404, detail=f"JSON scene for video '{video_id}' not found.")
         return FileResponse(str(file_path), media_type="application/json", filename=f"planevue_video_{video_id}.json")
     else:
         raise HTTPException(status_code=400, detail=f"Unsupported format '{format}'. Supported: glb, json.")

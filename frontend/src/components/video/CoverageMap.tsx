@@ -19,7 +19,7 @@ export const CoverageMap: React.FC<CoverageMapProps> = ({ coverage, visibilityRe
         <div className="flex items-center gap-2">
           <Eye className="w-4 h-4 text-emerald-400" />
           <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-            Spatial Coverage Analysis
+            Estimated View Coverage (Voxel Grid)
           </h4>
         </div>
         {heatmap?.cells && (

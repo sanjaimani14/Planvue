@@ -285,10 +285,26 @@ def run_checks():
         results["json_export"] = "FAIL"
         reasons["json_export"] = str(e)
 
-    # 17. Tests pass
-    # We know from test run: 79 passed
-    results["tests_pass"] = "PASS"
-    reasons["tests_pass"] = "All 79 pytest automated unit and integration tests passed (100%)"
+    # 17. Tests pass (Actually executed dynamically)
+    import subprocess
+    try:
+        test_run = subprocess.run(
+            [sys.executable, "-m", "pytest", "tests/", "-q"],
+            capture_output=True,
+            text=True,
+            timeout=120
+        )
+        if test_run.returncode == 0:
+            results["tests_pass"] = "PASS"
+            # Extract summary line from pytest output
+            summary_line = test_run.stdout.strip().split("\n")[-1]
+            reasons["tests_pass"] = f"Automated pytest test suite executed successfully: {summary_line}"
+        else:
+            results["tests_pass"] = "FAIL"
+            reasons["tests_pass"] = f"Pytest execution failed with returncode {test_run.returncode}: {test_run.stdout[:200]}"
+    except Exception as e:
+        results["tests_pass"] = "FAIL"
+        reasons["tests_pass"] = f"Pytest execution error: {str(e)}"
 
     # 18. Mode A Regression
     try:
