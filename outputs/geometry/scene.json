@@ -1,6 +1,6 @@
 {
   "mode": "blueprint",
-  "scene_id": "scene_2285c233",
+  "scene_id": "scene_e5c55081",
   "source_file": "simple_plan.png",
   "image_width": 900,
   "image_height": 700,
@@ -139,7 +139,7 @@
     "room_count": 3,
     "dimension_count": 0,
     "total_area_m2": null,
-    "processing_time_ms": 1176.6
+    "processing_time_ms": 326.8
   },
   "validation": {
     "valid": true,
@@ -149,10 +149,10 @@
     "geometry_validity_score": 1.0
   },
   "metrics": {
-    "processing_time_ms": 1176.6,
+    "processing_time_ms": 326.8,
     "deskew_degrees": 0.0,
     "geometry_validity_score": 1.0
   },
-  "processed_image_url": "/data/processed/proc_scene_2285c233.png",
+  "processed_image_url": "/data/processed/proc_scene_e5c55081.png",
   "original_image_url": "/data/demo/simple_plan.png"
 }
