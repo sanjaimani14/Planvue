@@ -262,6 +262,7 @@ export interface Scene3D {
   doors: Door3D[];
   windows: Window3D[];
   floors: Floor3D[];
+  furniture?: any[];
   metrics: {
     wall_count: number;
     door_count: number;
@@ -421,6 +422,7 @@ export interface VideoSceneItem {
   unseen_regions: UnseenRegionItem[];
   completion_regions: CompletionRegionItem[];
   objects: any[];
+  detected_objects?: DetectedObjectItem[];
   coverage: CoverageReportItem;
   visibility_report?: any;
   baseline_comparison?: any;
@@ -430,6 +432,19 @@ export interface VideoSceneItem {
     glb_url?: string;
     json_url?: string;
   };
+}
+
+export interface DetectedObjectItem {
+  id: string;
+  name: string;
+  confidence_pct: number;
+  position: [number, number, number];
+  dimensions: [number, number, number];
+  frame_index: number;
+  timestamp_s?: number;
+  spatial_status: "Observed" | "Inferred" | "Generated";
+  category?: "furniture" | "fixture" | "opening" | "appliance";
+  evidence?: string[];
 }
 
 export interface VideoJobItem {

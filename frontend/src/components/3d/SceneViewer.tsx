@@ -6,13 +6,14 @@ import { DoorMesh } from './DoorMesh';
 import { WindowMesh } from './WindowMesh';
 import { FloorMesh } from './FloorMesh';
 import { RoomLabel } from './RoomLabel';
+import { FurnitureMesh } from './FurnitureMesh';
 import { GridSystem } from './GridSystem';
 import { MeasurementTool } from './MeasurementTool';
 import { CameraControls, CameraViewMode } from './CameraControls';
 import { ConfidenceOverlay, ConfidenceFilterType } from './ConfidenceOverlay';
 import { SceneToolbar } from './SceneToolbar';
 import { exportScene } from '../../services/api';
-import { Info, X, Layers, Box, CheckCircle2 } from 'lucide-react';
+import { Info, X, Layers, Box, CheckCircle2, Armchair } from 'lucide-react';
 
 interface SceneViewerProps {
   scene: Scene3D;
@@ -32,6 +33,10 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
   const [resetTrigger, setResetTrigger] = useState<number>(0);
   const [showGrid, setShowGrid] = useState<boolean>(true);
   const [showLabels, setShowLabels] = useState<boolean>(true);
+  const [showWalls, setShowWalls] = useState<boolean>(true);
+  const [showDoors, setShowDoors] = useState<boolean>(true);
+  const [showWindows, setShowWindows] = useState<boolean>(true);
+  const [showFurniture, setShowFurniture] = useState<boolean>(true);
   const [showDimensions, setShowDimensions] = useState<boolean>(false);
   const [displayMode, setDisplayMode] = useState<'solid' | 'wireframe' | 'xray'>('solid');
   const [showConfidence, setShowConfidence] = useState<boolean>(false);
@@ -41,7 +46,7 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
   const [isExportingGlb, setIsExportingGlb] = useState<boolean>(false);
   const [exportNotice, setExportNotice] = useState<string | null>(null);
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Sync external selection (e.g. from 2D blueprint)
   useEffect(() => {
@@ -50,7 +55,8 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
         scene.walls.find((w) => w.id === externalSelectedId) ||
         scene.doors.find((d) => d.id === externalSelectedId) ||
         scene.windows.find((win) => win.id === externalSelectedId) ||
-        scene.floors.find((f) => f.id === externalSelectedId);
+        scene.floors.find((f) => f.id === externalSelectedId) ||
+        scene.furniture?.find((f) => f.id === externalSelectedId);
       if (match) setSelectedItem(match);
     }
   }, [externalSelectedId, scene]);
@@ -62,6 +68,17 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
 
   const handleResetCamera = () => {
     setResetTrigger((prev) => prev + 1);
+  };
+
+  const handleToggleFullscreen = () => {
+    if (!containerRef.current) return;
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen().catch((err) => {
+        console.warn(`Fullscreen error: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
   };
 
   // Keyboard shortcuts (Section 53)
@@ -192,7 +209,10 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
   }, [scene]);
 
   return (
-    <div className="relative w-full h-full flex flex-col bg-slate-950 select-none overflow-hidden rounded-xl border border-slate-800">
+    <div
+      ref={containerRef}
+      className="relative w-full h-full flex flex-col bg-slate-950 select-none overflow-hidden rounded-xl border border-slate-800"
+    >
       {/* Top Floating Toolbar */}
       <div className="absolute top-3 left-3 right-3 z-30 pointer-events-auto">
         <SceneToolbar
@@ -214,6 +234,15 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
           onExportGlb={handleExportGlb}
           onCaptureView={handleCaptureView}
           isExportingGlb={isExportingGlb}
+          showWalls={showWalls}
+          onToggleWalls={() => setShowWalls(!showWalls)}
+          showDoors={showDoors}
+          onToggleDoors={() => setShowDoors(!showDoors)}
+          showWindows={showWindows}
+          onToggleWindows={() => setShowWindows(!showWindows)}
+          showFurniture={showFurniture}
+          onToggleFurniture={() => setShowFurniture(!showFurniture)}
+          onToggleFullscreen={handleToggleFullscreen}
         />
       </div>
 
@@ -294,41 +323,56 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
             ))}
 
             {/* 3. Walls */}
-            {scene.walls.map((wall) => (
-              <WallMesh
-                key={wall.id}
-                wall={wall}
-                isSelected={selectedItem?.id === wall.id}
-                displayMode={displayMode}
-                confidenceFilter={confidenceFilter}
-                showDimensions={showDimensions}
-                onSelect={handleSelectItem}
-              />
-            ))}
+            {showWalls &&
+              scene.walls.map((wall) => (
+                <WallMesh
+                  key={wall.id}
+                  wall={wall}
+                  isSelected={selectedItem?.id === wall.id}
+                  displayMode={displayMode}
+                  confidenceFilter={confidenceFilter}
+                  showDimensions={showDimensions}
+                  onSelect={handleSelectItem}
+                />
+              ))}
 
             {/* 4. Doors */}
-            {scene.doors.map((door) => (
-              <DoorMesh
-                key={door.id}
-                door={door}
-                isSelected={selectedItem?.id === door.id}
-                displayMode={displayMode}
-                confidenceFilter={confidenceFilter}
-                onSelect={handleSelectItem}
-              />
-            ))}
+            {showDoors &&
+              scene.doors.map((door) => (
+                <DoorMesh
+                  key={door.id}
+                  door={door}
+                  isSelected={selectedItem?.id === door.id}
+                  displayMode={displayMode}
+                  confidenceFilter={confidenceFilter}
+                  onSelect={handleSelectItem}
+                />
+              ))}
 
             {/* 5. Windows */}
-            {scene.windows.map((win) => (
-              <WindowMesh
-                key={win.id}
-                window={win}
-                isSelected={selectedItem?.id === win.id}
-                displayMode={displayMode}
-                confidenceFilter={confidenceFilter}
-                onSelect={handleSelectItem}
-              />
-            ))}
+            {showWindows &&
+              scene.windows.map((win) => (
+                <WindowMesh
+                  key={win.id}
+                  window={win}
+                  isSelected={selectedItem?.id === win.id}
+                  displayMode={displayMode}
+                  confidenceFilter={confidenceFilter}
+                  onSelect={handleSelectItem}
+                />
+              ))}
+
+            {/* 6. AI-Inferred Furniture */}
+            {scene.furniture &&
+              scene.furniture.map((furn) => (
+                <FurnitureMesh
+                  key={furn.id}
+                  item={furn}
+                  visible={showFurniture}
+                  isSelected={selectedItem?.id === furn.id}
+                  onSelect={handleSelectItem}
+                />
+              ))}
           </group>
 
           {/* Real Euclidean Measurement Tool (Section 17) */}
@@ -339,13 +383,21 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
         </Canvas>
       </div>
 
-      {/* Selected Object Inspector Panel (Section 16) */}
+      {/* Selected Object / Room Inspector Panel */}
       {selectedItem && (
         <div className="absolute bottom-4 left-4 z-30 bg-slate-900/95 border border-cyan-500/40 p-4 rounded-xl shadow-2xl backdrop-blur-md w-72 text-xs">
           <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
             <span className="font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-              <Box className="w-4 h-4 text-cyan-400" />
-              {selectedItem.type} {selectedItem.id}
+              {selectedItem.type === 'furniture' ? (
+                <Armchair className="w-4 h-4 text-amber-400" />
+              ) : selectedItem.area_m2 !== undefined || selectedItem.label ? (
+                <Box className="w-4 h-4 text-purple-400" />
+              ) : (
+                <Box className="w-4 h-4 text-cyan-400" />
+              )}
+              {selectedItem.area_m2 !== undefined || selectedItem.label
+                ? 'ROOM'
+                : selectedItem.type?.toUpperCase() || 'OBJECT'}
             </span>
             <button
               onClick={() => setSelectedItem(null)}
@@ -355,65 +407,63 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
             </button>
           </div>
 
-          <div className="space-y-1.5 text-slate-300">
-            {selectedItem.dimensions?.length_m !== undefined && (
-              <div className="flex justify-between">
-                <span className="text-slate-400">Length:</span>
-                <span className="font-mono font-semibold text-white">
-                  {selectedItem.dimensions.length_m.toFixed(2)} m
-                </span>
-              </div>
-            )}
-            {selectedItem.dimensions?.width_m !== undefined && (
-              <div className="flex justify-between">
-                <span className="text-slate-400">Width:</span>
-                <span className="font-mono font-semibold text-white">
-                  {selectedItem.dimensions.width_m.toFixed(2)} m
-                </span>
-              </div>
-            )}
-            {selectedItem.dimensions?.thickness_m !== undefined && (
-              <div className="flex justify-between">
-                <span className="text-slate-400">Thickness:</span>
-                <span className="font-mono font-semibold text-white">
-                  {selectedItem.dimensions.thickness_m.toFixed(2)} m
-                </span>
-              </div>
-            )}
-            {selectedItem.dimensions?.height_m !== undefined && (
-              <div className="flex justify-between">
-                <span className="text-slate-400">Height:</span>
-                <span className="font-mono font-semibold text-white">
-                  {selectedItem.dimensions.height_m.toFixed(2)} m
-                </span>
-              </div>
-            )}
-            {selectedItem.area_m2 !== undefined && (
-              <div className="flex justify-between">
-                <span className="text-slate-400">Room Area:</span>
-                <span className="font-mono font-semibold text-white">
-                  {selectedItem.area_m2.toFixed(1)} m²
-                </span>
-              </div>
-            )}
-            {selectedItem.label && (
-              <div className="flex justify-between">
-                <span className="text-slate-400">Room Name:</span>
-                <span className="font-bold text-cyan-300">{selectedItem.label}</span>
-              </div>
-            )}
-
-            <div className="flex justify-between pt-1 border-t border-slate-800">
-              <span className="text-slate-400">Confidence:</span>
-              <span className="font-mono font-semibold text-emerald-400">
-                {selectedItem.confidence !== undefined
-                  ? `${(selectedItem.confidence * 100).toFixed(0)}%`
-                  : 'Confidence unavailable'}
+          <div className="space-y-2 text-slate-300">
+            {/* Primary Name Display */}
+            <div>
+              <span className="text-[10px] uppercase font-mono text-slate-400 block">Name / Label</span>
+              <span className="font-extrabold text-sm text-cyan-300">
+                {selectedItem.label || selectedItem.name || selectedItem.id}
               </span>
             </div>
 
-            <div className="flex justify-between">
-              <span className="text-slate-400">Status:</span>
+            {/* Room Area in sq.ft and m2 */}
+            {selectedItem.area_m2 !== undefined && (
+              <div>
+                <span className="text-[10px] uppercase font-mono text-slate-400 block">Estimated Area</span>
+                <span className="font-mono font-bold text-white text-xs">
+                  {Math.round(selectedItem.area_m2 * 10.7639)} sq.ft.
+                  <span className="text-slate-400 ml-1 font-normal">
+                    ({selectedItem.area_m2.toFixed(1)} m²)
+                  </span>
+                </span>
+              </div>
+            )}
+
+            {/* Furniture Dimensions */}
+            {selectedItem.dimensions?.width_m !== undefined && (
+              <div className="flex justify-between text-[11px] font-mono">
+                <span className="text-slate-400">Dimensions (W×H×D):</span>
+                <span className="text-white">
+                  {selectedItem.dimensions.width_m?.toFixed(2)}m × {selectedItem.dimensions.height_m?.toFixed(2)}m × {selectedItem.dimensions.depth_m?.toFixed(2)}m
+                </span>
+              </div>
+            )}
+
+            {/* Source */}
+            <div className="flex justify-between pt-1 border-t border-slate-800 text-[11px]">
+              <span className="text-slate-400">Source:</span>
+              <span className="font-semibold text-slate-200">
+                {selectedItem.source || (selectedItem.type === 'furniture' ? 'AI Inferred' : 'Blueprint')}
+              </span>
+            </div>
+
+            {/* Confidence */}
+            <div className="flex justify-between text-[11px]">
+              <span className="text-slate-400">Confidence:</span>
+              <span className="font-mono font-semibold text-emerald-400">
+                {selectedItem.confidence !== undefined
+                  ? typeof selectedItem.confidence === 'number'
+                    ? selectedItem.confidence >= 0.8
+                      ? `High (${Math.round(selectedItem.confidence * 100)}%)`
+                      : `${Math.round(selectedItem.confidence * 100)}%`
+                    : selectedItem.confidence
+                  : 'High'}
+              </span>
+            </div>
+
+            {/* Spatial status */}
+            <div className="flex justify-between text-[11px]">
+              <span className="text-slate-400">Spatial status:</span>
               <span
                 className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
                   selectedItem.status === 'OBSERVED'
@@ -423,9 +473,16 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
                     : 'bg-purple-950 text-purple-300'
                 }`}
               >
-                {selectedItem.status}
+                {selectedItem.status || (selectedItem.type === 'furniture' ? 'Inferred' : 'Observed')}
               </span>
             </div>
+
+            {/* Provenance note if available */}
+            {selectedItem.provenance_note && (
+              <p className="text-[10px] text-slate-400 italic pt-1 border-t border-slate-800/80">
+                {selectedItem.provenance_note}
+              </p>
+            )}
           </div>
         </div>
       )}
@@ -437,6 +494,9 @@ export const SceneViewer: React.FC<SceneViewerProps> = ({
           <span>Walls: <strong className="text-slate-200">{scene.metrics.wall_count}</strong></span>
           <span>Doors: <strong className="text-slate-200">{scene.metrics.door_count}</strong></span>
           <span>Windows: <strong className="text-slate-200">{scene.metrics.window_count}</strong></span>
+          {scene.furniture && scene.furniture.length > 0 && (
+            <span>Furniture: <strong className="text-amber-300">{scene.furniture.length}</strong></span>
+          )}
           <span className="text-slate-600">|</span>
           <span>
             Bounds: <strong className="text-cyan-300">{scene.bounds.width_m.toFixed(1)}m × {scene.bounds.depth_m.toFixed(1)}m × {scene.bounds.height_m.toFixed(1)}m</strong>

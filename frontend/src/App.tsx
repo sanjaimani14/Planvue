@@ -3,14 +3,18 @@ import { HomePage } from './pages/HomePage';
 import { BlueprintPage } from './pages/BlueprintPage';
 import { VideoReconstructionPage } from './pages/VideoReconstructionPage';
 import { EvaluationPage } from './pages/EvaluationPage';
-import { Box, Layers, Compass, ShieldCheck, BarChart3, Video } from 'lucide-react';
+import { JuryDemoModal } from './components/JuryDemoModal';
+import { Box, Layers, Compass, ShieldCheck, BarChart3, Video, Award } from 'lucide-react';
 
 export function App() {
   const [activePage, setActivePage] = useState<'home' | 'blueprint' | 'video' | 'evaluation'>('home');
   const [autoBlueprintDemo, setAutoBlueprintDemo] = useState<boolean>(false);
+  const [blueprintDemoType, setBlueprintDemoType] = useState<string>('hospital');
   const [autoVideoDemo, setAutoVideoDemo] = useState<boolean>(false);
+  const [isJuryModalOpen, setIsJuryModalOpen] = useState<boolean>(false);
 
-  const handleStartBlueprint = (autoDemo: boolean = false) => {
+  const handleStartBlueprint = (autoDemo: boolean = false, type: string = 'hospital') => {
+    setBlueprintDemoType(type);
     setAutoBlueprintDemo(autoDemo);
     setActivePage('blueprint');
   };
@@ -20,13 +24,21 @@ export function App() {
     setActivePage('video');
   };
 
+  const handleSelectJuryDemo = (mode: 'blueprint' | 'video', type?: string) => {
+    if (mode === 'blueprint') {
+      handleStartBlueprint(true, type || 'hospital');
+    } else {
+      handleStartVideo(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#090b10] text-slate-100 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
       {/* Background ambient lighting */}
       <div className="fixed inset-0 pointer-events-none radial-glow" />
       <div className="fixed inset-0 pointer-events-none grid-bg opacity-40" />
 
-      {/* Global Header (Section 5) */}
+      {/* Global Header */}
       <header className="sticky top-0 z-50 glass-panel border-b border-white/10 px-6 py-3.5 flex items-center justify-between backdrop-blur-xl">
         <div 
           className="flex items-center gap-3.5 cursor-pointer group"
@@ -54,7 +66,7 @@ export function App() {
             onClick={() => setActivePage('home')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activePage === 'home'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-semibold'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -66,7 +78,7 @@ export function App() {
             onClick={() => handleStartBlueprint(false)}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activePage === 'blueprint'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-semibold'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -78,7 +90,7 @@ export function App() {
             onClick={() => handleStartVideo(false)}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activePage === 'video'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-semibold'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -90,7 +102,7 @@ export function App() {
             onClick={() => setActivePage('evaluation')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activePage === 'evaluation'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-semibold'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -99,10 +111,20 @@ export function App() {
           </button>
         </nav>
 
-        {/* Active Engine Badge */}
-        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium font-mono">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Constraint Engine Active</span>
+        {/* Action Buttons: JURY DEMO + Engine Status */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsJuryModalOpen(true)}
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transform hover:scale-[1.03] transition-all"
+          >
+            <Award className="w-4 h-4 text-slate-950" />
+            <span>JURY DEMO</span>
+          </button>
+
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium font-mono">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Constraint Engine Active</span>
+          </div>
         </div>
       </header>
 
@@ -110,14 +132,17 @@ export function App() {
       <main className="flex-1 relative z-10">
         {activePage === 'home' && (
           <HomePage
-            onStartBlueprint={(autoDemo) => handleStartBlueprint(autoDemo)}
+            onStartBlueprint={(autoDemo) => handleStartBlueprint(autoDemo, 'hospital')}
             onStartVideo={(autoDemo) => handleStartVideo(autoDemo)}
             onOpenEvaluation={() => setActivePage('evaluation')}
           />
         )}
 
         {activePage === 'blueprint' && (
-          <BlueprintPage autoLoadDemo={autoBlueprintDemo} />
+          <BlueprintPage 
+            autoLoadDemo={autoBlueprintDemo} 
+            demoType={blueprintDemoType} 
+          />
         )}
 
         {activePage === 'video' && (
@@ -147,6 +172,13 @@ export function App() {
           </div>
         </div>
       </footer>
+
+      {/* 5-Step Jury Demonstration Modal */}
+      <JuryDemoModal
+        isOpen={isJuryModalOpen}
+        onClose={() => setIsJuryModalOpen(false)}
+        onSelectDemo={handleSelectJuryDemo}
+      />
     </div>
   );
 }

@@ -222,7 +222,38 @@ def assemble_video_scene(
             geometry={"count": len(points_3d)}
         ))
 
-    # 6. Audit 3D Mesh
+    # 6. Object & Scene Detection (Furniture, Openings & Fixtures)
+    from backend.app.video.object_detection import detect_objects_in_video_scene
+    bounds_tmp = {"min": b_min, "max": b_max}
+    detected_objs = detect_objects_in_video_scene(video_id, [], planes, bounds_tmp, camera_poses)
+    for dobj in detected_objs:
+        try:
+            obox = trimesh.creation.box(extents=dobj.dimensions)
+            obox.apply_translation(dobj.position)
+            col = [56, 189, 248, 220] if dobj.category == "furniture" else [245, 158, 11, 220]
+            obox.visual.vertex_colors = col
+            tri_scene.add_geometry(obox, node_name=f"object_{dobj.id}_{dobj.name.lower()}")
+        except Exception:
+            pass
+        objects.append(VideoSceneObject(
+            id=dobj.id,
+            type=dobj.category,
+            status=dobj.spatial_status.upper(),
+            provenance_note=f"{dobj.name} detected with {dobj.confidence_pct}% confidence in frame {dobj.frame_index}",
+            confidence=round(dobj.confidence_pct / 100.0, 2),
+            source_frames=[dobj.frame_index],
+            evidence=dobj.evidence,
+            geometry={
+                "name": dobj.name,
+                "position": dobj.position,
+                "dimensions": dobj.dimensions,
+                "confidence_pct": dobj.confidence_pct,
+                "category": dobj.category,
+                "frame_index": dobj.frame_index
+            }
+        ))
+
+    # 7. Audit 3D Mesh
     mesh_audit_dict = audit_scene_3d_mesh({"_trimesh_scene": tri_scene})
 
     # Bounds
@@ -276,6 +307,7 @@ def assemble_video_scene(
         unseen_regions=unseen_regions,
         completion_regions=completions,
         objects=objects,
+        detected_objects=[d.model_dump() for d in detected_objs],
         coverage=coverage,
         metrics=metrics,
         validation=validation_report,

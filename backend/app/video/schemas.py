@@ -140,6 +140,7 @@ class VideoScene(BaseModel):
     unseen_regions: List[UnseenRegion] = Field(default_factory=list)
     completion_regions: List[CompletionRegion] = Field(default_factory=list)
     objects: List[VideoSceneObject] = Field(default_factory=list)
+    detected_objects: List[Dict[str, Any]] = Field(default_factory=list)
     coverage: CoverageReport
     visibility_report: Optional[Dict[str, Any]] = None
     baseline_comparison: Optional[Dict[str, Any]] = None

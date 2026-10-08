@@ -1943,26 +1943,26 @@
   ],
   "surfaces": [
     {
-      "plane_id": "PLN_CEI_01",
-      "surface_type": "CEILING",
+      "plane_id": "PLN_FLO_01",
+      "surface_type": "FLOOR",
       "normal": [
-        -0.5809,
-        0.8132,
-        -0.0362
+        -0.3065,
+        0.9508,
+        -0.0445
       ],
-      "offset": 0.2552,
-      "inlier_count": 48,
-      "confidence": 0.88,
+      "offset": -0.0667,
+      "inlier_count": 49,
+      "confidence": 0.89,
       "bounds": {
         "min": [
-          0.453,
+          -0.017,
           0.143,
-          1.302
+          0.693
         ],
         "max": [
-          5.13,
-          3.994,
-          14.437
+          3.804,
+          1.726,
+          10.13
         ]
       },
       "status": "OBSERVED"
@@ -1971,11 +1971,11 @@
       "plane_id": "PLN_WAL_02",
       "surface_type": "WALL",
       "normal": [
-        -0.8915,
-        0.3071,
-        0.333
+        -0.945,
+        0.1034,
+        0.3103
       ],
-      "offset": -0.0926,
+      "offset": -0.0449,
       "inlier_count": 19,
       "confidence": 0.59,
       "bounds": {
@@ -1985,9 +1985,9 @@
           2.686
         ],
         "max": [
-          4.76,
-          1.727,
-          11.481
+          5.13,
+          3.994,
+          14.437
         ]
       },
       "status": "OBSERVED"
@@ -2014,7 +2014,20 @@
         5.0,
         16.0
       ],
-      "status": "UNSEEN"
+      "status": "UNSEEN",
+      "classification": "OUT_OF_VIEW",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_WAL_02",
+      "completion_eligibility": {
+        "is_eligible": false,
+        "eligibility_reason": "Distance to nearest observed surface is too large with no supporting collinear or corner constraints.",
+        "primary_rule": "INSUFFICIENT_EVIDENCE",
+        "confidence_prior": 0.2,
+        "supporting_constraints": [],
+        "nearest_observed_id": "PLN_WAL_02",
+        "distance_to_nearest_m": 7.6,
+        "action_directive": "LEAVE_UNRESOLVED"
+      }
     },
     {
       "region_id": "UNSEEN_REG_02",
@@ -2036,7 +2049,20 @@
         5.0,
         -2.2
       ],
-      "status": "UNSEEN"
+      "status": "UNSEEN",
+      "classification": "UNSEEN",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_FLO_01",
+      "completion_eligibility": {
+        "is_eligible": false,
+        "eligibility_reason": "Distance to nearest observed surface is too large with no supporting collinear or corner constraints.",
+        "primary_rule": "INSUFFICIENT_EVIDENCE",
+        "confidence_prior": 0.2,
+        "supporting_constraints": [],
+        "nearest_observed_id": "PLN_FLO_01",
+        "distance_to_nearest_m": 8.28,
+        "action_directive": "LEAVE_UNRESOLVED"
+      }
     },
     {
       "region_id": "UNSEEN_REG_03",
@@ -2058,70 +2084,26 @@
         5.0,
         16.0
       ],
-      "status": "UNSEEN"
+      "status": "UNSEEN",
+      "classification": "OUT_OF_VIEW",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_WAL_02",
+      "completion_eligibility": {
+        "is_eligible": true,
+        "eligibility_reason": "Observed adjacent wall collinearity supports direct geometric continuation.",
+        "primary_rule": "WALL_ALIGNMENT",
+        "confidence_prior": 0.88,
+        "supporting_constraints": [
+          "collinear_normal_alignment",
+          "coplanar_offset_match"
+        ],
+        "nearest_observed_id": "PLN_WAL_02",
+        "distance_to_nearest_m": 3.55,
+        "action_directive": "PROCEED_COMPLETION"
+      }
     }
   ],
   "completion_regions": [
-    {
-      "region_id": "CMP_UNSEEN_REG_01",
-      "element_type": "ROOM_SHELL_CLOSURE",
-      "status": "GENERATED",
-      "completion_level": "LEVEL_3_ROOM_SHELL",
-      "geometry": {
-        "start": [
-          -5.0,
-          0.0,
-          15.6
-        ],
-        "end": [
-          6.0,
-          0.0,
-          15.6
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "length": 11.0,
-        "orientation": "HORIZONTAL_X"
-      },
-      "reason": "Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
-      "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
-      "confidence_level": "CONSERVATIVE",
-      "source_frames": [
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "region_id": "CMP_UNSEEN_REG_02",
-      "element_type": "ROOM_SHELL_CLOSURE",
-      "status": "GENERATED",
-      "completion_level": "LEVEL_3_ROOM_SHELL",
-      "geometry": {
-        "start": [
-          -5.0,
-          0.0,
-          -2.6
-        ],
-        "end": [
-          6.0,
-          0.0,
-          -2.6
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "length": 11.0,
-        "orientation": "HORIZONTAL_X"
-      },
-      "reason": "Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
-      "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
-      "confidence_level": "CONSERVATIVE",
-      "source_frames": [
-        8,
-        5,
-        7
-      ]
-    },
     {
       "region_id": "CMP_UNSEEN_REG_03",
       "element_type": "WALL_CONTINUATION",
@@ -2141,11 +2123,48 @@
         "height": 2.8,
         "thickness": 0.18,
         "length": 19.0,
-        "orientation": "VERTICAL_Z"
+        "orientation": "VERTICAL_Z",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
       },
-      "reason": "Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
+      "reason": "Observed wall 'PLN_WAL_02' collinearity guides continuation across occluded sector.",
       "evidence_category": "GEOMETRIC_CONTINUATION",
-      "confidence_level": "HIGH",
+      "confidence_level": "MEDIUM",
+      "confidence": 0.57,
+      "confidence_breakdown": {
+        "confidence_score": 0.57,
+        "confidence_level": "MEDIUM",
+        "components": {
+          "multi_view_support": 0.95,
+          "structural_support": 0.8,
+          "blueprint_support": 0.0,
+          "distance_penalty": 0.143,
+          "validation_score": 1.0
+        },
+        "explanation": "Medium confidence derived from structural symmetry and room-shell manifold constraints."
+      },
+      "validation_status": "PASSED",
+      "validation_details": {
+        "is_valid": true,
+        "status": "PASSED",
+        "geometry_valid": true,
+        "topology_valid": true,
+        "structural_valid": true,
+        "scene_consistency_valid": true,
+        "violations": [],
+        "corrections_applied": [],
+        "corrected_geometry": null
+      },
+      "constraints_used": [
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact",
+        "adjacent_wall_continuity"
+      ],
+      "completion_method": "GEOMETRIC_CONTINUATION",
       "source_frames": [
         0,
         1,
@@ -2159,6 +2178,18 @@
       "type": "floor",
       "status": "OBSERVED",
       "provenance_note": "Reconstructed from ground plane RANSAC fit",
+      "confidence": 0.96,
+      "source_frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "evidence": [
+        "ground_plane_ransac_fit",
+        "multi_view_parallax",
+        "feature_tracks"
+      ],
       "geometry": {
         "bounds": [
           -5,
@@ -2177,6 +2208,17 @@
       "type": "wall",
       "status": "OBSERVED",
       "provenance_note": "Observed visual plane (19 inlier 3D features)",
+      "confidence": 0.84,
+      "source_frames": [
+        0,
+        1,
+        2
+      ],
+      "evidence": [
+        "multi_view_observation",
+        "feature_tracks",
+        "planar_ransac_fit"
+      ],
       "geometry": {
         "start": [
           0.942,
@@ -2184,9 +2226,9 @@
           2.686
         ],
         "end": [
-          4.76,
+          5.13,
           0.0,
-          11.481
+          14.437
         ],
         "height": 2.8,
         "thickness": 0.18
@@ -2194,54 +2236,24 @@
       "material": null
     },
     {
-      "id": "CMP_UNSEEN_REG_01",
-      "type": "wall",
-      "status": "GENERATED",
-      "provenance_note": "LEVEL_3_ROOM_SHELL: Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
-      "geometry": {
-        "start": [
-          -5.0,
-          0.0,
-          15.6
-        ],
-        "end": [
-          6.0,
-          0.0,
-          15.6
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT"
-      },
-      "material": null
-    },
-    {
-      "id": "CMP_UNSEEN_REG_02",
-      "type": "wall",
-      "status": "GENERATED",
-      "provenance_note": "LEVEL_3_ROOM_SHELL: Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
-      "geometry": {
-        "start": [
-          -5.0,
-          0.0,
-          -2.6
-        ],
-        "end": [
-          6.0,
-          0.0,
-          -2.6
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT"
-      },
-      "material": null
-    },
-    {
       "id": "CMP_UNSEEN_REG_03",
       "type": "wall",
       "status": "INFERRED",
-      "provenance_note": "LEVEL_1_CONTINUATION: Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
+      "provenance_note": "LEVEL_1_CONTINUATION: Observed wall 'PLN_WAL_02' collinearity guides continuation across occluded sector.",
+      "confidence": 0.57,
+      "source_frames": [
+        0,
+        1,
+        2
+      ],
+      "evidence": [
+        "GEOMETRIC_CONTINUATION",
+        "LEVEL_1_CONTINUATION",
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact",
+        "adjacent_wall_continuity"
+      ],
       "geometry": {
         "start": [
           5.6,
@@ -2255,7 +2267,15 @@
         ],
         "height": 2.8,
         "thickness": 0.18,
-        "evidence_category": "GEOMETRIC_CONTINUATION"
+        "evidence_category": "GEOMETRIC_CONTINUATION",
+        "completion_method": "GEOMETRIC_CONTINUATION",
+        "constraints_used": [
+          "coplanar_alignment",
+          "orthogonal_corner_snapping",
+          "ground_floor_contact",
+          "adjacent_wall_continuity"
+        ],
+        "validation_status": "PASSED"
       },
       "material": null
     },
@@ -2264,6 +2284,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=0.40s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           0.0,
@@ -2295,6 +2318,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=1.20s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           0.024,
@@ -2326,6 +2352,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=1.60s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.307,
@@ -2357,6 +2386,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=2.80s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.243,
@@ -2388,6 +2420,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=3.20s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.306,
@@ -2419,6 +2454,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=4.40s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.345,
@@ -2450,6 +2488,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=5.53s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.69,
@@ -2481,6 +2522,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=6.07s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.352,
@@ -2512,6 +2556,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=6.87s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.03,
@@ -2543,6 +2590,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=7.20s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           -0.22956545179976603,
@@ -2574,10 +2624,405 @@
       "type": "point_cloud",
       "status": "OBSERVED",
       "provenance_note": "Triangulated multi-view point cloud (82 vertices)",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "count": 82
       },
       "material": null
+    },
+    {
+      "id": "OBJ_DOOR_01",
+      "type": "opening",
+      "status": "OBSERVED",
+      "provenance_note": "Door detected with 98% confidence in frame 12",
+      "confidence": 0.98,
+      "source_frames": [
+        12
+      ],
+      "evidence": [
+        "west_wall_opening_contour",
+        "door_frame_vertical_edge_matching",
+        "frame_12"
+      ],
+      "geometry": {
+        "name": "Door",
+        "position": [
+          -2.92,
+          1.05,
+          1.8
+        ],
+        "dimensions": [
+          0.12,
+          2.1,
+          0.95
+        ],
+        "confidence_pct": 98,
+        "category": "opening",
+        "frame_index": 12
+      },
+      "material": null
+    },
+    {
+      "id": "OBJ_WINDOW_01",
+      "type": "opening",
+      "status": "OBSERVED",
+      "provenance_note": "Window detected with 91% confidence in frame 33",
+      "confidence": 0.91,
+      "source_frames": [
+        33
+      ],
+      "evidence": [
+        "east_wall_glazing_reflectance",
+        "high_contrast_opening",
+        "frame_33"
+      ],
+      "geometry": {
+        "name": "Window",
+        "position": [
+          2.92,
+          1.55,
+          2.8
+        ],
+        "dimensions": [
+          0.12,
+          1.3,
+          1.6
+        ],
+        "confidence_pct": 91,
+        "category": "opening",
+        "frame_index": 33
+      },
+      "material": null
+    },
+    {
+      "id": "OBJ_TABLE_01",
+      "type": "furniture",
+      "status": "OBSERVED",
+      "provenance_note": "Table detected with 93% confidence in frame 28",
+      "confidence": 0.93,
+      "source_frames": [
+        28
+      ],
+      "evidence": [
+        "horizontal_plane_ransac_support",
+        "feature_cluster_centroid",
+        "frame_28"
+      ],
+      "geometry": {
+        "name": "Table",
+        "position": [
+          0.1,
+          0.42,
+          2.45
+        ],
+        "dimensions": [
+          1.25,
+          0.76,
+          0.85
+        ],
+        "confidence_pct": 93,
+        "category": "furniture",
+        "frame_index": 28
+      },
+      "material": null
+    },
+    {
+      "id": "OBJ_CHAIR_01",
+      "type": "furniture",
+      "status": "OBSERVED",
+      "provenance_note": "Chair detected with 96% confidence in frame 42",
+      "confidence": 0.96,
+      "source_frames": [
+        42
+      ],
+      "evidence": [
+        "table_adjacent_support_surface",
+        "multi_view_parallax",
+        "frame_42"
+      ],
+      "geometry": {
+        "name": "Chair",
+        "position": [
+          0.92,
+          0.44,
+          2.4
+        ],
+        "dimensions": [
+          0.55,
+          0.88,
+          0.55
+        ],
+        "confidence_pct": 96,
+        "category": "furniture",
+        "frame_index": 42
+      },
+      "material": null
+    },
+    {
+      "id": "OBJ_SOFA_01",
+      "type": "furniture",
+      "status": "OBSERVED",
+      "provenance_note": "Sofa detected with 89% confidence in frame 65",
+      "confidence": 0.89,
+      "source_frames": [
+        65
+      ],
+      "evidence": [
+        "planar_bounding_box",
+        "south_wall_proximity",
+        "frame_65"
+      ],
+      "geometry": {
+        "name": "Sofa",
+        "position": [
+          -1.35,
+          0.48,
+          3.05
+        ],
+        "dimensions": [
+          1.5,
+          0.82,
+          0.92
+        ],
+        "confidence_pct": 89,
+        "category": "furniture",
+        "frame_index": 65
+      },
+      "material": null
+    },
+    {
+      "id": "OBJ_CABINET_01",
+      "type": "furniture",
+      "status": "OBSERVED",
+      "provenance_note": "Cabinet detected with 92% confidence in frame 88",
+      "confidence": 0.92,
+      "source_frames": [
+        88
+      ],
+      "evidence": [
+        "interior_divider_occlusion_boundary",
+        "vertical_surface_features",
+        "frame_88"
+      ],
+      "geometry": {
+        "name": "Cabinet",
+        "position": [
+          0.0,
+          1.1,
+          3.8
+        ],
+        "dimensions": [
+          1.6,
+          2.2,
+          0.55
+        ],
+        "confidence_pct": 92,
+        "category": "furniture",
+        "frame_index": 88
+      },
+      "material": null
+    },
+    {
+      "id": "OBJ_LAMP_01",
+      "type": "fixture",
+      "status": "INFERRED",
+      "provenance_note": "Lamp detected with 87% confidence in frame 45",
+      "confidence": 0.87,
+      "source_frames": [
+        45
+      ],
+      "evidence": [
+        "table_surface_luminance_peak",
+        "frame_45"
+      ],
+      "geometry": {
+        "name": "Lamp",
+        "position": [
+          -0.25,
+          0.98,
+          2.45
+        ],
+        "dimensions": [
+          0.32,
+          0.48,
+          0.32
+        ],
+        "confidence_pct": 87,
+        "category": "fixture",
+        "frame_index": 45
+      },
+      "material": null
+    }
+  ],
+  "detected_objects": [
+    {
+      "id": "OBJ_DOOR_01",
+      "name": "Door",
+      "confidence_pct": 98,
+      "position": [
+        -2.92,
+        1.05,
+        1.8
+      ],
+      "dimensions": [
+        0.12,
+        2.1,
+        0.95
+      ],
+      "frame_index": 12,
+      "timestamp_s": 0.4,
+      "spatial_status": "Observed",
+      "category": "opening",
+      "evidence": [
+        "west_wall_opening_contour",
+        "door_frame_vertical_edge_matching",
+        "frame_12"
+      ]
+    },
+    {
+      "id": "OBJ_WINDOW_01",
+      "name": "Window",
+      "confidence_pct": 91,
+      "position": [
+        2.92,
+        1.55,
+        2.8
+      ],
+      "dimensions": [
+        0.12,
+        1.3,
+        1.6
+      ],
+      "frame_index": 33,
+      "timestamp_s": 1.1,
+      "spatial_status": "Observed",
+      "category": "opening",
+      "evidence": [
+        "east_wall_glazing_reflectance",
+        "high_contrast_opening",
+        "frame_33"
+      ]
+    },
+    {
+      "id": "OBJ_TABLE_01",
+      "name": "Table",
+      "confidence_pct": 93,
+      "position": [
+        0.1,
+        0.42,
+        2.45
+      ],
+      "dimensions": [
+        1.25,
+        0.76,
+        0.85
+      ],
+      "frame_index": 28,
+      "timestamp_s": 0.93,
+      "spatial_status": "Observed",
+      "category": "furniture",
+      "evidence": [
+        "horizontal_plane_ransac_support",
+        "feature_cluster_centroid",
+        "frame_28"
+      ]
+    },
+    {
+      "id": "OBJ_CHAIR_01",
+      "name": "Chair",
+      "confidence_pct": 96,
+      "position": [
+        0.92,
+        0.44,
+        2.4
+      ],
+      "dimensions": [
+        0.55,
+        0.88,
+        0.55
+      ],
+      "frame_index": 42,
+      "timestamp_s": 1.4,
+      "spatial_status": "Observed",
+      "category": "furniture",
+      "evidence": [
+        "table_adjacent_support_surface",
+        "multi_view_parallax",
+        "frame_42"
+      ]
+    },
+    {
+      "id": "OBJ_SOFA_01",
+      "name": "Sofa",
+      "confidence_pct": 89,
+      "position": [
+        -1.35,
+        0.48,
+        3.05
+      ],
+      "dimensions": [
+        1.5,
+        0.82,
+        0.92
+      ],
+      "frame_index": 65,
+      "timestamp_s": 2.16,
+      "spatial_status": "Observed",
+      "category": "furniture",
+      "evidence": [
+        "planar_bounding_box",
+        "south_wall_proximity",
+        "frame_65"
+      ]
+    },
+    {
+      "id": "OBJ_CABINET_01",
+      "name": "Cabinet",
+      "confidence_pct": 92,
+      "position": [
+        0.0,
+        1.1,
+        3.8
+      ],
+      "dimensions": [
+        1.6,
+        2.2,
+        0.55
+      ],
+      "frame_index": 88,
+      "timestamp_s": 2.93,
+      "spatial_status": "Observed",
+      "category": "furniture",
+      "evidence": [
+        "interior_divider_occlusion_boundary",
+        "vertical_surface_features",
+        "frame_88"
+      ]
+    },
+    {
+      "id": "OBJ_LAMP_01",
+      "name": "Lamp",
+      "confidence_pct": 87,
+      "position": [
+        -0.25,
+        0.98,
+        2.45
+      ],
+      "dimensions": [
+        0.32,
+        0.48,
+        0.32
+      ],
+      "frame_index": 45,
+      "timestamp_s": 1.5,
+      "spatial_status": "Inferred",
+      "category": "fixture",
+      "evidence": [
+        "table_surface_luminance_peak",
+        "frame_45"
+      ]
     }
   ],
   "coverage": {
@@ -2600,55 +3045,5184 @@
     "camera_visibility_rays_count": 640,
     "coverage_status": "COMPUTED"
   },
+  "visibility_report": {
+    "total_volume_m3": 998.4,
+    "observed_percentage": 18.3,
+    "weakly_observed_percentage": 3.0,
+    "unseen_percentage": 78.7,
+    "regions": [
+      {
+        "region_id": "SEC_NORTH",
+        "label": "North Perimeter Sector",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.0,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            -4.0,
+            0.0,
+            15.3
+          ],
+          "max": [
+            6.0,
+            5.0,
+            16.0
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_SOUTH",
+        "label": "South Perimeter Sector",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.0,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            -4.0,
+            0.0,
+            -3.0
+          ],
+          "max": [
+            6.0,
+            5.0,
+            -2.3
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_EAST",
+        "label": "East Perimeter Sector",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.0,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            5.3,
+            0.0,
+            -3.0
+          ],
+          "max": [
+            6.0,
+            5.0,
+            16.0
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_WEST",
+        "label": "West Perimeter Sector",
+        "visibility": "WEAKLY_OBSERVED",
+        "coverage_ratio": 0.27,
+        "supporting_frames": [
+          0,
+          2,
+          1
+        ],
+        "reason": "Glancing optical coverage; limited parallax baseline across trajectory.",
+        "classification_tier": "LOW",
+        "bounds": {
+          "min": [
+            -4.0,
+            0.0,
+            -3.0
+          ],
+          "max": [
+            -3.3,
+            5.0,
+            16.0
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_CORE",
+        "label": "Central Interior Floor Sector",
+        "visibility": "WEAKLY_OBSERVED",
+        "coverage_ratio": 0.25,
+        "supporting_frames": [
+          0,
+          1,
+          2
+        ],
+        "reason": "Glancing optical coverage; limited parallax baseline across trajectory.",
+        "classification_tier": "LOW",
+        "bounds": {
+          "min": [
+            -3.5,
+            0.0,
+            -2.5
+          ],
+          "max": [
+            5.5,
+            0.8,
+            15.5
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_CEIL",
+        "label": "Upper Ceiling Zone",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.08,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            -4.0,
+            4.2,
+            -3.0
+          ],
+          "max": [
+            6.0,
+            5.0,
+            16.0
+          ]
+        }
+      }
+    ],
+    "surface_visibilities": [
+      {
+        "surface_id": "PLN_FLO_01",
+        "surface_type": "FLOOR",
+        "sample_points_count": 24,
+        "observed_samples": 9,
+        "weak_samples": 2,
+        "unseen_samples": 13,
+        "coverage_ratio": 0.42,
+        "visibility_status": "WEAKLY_OBSERVED",
+        "supporting_frames": [
+          0,
+          1,
+          2,
+          6
+        ],
+        "reason": "Surface partially intersected camera frustum, but lacks multi-view redundancy."
+      },
+      {
+        "surface_id": "PLN_WAL_02",
+        "surface_type": "WALL",
+        "sample_points_count": 24,
+        "observed_samples": 2,
+        "weak_samples": 0,
+        "unseen_samples": 22,
+        "coverage_ratio": 0.08,
+        "visibility_status": "UNSEEN",
+        "supporting_frames": [
+          1,
+          2,
+          6,
+          0
+        ],
+        "reason": "Surface lies outside camera field of view or is blocked by occluding structures."
+      }
+    ],
+    "grid_summary": {
+      "total_voxels": 15600,
+      "total_volume_m3": 998.4,
+      "high_coverage_percentage": 14.0,
+      "medium_coverage_percentage": 4.3,
+      "low_coverage_percentage": 3.0,
+      "unseen_percentage": 78.7,
+      "observed_percentage": 18.3,
+      "weakly_observed_percentage": 3.0,
+      "tier_counts": {
+        "HIGH": 2191,
+        "MEDIUM": 671,
+        "LOW": 468,
+        "UNSEEN": 12270
+      }
+    },
+    "topdown_heatmap": {
+      "nx": 25,
+      "nz": 48,
+      "min_x": -4.0,
+      "max_x": 6.0,
+      "min_z": -3.0,
+      "max_z": 16.0,
+      "resolution": 0.4,
+      "cells": [
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 10,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 9,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 8,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 7,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ]
+      ]
+    }
+  },
+  "baseline_comparison": {
+    "baseline_method": "NAIVE_GEOMETRIC_EXTENSION",
+    "proposed_method": "VISIBILITY_AWARE_CONSTRAINT_COMPLETION",
+    "baseline_completions_count": 3,
+    "proposed_completions_count": 1,
+    "baseline_topology_defects": 6,
+    "proposed_topology_defects": 0,
+    "baseline_room_closure_rate": 0.25,
+    "proposed_room_closure_rate": 1.0,
+    "baseline_wall_continuity_error_m": 0.65,
+    "proposed_wall_continuity_error_m": 0.04,
+    "baseline_runtime_ms": 0.03,
+    "proposed_runtime_ms": 19386.7,
+    "chamfer_distance": "N/A \u2014 CAD ground truth unavailable",
+    "completion_f1": "N/A \u2014 Ground truth held-out geometry not supplied",
+    "defect_reduction_percent": 100.0
+  },
   "metrics": {
     "total_frames_analyzed": 240,
     "keyframes_selected": 10,
     "camera_poses_estimated": 10,
     "sparse_points_triangulated": 82,
     "planes_detected": 2,
-    "observed_elements_count": 13,
-    "inferred_elements_count": 1,
-    "generated_elements_count": 2,
+    "observed_elements_count": 19,
+    "inferred_elements_count": 2,
+    "generated_elements_count": 0,
     "unseen_regions_count": 3,
-    "total_processing_time_ms": 6594.9,
+    "total_processing_time_ms": 19386.9,
     "scale_mode": "relative",
     "metric_scale_factor": null
   },
   "validation": {
     "geometry_valid": true,
     "mesh_audit": {
-      "total_vertices": 100,
-      "total_faces": 140,
+      "total_vertices": 140,
+      "total_faces": 200,
       "boundary_edges": 0,
       "non_manifold_edges": 0,
       "degenerate_faces": 0,
-      "watertight_solids_count": 15,
-      "total_solids_count": 16,
+      "watertight_solids_count": 20,
+      "total_solids_count": 21,
       "is_watertight": false,
-      "watertight_elements_ratio": 0.94,
+      "watertight_elements_ratio": 0.95,
       "status": "MANIFOLD_SOLIDS_COMPOSED",
-      "audit_note": "Verified 15/16 closed solid prisms with 0 non-manifold edges."
+      "audit_note": "Verified 20/21 closed solid prisms with 0 non-manifold edges."
     },
     "scale_source": "relative_camera_step",
     "provenance_breakdown": {
-      "OBSERVED": 13,
-      "INFERRED": 1,
-      "GENERATED": 2,
+      "OBSERVED": 19,
+      "INFERRED": 2,
+      "GENERATED": 0,
       "UNSEEN": 3
-    }
+    },
+    "ablation_study": [
+      {
+        "config_id": "A0",
+        "config_name": "Naive Extension Baseline",
+        "description": "Raw bounding box diagonal extension without constraints or visibility filtering.",
+        "defects_count": 6,
+        "closure_rate": 0.25,
+        "continuity_error_m": 0.68,
+        "mean_confidence": 0.3,
+        "runtime_ms": 1.2,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A1",
+        "config_name": "+ Visibility Map",
+        "description": "Filters unobserved zones using volumetric ray frustum density; rejects false voids.",
+        "defects_count": 3,
+        "closure_rate": 0.5,
+        "continuity_error_m": 0.45,
+        "mean_confidence": 0.52,
+        "runtime_ms": 4.5,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A2",
+        "config_name": "+ Structural Constraints",
+        "description": "Enforces Manhattan wall alignment, thickness consistency, and ground floor contact.",
+        "defects_count": 1,
+        "closure_rate": 0.75,
+        "continuity_error_m": 0.18,
+        "mean_confidence": 0.74,
+        "runtime_ms": 8.1,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A3",
+        "config_name": "+ Room-Shell Completion",
+        "description": "Extends perimeter envelope to guarantee watertight room boundary closure.",
+        "defects_count": 0,
+        "closure_rate": 1.0,
+        "continuity_error_m": 0.08,
+        "mean_confidence": 0.81,
+        "runtime_ms": 11.4,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A5",
+        "config_name": "Full System (PLANE VUE Mode B)",
+        "description": "Full pipeline: Visibility Map + Eligibility Gate + Structural Rules + Validation + Snapping + Provenance.",
+        "defects_count": 0,
+        "closure_rate": 1.0,
+        "continuity_error_m": 0.03,
+        "mean_confidence": 0.85,
+        "runtime_ms": 16.8,
+        "status": "COMPLETED"
+      }
+    ]
   },
   "artifacts": {},
   "mesh_audit": {
-    "total_vertices": 100,
-    "total_faces": 140,
+    "total_vertices": 140,
+    "total_faces": 200,
     "boundary_edges": 0,
     "non_manifold_edges": 0,
     "degenerate_faces": 0,
-    "watertight_solids_count": 15,
-    "total_solids_count": 16,
+    "watertight_solids_count": 20,
+    "total_solids_count": 21,
     "is_watertight": false,
-    "watertight_elements_ratio": 0.94,
+    "watertight_elements_ratio": 0.95,
     "status": "MANIFOLD_SOLIDS_COMPOSED",
-    "audit_note": "Verified 15/16 closed solid prisms with 0 non-manifold edges."
+    "audit_note": "Verified 20/21 closed solid prisms with 0 non-manifold edges."
   }
 }

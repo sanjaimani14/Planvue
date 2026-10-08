@@ -179,6 +179,96 @@ def build_scene(
             if "mesh" in r_geom and r_geom["mesh"] is not None:
                 tri_scene.add_geometry(r_geom["mesh"], node_name=f"floor_{r['id']}")
 
+    # 5. Build AI-Inferred Furniture for Recognized Rooms
+    furniture_objects = []
+    for r in raw_rooms:
+        lbl = (r.get("label") or "").upper()
+        if not lbl:
+            continue
+        poly = r.get("metric_polygon", [])
+        if not poly or len(poly) < 3:
+            continue
+        cx = sum(p[0] for p in poly) / len(poly) - origin_offset[0]
+        cz = sum(p[1] for p in poly) / len(poly) - origin_offset[1]
+
+        items_to_add = []
+        if "LIVING" in lbl:
+            items_to_add = [
+                ("Sofa", [1.8, 0.75, 0.85], [cx - 0.5, 0.38, cz]),
+                ("Table", [1.1, 0.45, 0.60], [cx + 0.6, 0.23, cz])
+            ]
+        elif "BED" in lbl or "PATIENT" in lbl:
+            items_to_add = [
+                ("Bed", [1.2, 0.75, 2.0], [cx, 0.38, cz]),
+                ("Side Table", [0.5, 0.55, 0.45], [cx + 0.85, 0.28, cz - 0.5])
+            ]
+        elif "KITCHEN" in lbl:
+            items_to_add = [
+                ("Counter", [2.2, 0.90, 0.65], [cx - 0.4, 0.45, cz]),
+                ("Refrigerator", [0.75, 1.75, 0.75], [cx + 1.1, 0.88, cz + 0.6])
+            ]
+        elif "EMERGENCY" in lbl:
+            items_to_add = [
+                ("Examination Bed", [1.0, 0.85, 2.1], [cx - 0.6, 0.43, cz]),
+                ("Medical Crash Cart", [0.6, 0.95, 0.5], [cx + 0.8, 0.48, cz - 0.5])
+            ]
+        elif "NURSE" in lbl:
+            items_to_add = [
+                ("Nurse Station Desk", [2.2, 0.85, 0.9], [cx, 0.43, cz]),
+                ("Computer Terminal", [0.5, 0.45, 0.35], [cx + 0.3, 0.95, cz])
+            ]
+        elif "RECEPTION" in lbl:
+            items_to_add = [
+                ("Reception Counter", [2.4, 1.05, 0.8], [cx, 0.53, cz]),
+                ("Executive Chair", [0.6, 0.9, 0.6], [cx, 0.45, cz - 0.7])
+            ]
+        elif "WAITING" in lbl:
+            items_to_add = [
+                ("Waiting Seating Bench", [2.2, 0.75, 0.7], [cx - 0.6, 0.38, cz]),
+                ("Coffee Table", [0.9, 0.45, 0.6], [cx + 0.7, 0.23, cz])
+            ]
+        elif "CONSULTATION" in lbl:
+            items_to_add = [
+                ("Doctor Desk", [1.5, 0.76, 0.8], [cx - 0.4, 0.38, cz]),
+                ("Patient Chair", [0.55, 0.85, 0.55], [cx + 0.7, 0.43, cz])
+            ]
+        elif "PHARMACY" in lbl:
+            items_to_add = [
+                ("Dispenser Counter", [1.8, 0.95, 0.6], [cx, 0.48, cz]),
+                ("Storage Rack", [0.5, 1.8, 1.2], [cx + 0.8, 0.9, cz + 0.5])
+            ]
+        elif "BATH" in lbl or "RESTROOM" in lbl:
+            items_to_add = [
+                ("Vanity Sink", [0.75, 0.85, 0.5], [cx - 0.5, 0.43, cz]),
+                ("Toilet", [0.45, 0.75, 0.65], [cx + 0.5, 0.38, cz])
+            ]
+
+        for f_name, f_dims, f_pos in items_to_add:
+            f_id = f"FURN_{r['id']}_{f_name.replace(' ', '_').upper()}"
+            f_mesh = trimesh.creation.box(extents=f_dims)
+            f_mesh.apply_translation(f_pos)
+            f_mesh.visual.vertex_colors = [56, 189, 248, 220]
+            tri_scene.add_geometry(f_mesh, node_name=f"furniture_{f_id}")
+            furniture_objects.append({
+                "id": f_id,
+                "type": "furniture",
+                "name": f_name,
+                "room_id": r["id"],
+                "room_label": r.get("label"),
+                "source": "AI_INFERRED",
+                "status": "INFERRED",
+                "confidence": 0.88,
+                "provenance_note": f"AI-inferred {f_name} based on architectural room prior ({r.get('label')})",
+                "dimensions": {
+                    "width_m": f_dims[0],
+                    "height_m": f_dims[1],
+                    "depth_m": f_dims[2]
+                },
+                "transform": {
+                    "position": f_pos
+                }
+            })
+
     # Calculate global bounding box
     bounds = tri_scene.bounds
     if bounds is not None:
@@ -205,6 +295,7 @@ def build_scene(
     serializable_doors = [{k: v for k, v in d.items() if k != "mesh"} for d in door_objects]
     serializable_windows = [{k: v for k, v in win.items() if k != "mesh"} for win in window_objects]
     serializable_floors = [{k: v for k, v in fl.items() if k != "mesh"} for fl in floor_objects]
+    serializable_furniture = [f for f in furniture_objects]
 
     # All unified objects
     all_objects = []
@@ -212,6 +303,7 @@ def build_scene(
     all_objects.extend(serializable_doors)
     all_objects.extend(serializable_windows)
     all_objects.extend(serializable_floors)
+    all_objects.extend(serializable_furniture)
 
     metrics = {
         "wall_count": len(serializable_walls),
@@ -240,6 +332,7 @@ def build_scene(
         "doors": serializable_doors,
         "windows": serializable_windows,
         "floors": serializable_floors,
+        "furniture": serializable_furniture,
         "metrics": metrics,
         "mesh_audit": mesh_audit_data,
         "validation": scene_dict.get("validation", {}),

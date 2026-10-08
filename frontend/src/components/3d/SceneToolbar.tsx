@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Rotate3d, Compass, Maximize2, Grid, Tag, Ruler, 
-  Eye, Box, Download, Camera, Keyboard, Sparkles, HelpCircle 
+  Eye, Box, Download, Camera, Keyboard, Sparkles, HelpCircle,
+  Armchair, Square, DoorOpen, LayoutGrid
 } from 'lucide-react';
 import { CameraViewMode } from './CameraControls';
 
@@ -24,6 +25,15 @@ interface SceneToolbarProps {
   onExportGlb: () => void;
   onCaptureView: () => void;
   isExportingGlb?: boolean;
+  showWalls?: boolean;
+  onToggleWalls?: () => void;
+  showDoors?: boolean;
+  onToggleDoors?: () => void;
+  showWindows?: boolean;
+  onToggleWindows?: () => void;
+  showFurniture?: boolean;
+  onToggleFurniture?: () => void;
+  onToggleFullscreen?: () => void;
 }
 
 export const SceneToolbar: React.FC<SceneToolbarProps> = ({
@@ -45,6 +55,15 @@ export const SceneToolbar: React.FC<SceneToolbarProps> = ({
   onExportGlb,
   onCaptureView,
   isExportingGlb = false,
+  showWalls = true,
+  onToggleWalls,
+  showDoors = true,
+  onToggleDoors,
+  showWindows = true,
+  onToggleWindows,
+  showFurniture = true,
+  onToggleFurniture,
+  onToggleFullscreen,
 }) => {
   const [showShortcuts, setShowShortcuts] = useState<boolean>(false);
 
@@ -52,7 +71,7 @@ export const SceneToolbar: React.FC<SceneToolbarProps> = ({
     <div className="bg-slate-900/95 backdrop-blur-md border border-slate-800 p-1.5 rounded-xl shadow-2xl flex flex-wrap items-center gap-1.5 text-xs max-w-full">
       {/* 1. Camera View Presets */}
       <div className="flex items-center gap-0.5 bg-slate-950/80 p-0.5 rounded-lg border border-slate-800">
-        {(['ORBIT', 'TOP', 'FRONT', 'SIDE', 'WALK'] as CameraViewMode[]).map((mode) => (
+        {(['ORBIT', 'TOP', 'FRONT', 'WALK'] as CameraViewMode[]).map((mode) => (
           <button
             key={mode}
             onClick={() => onSelectCameraMode(mode)}
@@ -61,143 +80,154 @@ export const SceneToolbar: React.FC<SceneToolbarProps> = ({
                 ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm'
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/80'
             }`}
+            title={mode === 'ORBIT' ? 'Perspective View' : `${mode} View`}
           >
-            {mode}
+            {mode === 'ORBIT' ? 'PERSPECTIVE' : mode}
           </button>
         ))}
       </div>
 
       <div className="h-4 w-px bg-slate-800 hidden sm:block" />
 
-      {/* 2. Scene Feature Toggles */}
+      {/* 2. Scene Layer Toggles */}
       <div className="flex items-center gap-1">
-        {/* GRID */}
-        <button
-          onClick={onToggleGrid}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
-            showGrid
-              ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
-              : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
-          }`}
-          title="Toggle 1m Metric Grid (G)"
-        >
-          <Grid className="w-3.5 h-3.5" />
-          <span>GRID</span>
-        </button>
-
-        {/* LABELS */}
+        {/* ROOM LABELS */}
         <button
           onClick={onToggleLabels}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
+          className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
             showLabels
               ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
               : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
           }`}
           title="Toggle Room Labels"
         >
-          <Tag className="w-3.5 h-3.5" />
-          <span>LABELS</span>
+          <Tag className="w-3 h-3" />
+          <span>Labels</span>
         </button>
+
+        {/* WALLS */}
+        {onToggleWalls && (
+          <button
+            onClick={onToggleWalls}
+            className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
+              showWalls
+                ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
+                : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+            }`}
+            title="Toggle Walls"
+          >
+            <Square className="w-3 h-3" />
+            <span>Walls</span>
+          </button>
+        )}
+
+        {/* DOORS */}
+        {onToggleDoors && (
+          <button
+            onClick={onToggleDoors}
+            className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
+              showDoors
+                ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/50'
+                : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+            }`}
+            title="Toggle Doors"
+          >
+            <DoorOpen className="w-3 h-3" />
+            <span>Doors</span>
+          </button>
+        )}
+
+        {/* WINDOWS */}
+        {onToggleWindows && (
+          <button
+            onClick={onToggleWindows}
+            className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
+              showWindows
+                ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
+                : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+            }`}
+            title="Toggle Windows"
+          >
+            <LayoutGrid className="w-3 h-3" />
+            <span>Windows</span>
+          </button>
+        )}
+
+        {/* FURNITURE */}
+        {onToggleFurniture && (
+          <button
+            onClick={onToggleFurniture}
+            className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
+              showFurniture
+                ? 'bg-indigo-950/80 text-indigo-300 border-indigo-500/50'
+                : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+            }`}
+            title="Toggle AI-Inferred Furniture"
+          >
+            <Armchair className="w-3 h-3" />
+            <span>Furniture</span>
+          </button>
+        )}
 
         {/* DIMENSIONS */}
         <button
           onClick={onToggleDimensions}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
+          className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
             showDimensions
               ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
               : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
           }`}
           title="Toggle Wall Dimension Helpers"
         >
-          <Ruler className="w-3.5 h-3.5" />
-          <span>DIMENSIONS</span>
+          <Ruler className="w-3 h-3" />
+          <span>Dimensions</span>
         </button>
 
-        {/* X-RAY */}
+        {/* GRID */}
         <button
-          onClick={() => onChangeDisplayMode(displayMode === 'xray' ? 'solid' : 'xray')}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
-            displayMode === 'xray'
-              ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
-              : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+          onClick={onToggleGrid}
+          className={`px-2 py-1 rounded-md text-[10px] font-medium border flex items-center gap-1 transition-all ${
+            showGrid
+              ? 'bg-slate-800 text-slate-300 border-slate-700'
+              : 'bg-slate-850 text-slate-500 border-slate-800 hover:text-slate-300'
           }`}
-          title="Toggle X-Ray Transparency (X)"
+          title="Toggle 1m Metric Grid (G)"
         >
-          <Box className="w-3.5 h-3.5" />
-          <span>X-RAY</span>
-        </button>
-
-        {/* WIREFRAME */}
-        <button
-          onClick={() => onChangeDisplayMode(displayMode === 'wireframe' ? 'solid' : 'wireframe')}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
-            displayMode === 'wireframe'
-              ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/50'
-              : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
-          }`}
-          title="Toggle Wireframe Mode"
-        >
-          <span>WIREFRAME</span>
-        </button>
-
-        {/* CONFIDENCE */}
-        <button
-          onClick={onToggleConfidence}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
-            showConfidence
-              ? 'bg-purple-950/80 text-purple-300 border-purple-500/50'
-              : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-purple-300 hover:bg-slate-800'
-          }`}
-          title="Toggle Confidence Inspector (C)"
-        >
-          <Eye className="w-3.5 h-3.5" />
-          <span>CONFIDENCE</span>
-        </button>
-
-        {/* MEASURE */}
-        <button
-          onClick={onToggleMeasure}
-          className={`px-2.5 py-1 rounded-md text-[11px] font-medium border flex items-center gap-1 transition-all ${
-            measureActive
-              ? 'bg-amber-950/80 text-amber-300 border-amber-500/60 ring-2 ring-amber-500/30'
-              : 'bg-slate-850 text-slate-400 border-slate-800 hover:text-amber-300 hover:bg-slate-800'
-          }`}
-          title="Measure 3D Distance (M)"
-        >
-          <Ruler className="w-3.5 h-3.5" />
-          <span>{measureActive ? 'EXIT MEASURE' : 'MEASURE'}</span>
+          <Grid className="w-3 h-3" />
+          <span>Grid</span>
         </button>
       </div>
 
       <div className="h-4 w-px bg-slate-800 hidden sm:block" />
 
-      {/* 3. Actions: RESET | CAPTURE | EXPORT GLB */}
-      <div className="flex items-center gap-1.5">
+      {/* 3. Actions: RESET | FULLSCREEN | EXPORT GLB */}
+      <div className="flex items-center gap-1.5 ml-auto">
         <button
           onClick={onResetCamera}
-          className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all"
+          className="px-2 py-1 rounded-md text-[10px] font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all"
           title="Reset View to Bounds (R)"
         >
           RESET
         </button>
 
-        <button
-          onClick={onCaptureView}
-          className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all flex items-center gap-1"
-          title="Capture Current 3D Canvas Image"
-        >
-          <Camera className="w-3.5 h-3.5" />
-          <span>CAPTURE</span>
-        </button>
+        {onToggleFullscreen && (
+          <button
+            onClick={onToggleFullscreen}
+            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors border border-slate-800"
+            title="Toggle Fullscreen"
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+          </button>
+        )}
 
         <button
           onClick={onExportGlb}
           disabled={isExportingGlb}
-          className="px-3 py-1 rounded-md text-[11px] font-bold bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-800 text-white shadow-md transition-all flex items-center gap-1.5"
+          className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-800 text-white shadow-md transition-all flex items-center gap-1"
           title="Export GLB 3D Model"
         >
-          <Download className="w-3.5 h-3.5" />
-          <span>{isExportingGlb ? 'EXPORTING...' : 'EXPORT GLB'}</span>
+          <Download className="w-3 h-3" />
+          <span>{isExportingGlb ? '...' : 'GLB'}</span>
         </button>
 
         {/* Shortcuts popover toggle */}
@@ -206,7 +236,7 @@ export const SceneToolbar: React.FC<SceneToolbarProps> = ({
           className="p-1 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
           title="View Keyboard Shortcuts"
         >
-          <Keyboard className="w-4 h-4" />
+          <Keyboard className="w-3.5 h-3.5" />
         </button>
       </div>
 

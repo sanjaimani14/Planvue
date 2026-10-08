@@ -16,6 +16,7 @@ export interface UploadResponse {
 export interface ReconstructResponse {
   success: boolean;
   scene_id: string;
+  source_file?: string;
   summary: {
     wall_count: number;
     door_count: number;

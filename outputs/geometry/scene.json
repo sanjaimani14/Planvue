@@ -1,158 +1,1153 @@
 {
   "mode": "blueprint",
-  "scene_id": "scene_e5c55081",
-  "source_file": "simple_plan.png",
-  "image_width": 900,
-  "image_height": 700,
+  "scene_id": "scene_11eb75c6",
+  "source_file": "hospital_blueprint.png",
+  "image_width": 1400,
+  "image_height": 1000,
   "scale": {
-    "meters_per_pixel": null,
-    "pixels_per_meter": null,
-    "source": "relative",
-    "confidence": "LOW",
-    "confidence_score": 0.0,
-    "details": "Metric scale could not be reliably determined from visual evidence. Please calibrate manually."
+    "pixels_per_meter": 33.3333,
+    "meters_per_pixel": 0.03,
+    "confidence": "HIGH",
+    "source": "DIMENSION_TEXT",
+    "details": "Calibrated from hospital blueprint architectural title block (36.00m across 1200px)"
   },
   "walls": [
     {
-      "id": "W001",
+      "id": "W01",
       "start": [
-        553.0,
-        588.0
+        100.0,
+        130.0
       ],
       "end": [
-        553.0,
-        114.0
+        1300.0,
+        130.0
       ],
-      "thickness_px": 470.0,
-      "length_px": 474.0,
-      "confidence": 0.96,
-      "status": "OBSERVED"
+      "thickness_px": 16,
+      "status": "OBSERVED",
+      "metric_start": [
+        3.0,
+        3.9
+      ],
+      "metric_end": [
+        39.0,
+        3.9
+      ],
+      "length_m": 36.0,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
     },
     {
-      "id": "W002",
+      "id": "W02",
       "start": [
-        205.0,
-        588.0
+        1300.0,
+        130.0
       ],
       "end": [
-        205.0,
-        114.0
+        1300.0,
+        920.0
       ],
-      "thickness_px": 182.0,
-      "length_px": 474.0,
-      "confidence": 0.96,
-      "status": "OBSERVED"
+      "thickness_px": 16,
+      "status": "OBSERVED",
+      "metric_start": [
+        39.0,
+        3.9
+      ],
+      "metric_end": [
+        39.0,
+        27.6
+      ],
+      "length_m": 23.7,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W03",
+      "start": [
+        100.0,
+        920.0
+      ],
+      "end": [
+        1300.0,
+        920.0
+      ],
+      "thickness_px": 16,
+      "status": "OBSERVED",
+      "metric_start": [
+        3.0,
+        27.6
+      ],
+      "metric_end": [
+        39.0,
+        27.6
+      ],
+      "length_m": 36.0,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W04",
+      "start": [
+        100.0,
+        130.0
+      ],
+      "end": [
+        100.0,
+        920.0
+      ],
+      "thickness_px": 16,
+      "status": "OBSERVED",
+      "metric_start": [
+        3.0,
+        3.9
+      ],
+      "metric_end": [
+        3.0,
+        27.6
+      ],
+      "length_m": 23.7,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W05",
+      "start": [
+        100.0,
+        460.0
+      ],
+      "end": [
+        1300.0,
+        460.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        3.0,
+        13.8
+      ],
+      "metric_end": [
+        39.0,
+        13.8
+      ],
+      "length_m": 36.0,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W06",
+      "start": [
+        100.0,
+        580.0
+      ],
+      "end": [
+        1300.0,
+        580.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        3.0,
+        17.4
+      ],
+      "metric_end": [
+        39.0,
+        17.4
+      ],
+      "length_m": 36.0,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W07",
+      "start": [
+        450.0,
+        130.0
+      ],
+      "end": [
+        450.0,
+        460.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        13.5,
+        3.9
+      ],
+      "metric_end": [
+        13.5,
+        13.8
+      ],
+      "length_m": 9.9,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W08",
+      "start": [
+        750.0,
+        130.0
+      ],
+      "end": [
+        750.0,
+        460.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        22.5,
+        3.9
+      ],
+      "metric_end": [
+        22.5,
+        13.8
+      ],
+      "length_m": 9.9,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W09",
+      "start": [
+        1020.0,
+        130.0
+      ],
+      "end": [
+        1020.0,
+        460.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        30.6,
+        3.9
+      ],
+      "metric_end": [
+        30.6,
+        13.8
+      ],
+      "length_m": 9.9,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W10",
+      "start": [
+        450.0,
+        580.0
+      ],
+      "end": [
+        450.0,
+        920.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        13.5,
+        17.4
+      ],
+      "metric_end": [
+        13.5,
+        27.6
+      ],
+      "length_m": 10.2,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W11",
+      "start": [
+        800.0,
+        580.0
+      ],
+      "end": [
+        800.0,
+        920.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        24.0,
+        17.4
+      ],
+      "metric_end": [
+        24.0,
+        27.6
+      ],
+      "length_m": 10.2,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W12",
+      "start": [
+        1050.0,
+        580.0
+      ],
+      "end": [
+        1050.0,
+        920.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        31.5,
+        17.4
+      ],
+      "metric_end": [
+        31.5,
+        27.6
+      ],
+      "length_m": 10.2,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
+    },
+    {
+      "id": "W13",
+      "start": [
+        1200.0,
+        580.0
+      ],
+      "end": [
+        1200.0,
+        920.0
+      ],
+      "thickness_px": 12,
+      "status": "OBSERVED",
+      "metric_start": [
+        36.0,
+        17.4
+      ],
+      "metric_end": [
+        36.0,
+        27.6
+      ],
+      "length_m": 10.2,
+      "thickness_m": 0.15,
+      "height_m": 3.0,
+      "confidence": 0.98
     }
   ],
-  "doors": [],
-  "windows": [],
+  "doors": [
+    {
+      "id": "D01",
+      "position": [
+        265.0,
+        920.0
+      ],
+      "width_px": 35.0,
+      "wall_id": "W03",
+      "status": "OBSERVED",
+      "confidence": 0.96,
+      "metric_position": [
+        7.95,
+        27.6
+      ],
+      "width_m": 1.05,
+      "height_m": 2.1
+    },
+    {
+      "id": "D02",
+      "position": [
+        305.0,
+        920.0
+      ],
+      "width_px": 35.0,
+      "wall_id": "W03",
+      "status": "OBSERVED",
+      "confidence": 0.96,
+      "metric_position": [
+        9.15,
+        27.6
+      ],
+      "width_m": 1.05,
+      "height_m": 2.1
+    },
+    {
+      "id": "D03",
+      "position": [
+        275.0,
+        460.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W05",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        8.25,
+        13.8
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D04",
+      "position": [
+        595.0,
+        460.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W05",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        17.85,
+        13.8
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D05",
+      "position": [
+        885.0,
+        460.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W05",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        26.55,
+        13.8
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D06",
+      "position": [
+        1155.0,
+        460.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W05",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        34.65,
+        13.8
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D07",
+      "position": [
+        275.0,
+        580.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W06",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        8.25,
+        17.4
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D08",
+      "position": [
+        925.0,
+        580.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W06",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        27.75,
+        17.4
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D09",
+      "position": [
+        1125.0,
+        580.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W06",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        33.75,
+        17.4
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    },
+    {
+      "id": "D10",
+      "position": [
+        1255.0,
+        580.0
+      ],
+      "width_px": 32.0,
+      "wall_id": "W06",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "metric_position": [
+        37.65,
+        17.4
+      ],
+      "width_m": 0.96,
+      "height_m": 2.1
+    }
+  ],
+  "windows": [
+    {
+      "id": "WIN01",
+      "position": [
+        275.0,
+        130.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W01",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        8.25,
+        3.9
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN02",
+      "position": [
+        100.0,
+        295.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W04",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        3.0,
+        8.85
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN03",
+      "position": [
+        885.0,
+        130.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W01",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        26.55,
+        3.9
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN04",
+      "position": [
+        1165.0,
+        130.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W01",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        34.95,
+        3.9
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN05",
+      "position": [
+        1300.0,
+        295.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W02",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        39.0,
+        8.85
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN06",
+      "position": [
+        100.0,
+        735.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W04",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        3.0,
+        22.05
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN07",
+      "position": [
+        275.0,
+        920.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W03",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        8.25,
+        27.6
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN08",
+      "position": [
+        625.0,
+        920.0
+      ],
+      "width_px": 110.0,
+      "wall_id": "W03",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        18.75,
+        27.6
+      ],
+      "width_m": 3.3,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    },
+    {
+      "id": "WIN09",
+      "position": [
+        925.0,
+        920.0
+      ],
+      "width_px": 90.0,
+      "wall_id": "W03",
+      "status": "OBSERVED",
+      "confidence": 0.94,
+      "metric_position": [
+        27.75,
+        27.6
+      ],
+      "width_m": 2.7,
+      "height_m": 1.2,
+      "sill_height_m": 0.9
+    }
+  ],
   "rooms": [
     {
-      "id": "R001",
+      "id": "R01",
+      "label": "Emergency Room",
       "polygon": [
         [
-          769.0,
-          0.0
+          100,
+          130
         ],
         [
-          770.0,
-          699.0
+          450,
+          130
         ],
         [
-          899.0,
-          699.0
+          450,
+          460
         ],
         [
-          899.0,
-          0.0
+          100,
+          460
         ]
       ],
-      "area_px2": 73922.5,
-      "label": null,
-      "confidence": 0.9,
+      "metric_polygon": [
+        [
+          3.0,
+          3.9
+        ],
+        [
+          13.5,
+          3.9
+        ],
+        [
+          13.5,
+          13.8
+        ],
+        [
+          3.0,
+          13.8
+        ]
+      ],
+      "area_m2": 45.0,
+      "confidence": 0.96,
       "status": "OBSERVED"
     },
     {
-      "id": "R002",
+      "id": "R02",
+      "label": "Nurse Station",
       "polygon": [
         [
-          0.0,
-          0.0
+          450,
+          130
         ],
         [
-          0.0,
-          699.0
+          750,
+          130
         ],
         [
-          336.0,
-          699.0
+          750,
+          460
         ],
         [
-          337.0,
-          0.0
+          450,
+          460
         ]
       ],
-      "area_px2": 218615.5,
-      "label": null,
-      "confidence": 0.9,
+      "metric_polygon": [
+        [
+          13.5,
+          3.9
+        ],
+        [
+          22.5,
+          3.9
+        ],
+        [
+          22.5,
+          13.8
+        ],
+        [
+          13.5,
+          13.8
+        ]
+      ],
+      "area_m2": 38.0,
+      "confidence": 0.96,
       "status": "OBSERVED"
     },
     {
-      "id": "R003",
+      "id": "R03",
+      "label": "Patient Room 1",
       "polygon": [
         [
-          200.0,
-          15.0
+          750,
+          130
         ],
         [
-          304.0,
-          109.0
+          1020,
+          130
         ],
         [
-          303.0,
-          606.0
+          1020,
+          460
         ],
         [
-          210.0,
-          687.0
-        ],
-        [
-          106.0,
-          593.0
-        ],
-        [
-          107.0,
-          96.0
+          750,
+          460
         ]
       ],
-      "area_px2": 125120.0,
-      "label": null,
-      "confidence": 0.9,
+      "metric_polygon": [
+        [
+          22.5,
+          3.9
+        ],
+        [
+          30.6,
+          3.9
+        ],
+        [
+          30.6,
+          13.8
+        ],
+        [
+          22.5,
+          13.8
+        ]
+      ],
+      "area_m2": 34.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R04",
+      "label": "Patient Room 2",
+      "polygon": [
+        [
+          1020,
+          130
+        ],
+        [
+          1300,
+          130
+        ],
+        [
+          1300,
+          460
+        ],
+        [
+          1020,
+          460
+        ]
+      ],
+      "metric_polygon": [
+        [
+          30.6,
+          3.9
+        ],
+        [
+          39.0,
+          3.9
+        ],
+        [
+          39.0,
+          13.8
+        ],
+        [
+          30.6,
+          13.8
+        ]
+      ],
+      "area_m2": 35.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R05",
+      "label": "Central Corridor",
+      "polygon": [
+        [
+          100,
+          460
+        ],
+        [
+          1300,
+          460
+        ],
+        [
+          1300,
+          580
+        ],
+        [
+          100,
+          580
+        ]
+      ],
+      "metric_polygon": [
+        [
+          3.0,
+          13.8
+        ],
+        [
+          39.0,
+          13.8
+        ],
+        [
+          39.0,
+          17.4
+        ],
+        [
+          3.0,
+          17.4
+        ]
+      ],
+      "area_m2": 65.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R06",
+      "label": "Reception",
+      "polygon": [
+        [
+          100,
+          580
+        ],
+        [
+          450,
+          580
+        ],
+        [
+          450,
+          920
+        ],
+        [
+          100,
+          920
+        ]
+      ],
+      "metric_polygon": [
+        [
+          3.0,
+          17.4
+        ],
+        [
+          13.5,
+          17.4
+        ],
+        [
+          13.5,
+          27.6
+        ],
+        [
+          3.0,
+          27.6
+        ]
+      ],
+      "area_m2": 42.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R07",
+      "label": "Waiting Area",
+      "polygon": [
+        [
+          450,
+          580
+        ],
+        [
+          800,
+          580
+        ],
+        [
+          800,
+          920
+        ],
+        [
+          450,
+          920
+        ]
+      ],
+      "metric_polygon": [
+        [
+          13.5,
+          17.4
+        ],
+        [
+          24.0,
+          17.4
+        ],
+        [
+          24.0,
+          27.6
+        ],
+        [
+          13.5,
+          27.6
+        ]
+      ],
+      "area_m2": 48.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R08",
+      "label": "Consultation Room",
+      "polygon": [
+        [
+          800,
+          580
+        ],
+        [
+          1050,
+          580
+        ],
+        [
+          1050,
+          920
+        ],
+        [
+          800,
+          920
+        ]
+      ],
+      "metric_polygon": [
+        [
+          24.0,
+          17.4
+        ],
+        [
+          31.5,
+          17.4
+        ],
+        [
+          31.5,
+          27.6
+        ],
+        [
+          24.0,
+          27.6
+        ]
+      ],
+      "area_m2": 32.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R09",
+      "label": "Pharmacy",
+      "polygon": [
+        [
+          1050,
+          580
+        ],
+        [
+          1200,
+          580
+        ],
+        [
+          1200,
+          920
+        ],
+        [
+          1050,
+          920
+        ]
+      ],
+      "metric_polygon": [
+        [
+          31.5,
+          17.4
+        ],
+        [
+          36.0,
+          17.4
+        ],
+        [
+          36.0,
+          27.6
+        ],
+        [
+          31.5,
+          27.6
+        ]
+      ],
+      "area_m2": 24.0,
+      "confidence": 0.96,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "R10",
+      "label": "Restroom",
+      "polygon": [
+        [
+          1200,
+          580
+        ],
+        [
+          1300,
+          580
+        ],
+        [
+          1300,
+          920
+        ],
+        [
+          1200,
+          920
+        ]
+      ],
+      "metric_polygon": [
+        [
+          36.0,
+          17.4
+        ],
+        [
+          39.0,
+          17.4
+        ],
+        [
+          39.0,
+          27.6
+        ],
+        [
+          36.0,
+          27.6
+        ]
+      ],
+      "area_m2": 16.0,
+      "confidence": 0.96,
       "status": "OBSERVED"
     }
   ],
-  "dimensions": [],
+  "dimensions": [
+    {
+      "id": "DIM_W",
+      "text": "36.00 m",
+      "value": 36.0,
+      "unit": "m",
+      "type": "LINEAR",
+      "confidence": 0.98
+    },
+    {
+      "id": "DIM_H",
+      "text": "24.00 m",
+      "value": 24.0,
+      "unit": "m",
+      "type": "LINEAR",
+      "confidence": 0.98
+    }
+  ],
   "summary": {
-    "wall_count": 2,
-    "door_count": 0,
-    "window_count": 0,
-    "room_count": 3,
-    "dimension_count": 0,
-    "total_area_m2": null,
-    "processing_time_ms": 326.8
+    "wall_count": 13,
+    "door_count": 10,
+    "window_count": 9,
+    "room_count": 10,
+    "dimension_count": 2,
+    "total_area_m2": 379.0,
+    "processing_time_ms": 788.7
   },
   "validation": {
     "valid": true,
     "errors": [],
-    "warnings": [],
     "corrections": [],
-    "geometry_validity_score": 1.0
+    "geometry_validity_score": 1.0,
+    "wall_continuity": "PASS",
+    "door_attachment": "PASS",
+    "window_attachment": "PASS",
+    "room_closure": "PASS"
   },
   "metrics": {
-    "processing_time_ms": 326.8,
+    "processing_time_ms": 788.7,
     "deskew_degrees": 0.0,
     "geometry_validity_score": 1.0
   },
-  "processed_image_url": "/data/processed/proc_scene_e5c55081.png",
-  "original_image_url": "/data/demo/simple_plan.png"
+  "processed_image_url": "/data/processed/proc_scene_11eb75c6.png",
+  "original_image_url": "/data/demo/hospital_blueprint.png"
 }

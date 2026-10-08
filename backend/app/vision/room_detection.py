@@ -4,7 +4,8 @@ import re
 from typing import List, Dict, Any, Optional
 
 STANDARD_ROOM_KEYWORDS = [
-    "LIVING", "BEDROOM", "KITCHEN", "DINING", "BATHROOM", "BATH", "HALL", "STORE", "BALCONY", "OFFICE", "STUDY", "ENTRY", "FOYER"
+    "LIVING", "BEDROOM", "KITCHEN", "DINING", "BATHROOM", "BATH", "HALL", "STORE", "BALCONY", "OFFICE", "STUDY", "ENTRY", "FOYER",
+    "RECEPTION", "WAITING", "EMERGENCY", "CONSULTATION", "NURSE", "PHARMACY", "PATIENT", "CORRIDOR", "RESTROOM", "CLINIC", "WARD"
 ]
 
 def extract_room_label_at_polygon(
