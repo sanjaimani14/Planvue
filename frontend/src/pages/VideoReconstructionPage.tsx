@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   VideoMetadataItem,
   QualityReportItem,
   KeyframeItemType,
-  VideoSceneItem
+  VideoSceneItem,
+  CompletionRegionItem,
+  UnseenRegionItem
 } from '../types';
 import {
   uploadVideoApi,
   analyzeVideoQualityApi,
   getVideoKeyframesApi,
   reconstructVideoSceneApi,
-  getVideoJobStatusApi,
-  getVideoSceneApi,
   exportVideoSceneApi
 } from '../services/api';
 import { VideoUpload } from '../components/video/VideoUpload';
 import { FrameTimeline } from '../components/video/FrameTimeline';
 import { CoverageMap } from '../components/video/CoverageMap';
 import { UnseenRegionOverlay } from '../components/video/UnseenRegionOverlay';
-import { CompletionControls, ProvenanceFilter } from '../components/video/CompletionControls';
+import { CompletionControls, ProvenanceFilter, ComparisonViewMode } from '../components/video/CompletionControls';
 import { VideoSceneViewer } from '../components/video/VideoSceneViewer';
 import { VideoMetricsPanel } from '../components/video/VideoMetricsPanel';
+import { CompletionInspectorModal } from '../components/video/CompletionInspectorModal';
 import {
   Video,
   Play,
@@ -31,7 +32,12 @@ import {
   CheckCircle2,
   Clock,
   Layers,
-  FileCheck
+  BarChart3,
+  ChevronRight,
+  ChevronLeft,
+  Sliders,
+  SplitSquareVertical,
+  Award
 } from 'lucide-react';
 
 export const VideoReconstructionPage: React.FC = () => {
@@ -52,11 +58,17 @@ export const VideoReconstructionPage: React.FC = () => {
   // 3D Scene state
   const [scene, setScene] = useState<VideoSceneItem | null>(null);
   const [provenanceFilter, setProvenanceFilter] = useState<ProvenanceFilter>('ALL');
+  const [comparisonMode, setComparisonMode] = useState<ComparisonViewMode>('AFTER_COMPLETION');
   const [showCameras, setShowCameras] = useState<boolean>(true);
   const [showPointCloud, setShowPointCloud] = useState<boolean>(true);
   const [showUnseenVolumes, setShowUnseenVolumes] = useState<boolean>(true);
   const [selectedRegionId, setSelectedRegionId] = useState<string | null>(null);
+  const [inspectedRegion, setInspectedRegion] = useState<CompletionRegionItem | UnseenRegionItem | null>(null);
   const [isExporting, setIsExporting] = useState<boolean>(false);
+
+  // Judge Mode Step (1 to 12)
+  const [judgeStep, setJudgeStep] = useState<number>(1);
+  const [isJudgeModeActive, setIsJudgeModeActive] = useState<boolean>(false);
 
   // Auto-run on Demo Video
   const handleUseDemoVideo = async () => {
@@ -187,6 +199,21 @@ export const VideoReconstructionPage: React.FC = () => {
     }
   };
 
+  const judgeStepsInfo = [
+    { title: 'Step 1: Upload Video', desc: 'Inspect video container integrity, duration, resolution, and FPS.' },
+    { title: 'Step 2: Keyframes Timeline', desc: 'Select peak-sharpness keyframes; reject motion-blurred near-duplicates.' },
+    { title: 'Step 3: Camera Trajectory', desc: 'Estimate 6-DOF rotation and translation poses via Essential Matrix decomposition.' },
+    { title: 'Step 4: Observed 3D Geometry', desc: 'Triangulate sparse feature points and fit dominant RANSAC planar surfaces.' },
+    { title: 'Step 5: Coverage Heatmap', desc: 'Cast camera viewing frustums into a 3D voxel grid to evaluate visibility density.' },
+    { title: 'Step 6: Highlight Unseen Sector', desc: 'Identify perimeter sectors blocked by foreground occluders with evidence keyframes.' },
+    { title: 'Step 7: Check Eligibility', desc: 'Verify nearby collinearity and structural constraints before allowing synthesis.' },
+    { title: 'Step 8: Conservative Completion', desc: 'Synthesize Level 1 continuation and Level 4 room-shell enclosure without hallucinations.' },
+    { title: 'Step 9: Non-Overwrite Validation', desc: 'Enforce that generated geometry never replaces observed surfaces (trims on overlap).' },
+    { title: 'Step 10: Toggle Observed vs Completed', desc: 'Switch between Before (Observed Only) and After (Completed) to audit synthesis.' },
+    { title: 'Step 11: Provenance & Confidence', desc: 'Inspect multi-view support, structural alignment, and distance degradation penalty.' },
+    { title: 'Step 12: GLB & Report Export', desc: 'Export verified glTF 2.0 binary and technical provenance metadata.' },
+  ];
+
   return (
     <div className="flex-1 max-w-7xl w-full mx-auto p-6 flex flex-col gap-6 animate-fade-in">
       {/* Title Header & Mode B Description */}
@@ -197,7 +224,7 @@ export const VideoReconstructionPage: React.FC = () => {
               MODE B — Room Video → 3D Scene + Unseen-Region Completion
             </h1>
             <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-              Active
+              Research-Grade
             </span>
           </div>
           <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
@@ -205,8 +232,20 @@ export const VideoReconstructionPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Status Pill */}
+        {/* Status Pill & Judge Mode Toggle */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsJudgeModeActive(!isJudgeModeActive)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+              isJudgeModeActive
+                ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-indigo-600/30'
+                : 'bg-slate-900/90 text-slate-300 border-white/10 hover:border-white/20'
+            }`}
+          >
+            <Award className="w-3.5 h-3.5 text-amber-400" />
+            <span>Judge Mode Walkthrough</span>
+          </button>
+
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-white/10 text-xs">
             {currentStage === 'COMPLETED' ? (
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -219,6 +258,44 @@ export const VideoReconstructionPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* 12-Step Guided Judge Mode Banner */}
+      {isJudgeModeActive && (
+        <div className="p-4 rounded-2xl bg-indigo-950/60 border border-indigo-500/30 backdrop-blur-xl flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-amber-400" />
+              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                Judge Demonstration Guide ({judgeStep} / 12)
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <button
+                disabled={judgeStep <= 1}
+                onClick={() => setJudgeStep((s) => Math.max(1, s - 1))}
+                className="p-1 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white disabled:opacity-30"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                disabled={judgeStep >= 12}
+                onClick={() => setJudgeStep((s) => Math.min(12, s + 1))}
+                className="p-1 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white disabled:opacity-30"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h4 className="text-sm font-bold text-indigo-300">
+              {judgeStepsInfo[judgeStep - 1].title}
+            </h4>
+            <p className="text-xs text-slate-300">
+              {judgeStepsInfo[judgeStep - 1].desc}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Error Banner */}
       {errorMessage && (
@@ -301,13 +378,14 @@ export const VideoReconstructionPage: React.FC = () => {
             <VideoSceneViewer
               scene={scene}
               provenanceFilter={provenanceFilter}
+              comparisonMode={comparisonMode}
               showCameras={showCameras}
               showPointCloud={showPointCloud}
               showUnseenVolumes={showUnseenVolumes}
               selectedKeyframeIndex={selectedKeyframeIndex}
               selectedRegionId={selectedRegionId}
               onSelectElement={(elem) => {
-                if (elem && elem.region_id) setSelectedRegionId(elem.region_id);
+                if (elem && elem.id) setSelectedRegionId(elem.id);
               }}
             />
           ) : (
@@ -322,12 +400,14 @@ export const VideoReconstructionPage: React.FC = () => {
             </div>
           )}
 
-          {/* Controls & Unseen Inspection Row */}
+          {/* Controls & Coverage Row */}
           {scene && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <CompletionControls
                 provenanceFilter={provenanceFilter}
                 onSetProvenanceFilter={(f) => setProvenanceFilter(f)}
+                comparisonMode={comparisonMode}
+                onSetComparisonMode={(m) => setComparisonMode(m)}
                 showCameras={showCameras}
                 onToggleCameras={() => setShowCameras(!showCameras)}
                 showPointCloud={showPointCloud}
@@ -336,18 +416,93 @@ export const VideoReconstructionPage: React.FC = () => {
                 onToggleUnseenVolumes={() => setShowUnseenVolumes(!showUnseenVolumes)}
               />
 
-              <CoverageMap coverage={scene.coverage} />
+              <CoverageMap
+                coverage={scene.coverage}
+                visibilityReport={scene.visibility_report}
+              />
             </div>
           )}
 
-          {/* Unseen Region List */}
+          {/* Unseen Region List with Inspection Trigger */}
           {scene && (
             <UnseenRegionOverlay
               unseenRegions={scene.unseen_regions}
               completionRegions={scene.completion_regions}
               selectedRegionId={selectedRegionId}
               onSelectRegion={(id) => setSelectedRegionId(id)}
+              onInspectRegion={(reg) => setInspectedRegion(reg)}
             />
+          )}
+
+          {/* Baseline Comparison Card (Section 21) */}
+          {scene?.baseline_comparison && (
+            <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 backdrop-blur-xl shadow-xl flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4 text-cyan-400" />
+                  <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                    Research Evaluation — Baseline vs Proposed
+                  </h4>
+                </div>
+                <span className="text-[10px] text-emerald-400 font-mono font-bold">
+                  -{scene.baseline_comparison.defect_reduction_percent}% Topology Defects
+                </span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2 text-xs">
+                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-1">
+                  <span className="text-slate-400 text-[10px]">Topology Defects:</span>
+                  <div className="flex items-baseline gap-2 font-mono">
+                    <span className="text-rose-400 line-through">Base: {scene.baseline_comparison.baseline_topology_defects}</span>
+                    <span className="text-emerald-400 font-bold">Prop: {scene.baseline_comparison.proposed_topology_defects}</span>
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-1">
+                  <span className="text-slate-400 text-[10px]">Room Closure Rate:</span>
+                  <div className="flex items-baseline gap-2 font-mono">
+                    <span className="text-amber-400">Base: {(scene.baseline_comparison.baseline_room_closure_rate * 100).toFixed(0)}%</span>
+                    <span className="text-emerald-400 font-bold">Prop: {(scene.baseline_comparison.proposed_room_closure_rate * 100).toFixed(0)}%</span>
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-1">
+                  <span className="text-slate-400 text-[10px]">Wall Continuity Error:</span>
+                  <div className="flex items-baseline gap-2 font-mono">
+                    <span className="text-slate-400">Base: {scene.baseline_comparison.baseline_wall_continuity_error_m}m</span>
+                    <span className="text-emerald-400 font-bold">Prop: {scene.baseline_comparison.proposed_wall_continuity_error_m}m</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Progressive Ablation Study (Section 22) */}
+          {scene?.validation?.ablation_study && scene.validation.ablation_study.length > 0 && (
+            <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 backdrop-blur-xl shadow-xl flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-indigo-400" />
+                  <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                    Ablation Study (A0 to A5)
+                  </h4>
+                </div>
+                <span className="text-[10px] text-slate-400 font-mono">
+                  Progressive Structural Enforcement
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-[11px]">
+                {scene.validation.ablation_study.map((ab: any) => (
+                  <div key={ab.config_id} className="p-2 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
+                    <span className="font-mono font-bold text-indigo-300">{ab.config_id}</span>
+                    <span className="text-[10px] text-slate-300 font-medium truncate">{ab.config_name}</span>
+                    <span className="text-[10px] text-slate-400">Closure: {(ab.closure_rate * 100).toFixed(0)}%</span>
+                    <span className="text-[10px] text-emerald-400 font-mono">Conf: {(ab.mean_confidence * 100).toFixed(0)}%</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
 
           {/* Bottom Telemetry & Export */}
@@ -362,16 +517,22 @@ export const VideoReconstructionPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Judge Mode / Scientific Research Contribution Explanation */}
+      {/* Completion Inspector Modal */}
+      <CompletionInspectorModal
+        region={inspectedRegion}
+        onClose={() => setInspectedRegion(null)}
+      />
+
+      {/* Judge Mode Scientific Research Contribution Explanation */}
       <div className="bg-slate-900/60 border border-white/10 rounded-2xl p-5 backdrop-blur-xl flex flex-col gap-3">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-5 h-5 text-indigo-400" />
           <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-            Judge Mode — Visibility-Aware Constraint Completion
+            Research Contribution: Visibility-Aware Constraint Completion
           </h3>
         </div>
         <p className="text-xs text-slate-400 leading-relaxed">
-          Rather than silently inventing unobserved spaces with arbitrary generative models, <strong>PLANE VUE</strong> rigorously separates <strong>Observed</strong> visual data (multi-view tracked features and RANSAC planes) from <strong>Inferred</strong> structure (Level 1 geometric continuation and Level 2 symmetry) and <strong>Generated</strong> enclosures (Level 3 room envelope bounding constraints). Every completion carries explainable provenance, camera visibility evidence, and conservative confidence levels.
+          Rather than silently inventing unobserved spaces with arbitrary generative models, <strong>PLANE VUE</strong> rigorously separates <strong>Observed</strong> visual data (multi-view tracked features and RANSAC planes) from <strong>Inferred</strong> structure (Level 1 geometric continuation and Level 2 symmetry) and <strong>Generated</strong> enclosures (Level 4 room envelope bounding constraints). Every completion carries explainable provenance, camera visibility evidence, non-overwrite priority, and conservative confidence levels.
         </p>
       </div>
     </div>

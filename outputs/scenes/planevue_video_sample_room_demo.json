@@ -1946,13 +1946,13 @@
       "plane_id": "PLN_FLO_01",
       "surface_type": "FLOOR",
       "normal": [
-        0.3561,
-        -0.9343,
-        0.0141
+        -0.3125,
+        0.9495,
+        -0.0294
       ],
-      "offset": 0.0977,
-      "inlier_count": 48,
-      "confidence": 0.88,
+      "offset": 0.0166,
+      "inlier_count": 50,
+      "confidence": 0.9,
       "bounds": {
         "min": [
           -0.017,
@@ -1960,9 +1960,9 @@
           0.693
         ],
         "max": [
-          3.804,
-          1.726,
-          10.13
+          4.76,
+          1.727,
+          11.481
         ]
       },
       "status": "OBSERVED"
@@ -1971,23 +1971,23 @@
       "plane_id": "PLN_WAL_02",
       "surface_type": "WALL",
       "normal": [
-        0.9057,
-        0.0414,
-        -0.4219
+        0.9449,
+        -0.1082,
+        -0.3089
       ],
-      "offset": 0.4276,
-      "inlier_count": 17,
-      "confidence": 0.57,
+      "offset": 0.0445,
+      "inlier_count": 20,
+      "confidence": 0.6,
       "bounds": {
         "min": [
           0.942,
-          -0.795,
+          -1.638,
           2.686
         ],
         "max": [
-          4.76,
-          1.727,
-          11.481
+          5.13,
+          3.994,
+          14.437
         ]
       },
       "status": "OBSERVED"
@@ -2040,28 +2040,6 @@
     },
     {
       "region_id": "UNSEEN_REG_03",
-      "label": "Unobserved East Perimeter Wall Segment",
-      "reason": "Wall surface lies outside camera viewing coverage along the East room boundary.",
-      "evidence": "Sparse 3D point density is negligible (0 points) with no intersecting camera frustum rays.",
-      "evidence_frames": [
-        0,
-        1,
-        2
-      ],
-      "boundary_min": [
-        5.2,
-        0.0,
-        -3.0
-      ],
-      "boundary_max": [
-        6.0,
-        5.0,
-        16.0
-      ],
-      "status": "UNSEEN"
-    },
-    {
-      "region_id": "UNSEEN_REG_04",
       "label": "Unobserved West Perimeter Wall Segment",
       "reason": "Wall surface lies outside camera viewing coverage along the West room boundary.",
       "evidence": "Sparse 3D point density is negligible (0 points) with no intersecting camera frustum rays.",
@@ -2151,36 +2129,6 @@
       "completion_level": "LEVEL_1_CONTINUATION",
       "geometry": {
         "start": [
-          5.6,
-          0.0,
-          -3.0
-        ],
-        "end": [
-          5.6,
-          0.0,
-          16.0
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "length": 19.0,
-        "orientation": "VERTICAL_Z"
-      },
-      "reason": "Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
-      "evidence_category": "GEOMETRIC_CONTINUATION",
-      "confidence_level": "HIGH",
-      "source_frames": [
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "region_id": "CMP_UNSEEN_REG_04",
-      "element_type": "WALL_CONTINUATION",
-      "status": "INFERRED",
-      "completion_level": "LEVEL_1_CONTINUATION",
-      "geometry": {
-        "start": [
           -4.6,
           0.0,
           -3.0
@@ -2228,7 +2176,7 @@
       "id": "WALL_OBS_01",
       "type": "wall",
       "status": "OBSERVED",
-      "provenance_note": "Observed visual plane (17 inlier 3D features)",
+      "provenance_note": "Observed visual plane (20 inlier 3D features)",
       "geometry": {
         "start": [
           0.942,
@@ -2236,9 +2184,9 @@
           2.686
         ],
         "end": [
-          4.76,
+          5.13,
           0.0,
-          11.481
+          14.437
         ],
         "height": 2.8,
         "thickness": 0.18
@@ -2291,28 +2239,6 @@
     },
     {
       "id": "CMP_UNSEEN_REG_03",
-      "type": "wall",
-      "status": "INFERRED",
-      "provenance_note": "LEVEL_1_CONTINUATION: Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
-      "geometry": {
-        "start": [
-          5.6,
-          0.0,
-          -3.0
-        ],
-        "end": [
-          5.6,
-          0.0,
-          16.0
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "evidence_category": "GEOMETRIC_CONTINUATION"
-      },
-      "material": null
-    },
-    {
-      "id": "CMP_UNSEEN_REG_04",
       "type": "wall",
       "status": "INFERRED",
       "provenance_note": "LEVEL_1_CONTINUATION: Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
@@ -2681,48 +2607,48 @@
     "sparse_points_triangulated": 82,
     "planes_detected": 2,
     "observed_elements_count": 13,
-    "inferred_elements_count": 2,
+    "inferred_elements_count": 1,
     "generated_elements_count": 2,
-    "unseen_regions_count": 4,
-    "total_processing_time_ms": 6487.9,
+    "unseen_regions_count": 3,
+    "total_processing_time_ms": 7088.8,
     "scale_mode": "relative",
     "metric_scale_factor": null
   },
   "validation": {
     "geometry_valid": true,
     "mesh_audit": {
-      "total_vertices": 108,
-      "total_faces": 152,
+      "total_vertices": 100,
+      "total_faces": 140,
       "boundary_edges": 0,
       "non_manifold_edges": 0,
       "degenerate_faces": 0,
-      "watertight_solids_count": 16,
-      "total_solids_count": 17,
+      "watertight_solids_count": 15,
+      "total_solids_count": 16,
       "is_watertight": false,
       "watertight_elements_ratio": 0.94,
       "status": "MANIFOLD_SOLIDS_COMPOSED",
-      "audit_note": "Verified 16/17 closed solid prisms with 0 non-manifold edges."
+      "audit_note": "Verified 15/16 closed solid prisms with 0 non-manifold edges."
     },
     "scale_source": "relative_camera_step",
     "provenance_breakdown": {
       "OBSERVED": 13,
-      "INFERRED": 2,
+      "INFERRED": 1,
       "GENERATED": 2,
-      "UNSEEN": 4
+      "UNSEEN": 3
     }
   },
   "artifacts": {},
   "mesh_audit": {
-    "total_vertices": 108,
-    "total_faces": 152,
+    "total_vertices": 100,
+    "total_faces": 140,
     "boundary_edges": 0,
     "non_manifold_edges": 0,
     "degenerate_faces": 0,
-    "watertight_solids_count": 16,
-    "total_solids_count": 17,
+    "watertight_solids_count": 15,
+    "total_solids_count": 16,
     "is_watertight": false,
     "watertight_elements_ratio": 0.94,
     "status": "MANIFOLD_SOLIDS_COMPOSED",
-    "audit_note": "Verified 16/17 closed solid prisms with 0 non-manifold edges."
+    "audit_note": "Verified 15/16 closed solid prisms with 0 non-manifold edges."
   }
 }

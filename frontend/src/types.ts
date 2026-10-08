@@ -365,17 +365,27 @@ export interface UnseenRegionItem {
   boundary_min: [number, number, number];
   boundary_max: [number, number, number];
   status: "UNSEEN";
+  classification?: string;
+  coverage_ratio?: number;
+  nearest_observed_geometry?: string;
+  completion_eligibility?: any;
 }
 
 export interface CompletionRegionItem {
   region_id: string;
   element_type: string;
-  status: "INFERRED" | "GENERATED";
+  status: "INFERRED" | "GENERATED" | "CORRECTED";
   completion_level: string;
   geometry: any;
   reason: string;
   evidence_category: string;
-  confidence_level: "HIGH" | "MEDIUM" | "CONSERVATIVE";
+  confidence_level: "HIGH" | "MEDIUM" | "CONSERVATIVE" | "UNRESOLVED";
+  confidence?: number;
+  confidence_breakdown?: any;
+  validation_status?: string;
+  validation_details?: any;
+  constraints_used?: string[];
+  completion_method?: string;
   source_frames: number[];
 }
 
@@ -412,6 +422,8 @@ export interface VideoSceneItem {
   completion_regions: CompletionRegionItem[];
   objects: any[];
   coverage: CoverageReportItem;
+  visibility_report?: any;
+  baseline_comparison?: any;
   metrics: VideoSceneMetrics;
   validation: any;
   artifacts: {

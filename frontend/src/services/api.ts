@@ -379,6 +379,53 @@ export async function exportVideoSceneApi(videoId: string, format: 'glb' | 'json
   return res.blob();
 }
 
+export async function analyzeVideoCompletionApi(videoId: string): Promise<any> {
+  const formData = new FormData();
+  formData.append('video_id', videoId);
+  const res = await fetch('/api/video/completion/analyze', {
+    method: 'POST',
+    body: formData,
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || 'Completion analysis failed');
+  }
+  return res.json();
+}
+
+export async function runVideoCompletionApi(videoId: string, blueprintId?: string): Promise<any> {
+  const formData = new FormData();
+  formData.append('video_id', videoId);
+  if (blueprintId) formData.append('blueprint_id', blueprintId);
+  const res = await fetch('/api/video/completion/run', {
+    method: 'POST',
+    body: formData,
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || 'Completion execution failed');
+  }
+  return res.json();
+}
+
+export async function getVideoCompletionRegionDetailsApi(jobId: string, regionId: string): Promise<any> {
+  const res = await fetch(`/api/video/completion/${jobId}/region/${regionId}`);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || 'Region details failed');
+  }
+  return res.json();
+}
+
+export async function getVideoCompletionReportApi(jobId: string): Promise<any> {
+  const res = await fetch(`/api/video/completion/${jobId}/report`);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || 'Completion report retrieval failed');
+  }
+  return res.json();
+}
+
 
 
 

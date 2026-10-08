@@ -1,0 +1,17 @@
+{
+  "id": "UNSEEN_DISPLAY",
+  "bounds": {
+    "min": [
+      -3.5,
+      0.0,
+      1.5
+    ],
+    "max": [
+      3.5,
+      3.0,
+      2.5
+    ]
+  },
+  "reason": "Presentation wall outside camera turning radius.",
+  "gt_wall_id": "gt_screen_wall"
+}

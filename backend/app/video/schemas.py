@@ -82,16 +82,26 @@ class UnseenRegion(BaseModel):
     boundary_min: List[float]
     boundary_max: List[float]
     status: str = "UNSEEN"
+    classification: str = "OCCLUDED"  # "UNSEEN" | "OCCLUDED" | "LOW_CONFIDENCE" | "OUT_OF_VIEW" | "INSUFFICIENT_DATA"
+    coverage_ratio: float = 0.0
+    nearest_observed_geometry: Optional[str] = None
+    completion_eligibility: Dict[str, Any] = Field(default_factory=dict)
 
 class CompletionRegion(BaseModel):
     region_id: str
-    element_type: str  # "WALL_CONTINUATION" | "SYMMETRIC_WALL" | "ROOM_SHELL_CLOSURE"
-    status: str        # "INFERRED" | "GENERATED"
-    completion_level: str  # "LEVEL_1_CONTINUATION" | "LEVEL_2_SYMMETRY" | "LEVEL_3_ROOM_SHELL"
+    element_type: str  # "WALL_CONTINUATION" | "SYMMETRIC_WALL" | "ROOM_SHELL_CLOSURE" | "FLOOR_SLAB" | "CEILING_SLAB"
+    status: str        # "INFERRED" | "GENERATED" | "CORRECTED"
+    completion_level: str  # "LEVEL_1_CONTINUATION" | "LEVEL_2_SYMMETRY" | "LEVEL_4_ROOM_SHELL" | "LEVEL_5_BLUEPRINT"
     geometry: Dict[str, Any]
     reason: str
-    evidence_category: str  # "GEOMETRIC_CONTINUATION" | "STRUCTURAL_SYMMETRY" | "ROOM_ENVELOPE_CONSTRAINT"
-    confidence_level: str   # "HIGH" | "MEDIUM" | "CONSERVATIVE"
+    evidence_category: str  # "GEOMETRIC_CONTINUATION" | "STRUCTURAL_SYMMETRY" | "ROOM_ENVELOPE_CONSTRAINT" | "BLUEPRINT_ALIGNMENT"
+    confidence_level: str   # "HIGH" | "MEDIUM" | "CONSERVATIVE" | "UNRESOLVED"
+    confidence: float = 0.80
+    confidence_breakdown: Dict[str, Any] = Field(default_factory=dict)
+    validation_status: str = "PASSED"  # "PASSED" | "FAILED_VALIDATION" | "PASSED_WITH_CORRECTIONS"
+    validation_details: Dict[str, Any] = Field(default_factory=dict)
+    constraints_used: List[str] = Field(default_factory=list)
+    completion_method: str = "WALL_ALIGNMENT_EXTENSION"
     source_frames: List[int] = Field(default_factory=list)
 
 class VideoSceneObject(BaseModel):
@@ -99,6 +109,9 @@ class VideoSceneObject(BaseModel):
     type: str  # "wall" | "floor" | "ceiling" | "point_cloud" | "camera" | "unseen_volume"
     status: str  # "OBSERVED" | "INFERRED" | "GENERATED" | "CORRECTED"
     provenance_note: str = ""
+    confidence: float = 0.90
+    source_frames: List[int] = Field(default_factory=list)
+    evidence: List[str] = Field(default_factory=list)
     geometry: Dict[str, Any]
     material: Optional[Dict[str, Any]] = None
 
@@ -128,6 +141,8 @@ class VideoScene(BaseModel):
     completion_regions: List[CompletionRegion] = Field(default_factory=list)
     objects: List[VideoSceneObject] = Field(default_factory=list)
     coverage: CoverageReport
+    visibility_report: Optional[Dict[str, Any]] = None
+    baseline_comparison: Optional[Dict[str, Any]] = None
     metrics: VideoSceneMetrics
     validation: Dict[str, Any] = Field(default_factory=dict)
     artifacts: Dict[str, str] = Field(default_factory=dict)

@@ -1,0 +1,95 @@
+{
+  "scene_id": "scene_001",
+  "name": "Rectangular Studio with Occluded Wardrobe Wall",
+  "bounds": {
+    "min": [
+      -2.5,
+      0.0,
+      -2.0
+    ],
+    "max": [
+      2.5,
+      2.8,
+      2.0
+    ]
+  },
+  "walls": [
+    {
+      "id": "gt_south",
+      "start": [
+        -2.5,
+        0.0,
+        -2.0
+      ],
+      "end": [
+        2.5,
+        0.0,
+        -2.0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_east",
+      "start": [
+        2.5,
+        0.0,
+        -2.0
+      ],
+      "end": [
+        2.5,
+        0.0,
+        2.0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_west",
+      "start": [
+        -2.5,
+        0.0,
+        -2.0
+      ],
+      "end": [
+        -2.5,
+        0.0,
+        2.0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_north",
+      "start": [
+        -2.5,
+        0.0,
+        2.0
+      ],
+      "end": [
+        2.5,
+        0.0,
+        2.0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "observed": false
+    }
+  ],
+  "total_walls": 4
+}

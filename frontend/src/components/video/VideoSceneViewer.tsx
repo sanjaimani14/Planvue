@@ -3,12 +3,13 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Grid, Line, Box, Cone } from '@react-three/drei';
 import * as THREE from 'three';
 import { VideoSceneItem, CameraPoseItem, Point3DItem, UnseenRegionItem } from '../../types';
-import { ProvenanceFilter } from './CompletionControls';
+import { ProvenanceFilter, ComparisonViewMode } from './CompletionControls';
 import { Compass, RotateCcw, Eye, Maximize, Info, X } from 'lucide-react';
 
 interface VideoSceneViewerProps {
   scene: VideoSceneItem;
   provenanceFilter: ProvenanceFilter;
+  comparisonMode?: ComparisonViewMode;
   showCameras: boolean;
   showPointCloud: boolean;
   showUnseenVolumes: boolean;
@@ -42,6 +43,7 @@ const VideoWallMesh: React.FC<{
   let color = '#94a3b8'; // OBSERVED (slate)
   if (wall.status === 'INFERRED') color = '#06b6d4'; // INFERRED (cyan)
   if (wall.status === 'GENERATED') color = '#f59e0b'; // GENERATED (amber)
+  if (wall.status === 'CORRECTED') color = '#a855f7'; // CORRECTED (violet)
   if (isSelected) color = '#ec4899'; // Selected (pink)
 
   return (
@@ -196,6 +198,7 @@ const UnseenVolumeBox: React.FC<{
 export const VideoSceneViewer: React.FC<VideoSceneViewerProps> = ({
   scene,
   provenanceFilter,
+  comparisonMode = 'AFTER_COMPLETION',
   showCameras,
   showPointCloud,
   showUnseenVolumes,
@@ -228,12 +231,15 @@ export const VideoSceneViewer: React.FC<VideoSceneViewerProps> = ({
     controlsRef.current.update();
   };
 
-  // Filter objects based on provenance toggle
+  // Filter objects based on provenance toggle and comparison mode
   const visibleWalls = useMemo(() => {
     const wallObjs = scene.objects.filter((o) => o.type === 'wall');
+    if (comparisonMode === 'BEFORE_COMPLETION') {
+      return wallObjs.filter((o) => o.status === 'OBSERVED');
+    }
     if (provenanceFilter === 'ALL') return wallObjs;
     return wallObjs.filter((o) => o.status === provenanceFilter);
-  }, [scene.objects, provenanceFilter]);
+  }, [scene.objects, provenanceFilter, comparisonMode]);
 
   return (
     <div className="relative w-full h-[540px] bg-slate-950 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
@@ -275,6 +281,9 @@ export const VideoSceneViewer: React.FC<VideoSceneViewerProps> = ({
         </span>
         <span className="flex items-center gap-1 text-amber-300 font-medium">
           <span className="w-2.5 h-2.5 rounded-sm bg-amber-400" /> Generated
+        </span>
+        <span className="flex items-center gap-1 text-purple-300 font-medium">
+          <span className="w-2.5 h-2.5 rounded-sm bg-purple-500" /> Corrected
         </span>
         <span className="flex items-center gap-1 text-rose-300 font-medium">
           <span className="w-2.5 h-2.5 rounded-sm bg-rose-500" /> Unseen

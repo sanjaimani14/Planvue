@@ -48,6 +48,6 @@ def test_unseen_detection_and_conservative_completion():
     assert len(completions) > 0
     for comp in completions:
         assert comp.status in ["INFERRED", "GENERATED"]
-        assert comp.completion_level in ["LEVEL_1_CONTINUATION", "LEVEL_2_SYMMETRY", "LEVEL_3_ROOM_SHELL"]
+        assert comp.completion_level in ["LEVEL_1_CONTINUATION", "LEVEL_2_SYMMETRY", "LEVEL_3_ROOM_SHELL", "LEVEL_4_ROOM_SHELL"]
         assert len(comp.reason) > 5
         assert comp.confidence_level in ["HIGH", "MEDIUM", "CONSERVATIVE"]

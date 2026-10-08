@@ -21,8 +21,11 @@ from backend.app.video.feature_tracking import FeatureTracker
 from backend.app.video.camera_estimation import estimate_camera_trajectory
 from backend.app.video.reconstruction import triangulate_pairwise_points, fit_planes_ransac
 from backend.app.video.coverage import compute_spatial_coverage
+from backend.app.video.visibility.visibility_map import build_visibility_map
 from backend.app.video.unseen_detection import detect_unseen_regions
 from backend.app.video.completion import complete_unseen_regions
+from backend.app.video.completion_baseline import evaluate_baseline_vs_proposed
+from backend.app.video.completion_ablation import run_mode_b_ablation_study
 from backend.app.video.scene_fusion import assemble_video_scene
 from backend.app.reconstruction.exporter import export_glb, export_json
 
@@ -134,17 +137,32 @@ class VideoService:
         # Fit planes via RANSAC
         planes = fit_planes_ransac(all_3d_points, max_planes=4)
 
-        # Stage 7: Spatial Coverage Map
-        update_progress(82.0, "COVERAGE_ANALYSIS", "Evaluating frustum ray visibility and spatial coverage...")
+        # Stage 7: Spatial Coverage & Visibility Map
+        update_progress(80.0, "VISIBILITY_ANALYSIS", "Evaluating frustum ray visibility and 3D voxel coverage grid...")
         coverage, coverage_grid = compute_spatial_coverage(cam_poses, all_3d_points)
+        visibility_report = build_visibility_map(cam_poses, all_3d_points, planes)
 
-        # Stage 8: Unseen Region Detection
-        update_progress(88.0, "UNSEEN_DETECTION", "Identifying occluded sectors and unobserved perimeter walls...")
+        # Stage 8: Unseen Region Detection with Eligibility Gate
+        update_progress(88.0, "UNSEEN_DETECTION", "Identifying occluded sectors, out-of-view zones, and completion eligibility...")
         unseen_regs = detect_unseen_regions(cam_poses, all_3d_points, planes, coverage)
 
-        # Stage 9: Conservative Completion
-        update_progress(94.0, "COMPLETION", "Generating constraint-guided geometric continuation and shell closure...")
+        # Stage 9: Visibility-Aware Constraint Completion
+        update_progress(94.0, "COMPLETION", "Generating constraint-guided geometric continuation, symmetry, and shell closure...")
         completions = complete_unseen_regions(unseen_regs, planes, coverage)
+
+        # Comparative Baseline and Progressive Ablation Study
+        elapsed_stage9_ms = (time.time() - t0) * 1000.0
+        baseline_comp = evaluate_baseline_vs_proposed(
+            unseen_regions=unseen_regs,
+            observed_planes=planes,
+            proposed_completions=completions,
+            proposed_runtime_ms=elapsed_stage9_ms
+        )
+        ablation_runs = run_mode_b_ablation_study(
+            unseen_regions=unseen_regs,
+            observed_planes=planes,
+            has_blueprint=False
+        )
 
         # Stage 10: Unified 3D Scene Assembly & GLB Export
         update_progress(98.0, "SCENE_ASSEMBLY", "Compiling 3D scene representation and validating mesh manifold...")
@@ -168,6 +186,14 @@ class VideoService:
             completions=completions,
             metrics_data=telemetry_metrics
         )
+
+        # Attach Visibility Report, Baseline Comparison, and Ablation Study
+        video_scene.visibility_report = visibility_report.model_dump()
+        video_scene.baseline_comparison = baseline_comp.model_dump()
+        video_scene.validation["ablation_study"] = [a.model_dump() for a in ablation_runs]
+        raw_scene_dict["visibility_report"] = video_scene.visibility_report
+        raw_scene_dict["baseline_comparison"] = video_scene.baseline_comparison
+        raw_scene_dict["validation"] = video_scene.validation
 
         # Persist scene GLB and JSON to outputs/scenes/
         glb_out_path = SCENES_DIR / f"planevue_video_{video_id}.glb"

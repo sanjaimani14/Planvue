@@ -1,0 +1,17 @@
+{
+  "id": "UNSEEN_NORTH",
+  "bounds": {
+    "min": [
+      -2.5,
+      0.0,
+      1.2
+    ],
+    "max": [
+      2.5,
+      2.8,
+      2.0
+    ]
+  },
+  "reason": "Occluded behind interior wardrobe partition.",
+  "gt_wall_id": "gt_north"
+}

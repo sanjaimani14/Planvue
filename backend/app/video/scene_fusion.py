@@ -110,6 +110,9 @@ def assemble_video_scene(
         type="floor",
         status="OBSERVED",
         provenance_note="Reconstructed from ground plane RANSAC fit",
+        confidence=0.96,
+        source_frames=[c.frame_index for c in camera_poses[:4]] if camera_poses else [0],
+        evidence=["ground_plane_ransac_fit", "multi_view_parallax", "feature_tracks"],
         geometry={
             "bounds": [b_min[0], 0.0, b_min[2], b_max[0], 0.0, b_max[2]],
             "area_m2": round((b_max[0] - b_min[0]) * (b_max[2] - b_min[2]), 2)
@@ -135,6 +138,9 @@ def assemble_video_scene(
             type="wall",
             status="OBSERVED",
             provenance_note=f"Observed visual plane ({wp.inlier_count} inlier 3D features)",
+            confidence=round(min(0.98, 0.75 + 0.005 * wp.inlier_count), 2),
+            source_frames=[c.frame_index for c in camera_poses[:3]] if camera_poses else [0],
+            evidence=["multi_view_observation", "feature_tracks", "planar_ransac_fit"],
             geometry={
                 "start": s_coord,
                 "end": e_coord,
@@ -152,7 +158,13 @@ def assemble_video_scene(
         # Color coding by provenance:
         # Inferred: Cyan/Steel-blue [100, 180, 240]
         # Generated: Amber/Orange [240, 160, 60]
-        c_color = [100, 180, 240, 255] if cmp_item.status == "INFERRED" else [240, 160, 60, 255]
+        # Corrected: Violet/Purple [168, 85, 247]
+        if cmp_item.status == "CORRECTED":
+            c_color = [168, 85, 247, 255]
+        elif cmp_item.status == "INFERRED":
+            c_color = [100, 180, 240, 255]
+        else:
+            c_color = [240, 160, 60, 255]
 
         cmp_mesh = create_extruded_wall_mesh(
             s_pt, e_pt, height=wall_height, thickness=wall_thickness,
@@ -160,17 +172,27 @@ def assemble_video_scene(
         )
         tri_scene.add_geometry(cmp_mesh, node_name=f"wall_cmp_{idx+1}_{cmp_item.status.lower()}")
         
+        cmp_ev = [cmp_item.evidence_category, cmp_item.completion_level]
+        if cmp_item.constraints_used:
+            cmp_ev.extend(cmp_item.constraints_used)
+
         objects.append(VideoSceneObject(
             id=cmp_item.region_id,
             type="wall",
             status=cmp_item.status,
             provenance_note=f"{cmp_item.completion_level}: {cmp_item.reason}",
+            confidence=cmp_item.confidence,
+            source_frames=cmp_item.source_frames,
+            evidence=cmp_ev,
             geometry={
                 "start": s_pt,
                 "end": e_pt,
                 "height": wall_height,
                 "thickness": wall_thickness,
-                "evidence_category": cmp_item.evidence_category
+                "evidence_category": cmp_item.evidence_category,
+                "completion_method": cmp_item.completion_method,
+                "constraints_used": cmp_item.constraints_used,
+                "validation_status": cmp_item.validation_status
             }
         ))
 

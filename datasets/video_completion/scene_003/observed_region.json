@@ -1,0 +1,59 @@
+[
+  {
+    "id": "gt_entry",
+    "start": [
+      -3.5,
+      0.0,
+      -2.5
+    ],
+    "end": [
+      3.5,
+      0.0,
+      -2.5
+    ],
+    "normal": [
+      0,
+      0,
+      -1
+    ],
+    "observed": true
+  },
+  {
+    "id": "gt_glass_side",
+    "start": [
+      3.5,
+      0.0,
+      -2.5
+    ],
+    "end": [
+      3.5,
+      0.0,
+      2.5
+    ],
+    "normal": [
+      1,
+      0,
+      0
+    ],
+    "observed": true
+  },
+  {
+    "id": "gt_hall_side",
+    "start": [
+      -3.5,
+      0.0,
+      -2.5
+    ],
+    "end": [
+      -3.5,
+      0.0,
+      2.5
+    ],
+    "normal": [
+      -1,
+      0,
+      0
+    ],
+    "observed": true
+  }
+]

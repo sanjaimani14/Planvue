@@ -1,0 +1,133 @@
+{
+  "scene_id": "scene_002",
+  "name": "L-Shaped Alcove Room",
+  "bounds": {
+    "min": [
+      -3.0,
+      0.0,
+      -2.5
+    ],
+    "max": [
+      3.0,
+      2.8,
+      2.5
+    ]
+  },
+  "walls": [
+    {
+      "id": "gt_w1",
+      "start": [
+        -3.0,
+        0.0,
+        -2.5
+      ],
+      "end": [
+        3.0,
+        0.0,
+        -2.5
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_w2",
+      "start": [
+        3.0,
+        0.0,
+        -2.5
+      ],
+      "end": [
+        3.0,
+        0.0,
+        1.0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_w3",
+      "start": [
+        -3.0,
+        0.0,
+        -2.5
+      ],
+      "end": [
+        -3.0,
+        0.0,
+        2.5
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_w4",
+      "start": [
+        -3.0,
+        0.0,
+        2.5
+      ],
+      "end": [
+        1.0,
+        0.0,
+        2.5
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "observed": true
+    },
+    {
+      "id": "gt_w5_hidden",
+      "start": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "end": [
+        1.0,
+        0.0,
+        2.5
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "observed": false
+    },
+    {
+      "id": "gt_w6_hidden",
+      "start": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "end": [
+        3.0,
+        0.0,
+        1.0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "observed": false
+    }
+  ],
+  "total_walls": 6
+}

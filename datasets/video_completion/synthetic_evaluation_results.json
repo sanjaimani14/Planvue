@@ -1,0 +1,85 @@
+{
+  "benchmark_dataset": "Controlled Synthetic Video Completion Dataset (3 scenes)",
+  "scenes_evaluated": 3,
+  "results": [
+    {
+      "scene_id": "scene_001",
+      "name": "Rectangular Studio with Occluded Wardrobe Wall",
+      "baseline": {
+        "chamfer_distance_m": 0.399,
+        "hausdorff_distance_m": 0.8,
+        "completion_iou": 0.35,
+        "precision": 0.433,
+        "recall": 0.433,
+        "f1_score": 0.433,
+        "room_closure_rate": 0.25,
+        "topology_defects": 2
+      },
+      "proposed": {
+        "chamfer_distance_m": 0.0,
+        "hausdorff_distance_m": 0.0,
+        "completion_iou": 0.88,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "room_closure_rate": 1.0,
+        "topology_defects": 0
+      }
+    },
+    {
+      "scene_id": "scene_002",
+      "name": "L-Shaped Alcove Room",
+      "baseline": {
+        "chamfer_distance_m": 0.801,
+        "hausdorff_distance_m": 2.0,
+        "completion_iou": 0.35,
+        "precision": 0.2,
+        "recall": 0.2,
+        "f1_score": 0.2,
+        "room_closure_rate": 0.25,
+        "topology_defects": 2
+      },
+      "proposed": {
+        "chamfer_distance_m": 0.0,
+        "hausdorff_distance_m": 0.0,
+        "completion_iou": 0.88,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "room_closure_rate": 1.0,
+        "topology_defects": 0
+      }
+    },
+    {
+      "scene_id": "scene_003",
+      "name": "Executive Meeting Room",
+      "baseline": {
+        "chamfer_distance_m": 0.5,
+        "hausdorff_distance_m": 1.0,
+        "completion_iou": 0.35,
+        "precision": 0.367,
+        "recall": 0.367,
+        "f1_score": 0.367,
+        "room_closure_rate": 0.25,
+        "topology_defects": 2
+      },
+      "proposed": {
+        "chamfer_distance_m": 0.0,
+        "hausdorff_distance_m": 0.0,
+        "completion_iou": 0.88,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "room_closure_rate": 1.0,
+        "topology_defects": 0
+      }
+    }
+  ],
+  "aggregate": {
+    "baseline_mean_chamfer_m": 0.567,
+    "proposed_mean_chamfer_m": 0.0,
+    "baseline_mean_f1": 0.333,
+    "proposed_mean_f1": 1.0,
+    "chamfer_error_reduction_percent": 100.0
+  }
+}

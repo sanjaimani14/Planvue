@@ -1,0 +1,17 @@
+{
+  "id": "UNSEEN_ALCOVE",
+  "bounds": {
+    "min": [
+      1.0,
+      0.0,
+      1.0
+    ],
+    "max": [
+      3.0,
+      2.8,
+      2.5
+    ]
+  },
+  "reason": "Recessed alcove hidden around orthogonal blind corner.",
+  "gt_wall_id": "gt_w5_hidden"
+}

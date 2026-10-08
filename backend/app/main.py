@@ -843,6 +843,147 @@ async def export_video_scene_format(video_id: str, format: str = Form("glb")):
     else:
         raise HTTPException(status_code=400, detail=f"Unsupported format '{format}'. Supported: glb, json.")
 
+# ============================================================================
+# Mode B Research Endpoints: Visibility-Aware Constraint Completion
+# ============================================================================
+
+@app.post("/api/video/completion/analyze")
+async def analyze_video_completion(video_id: str = Form(...)):
+    """Performs pre-completion visibility and unseen-region identification."""
+    scene = video_service.get_scene(video_id)
+    if not scene:
+        # Check if video exists and run initial reconstruction if needed
+        matches = list(VIDEO_DIR.glob(f"{video_id}.*")) + list(DEMO_DIR.glob(f"{video_id}.*"))
+        if video_id == "sample_room_demo":
+            matches = [DEMO_DIR / "sample_room.mp4"]
+        if not matches:
+            raise HTTPException(status_code=404, detail=f"Video '{video_id}' not found.")
+        scene = video_service.run_pipeline_sync(str(matches[0]), video_id, target_keyframes=10)
+
+    return {
+        "video_id": video_id,
+        "visibility_report": scene.get("visibility_report"),
+        "coverage": scene.get("coverage"),
+        "unseen_regions": scene.get("unseen_regions"),
+        "eligibility_count": sum(1 for r in scene.get("unseen_regions", []) if r.get("completion_eligibility", {}).get("is_eligible", True))
+    }
+
+@app.post("/api/video/completion/run")
+async def run_video_completion(
+    video_id: str = Form(...),
+    blueprint_id: Optional[str] = Form(None)
+):
+    """Executes the full Visibility-Aware Constraint Completion pipeline."""
+    matches = list(VIDEO_DIR.glob(f"{video_id}.*")) + list(DEMO_DIR.glob(f"{video_id}.*"))
+    if video_id == "sample_room_demo":
+        matches = [DEMO_DIR / "sample_room.mp4"]
+    if not matches:
+        raise HTTPException(status_code=404, detail=f"Video '{video_id}' not found.")
+
+    job = video_service.create_job(video_id=video_id)
+    scene = video_service.run_pipeline_sync(str(matches[0]), video_id, job_id=job.job_id, target_keyframes=10)
+    return {
+        "job_id": job.job_id,
+        "video_id": video_id,
+        "status": "COMPLETED",
+        "scene": scene
+    }
+
+@app.get("/api/video/completion/{job_id}")
+async def get_video_completion_job(job_id: str):
+    """Retrieves completion job status and scene result."""
+    job = video_service.get_job(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail=f"Job '{job_id}' not found.")
+    return job.model_dump()
+
+@app.get("/api/video/completion/{job_id}/coverage")
+async def get_video_completion_coverage(job_id: str):
+    """Retrieves 3D volumetric coverage and 2D top-down heatmap."""
+    job = video_service.get_job(job_id)
+    if not job or not job.result:
+        raise HTTPException(status_code=404, detail=f"Completed scene for job '{job_id}' not found.")
+    return {
+        "coverage": job.result.get("coverage"),
+        "visibility_report": job.result.get("visibility_report")
+    }
+
+@app.get("/api/video/completion/{job_id}/regions")
+async def get_video_completion_regions(job_id: str):
+    """Retrieves unseen and completed regions with provenance."""
+    job = video_service.get_job(job_id)
+    if not job or not job.result:
+        raise HTTPException(status_code=404, detail=f"Completed scene for job '{job_id}' not found.")
+    return {
+        "unseen_regions": job.result.get("unseen_regions", []),
+        "completion_regions": job.result.get("completion_regions", []),
+        "objects": job.result.get("objects", [])
+    }
+
+@app.get("/api/video/completion/{job_id}/region/{region_id}")
+async def get_video_completion_region_details(job_id: str, region_id: str):
+    """Deep inspection endpoint for a single completion or unseen region."""
+    job = video_service.get_job(job_id)
+    if not job or not job.result:
+        raise HTTPException(status_code=404, detail=f"Completed scene for job '{job_id}' not found.")
+
+    res = job.result
+    # Search in completion_regions
+    for c in res.get("completion_regions", []):
+        if c.get("region_id") == region_id or c.get("region_id") == f"CMP_{region_id}":
+            return {"type": "COMPLETION", "details": c}
+
+    # Search in unseen_regions
+    for u in res.get("unseen_regions", []):
+        if u.get("region_id") == region_id:
+            return {"type": "UNSEEN", "details": u}
+
+    # Search in objects
+    for o in res.get("objects", []):
+        if o.get("id") == region_id:
+            return {"type": "OBJECT", "details": o}
+
+    raise HTTPException(status_code=404, detail=f"Region '{region_id}' not found in job '{job_id}'.")
+
+@app.post("/api/video/completion/{job_id}/validate")
+async def validate_video_completion_job(job_id: str):
+    """Runs topological and geometric validation on completed scene."""
+    job = video_service.get_job(job_id)
+    if not job or not job.result:
+        raise HTTPException(status_code=404, detail=f"Completed scene for job '{job_id}' not found.")
+    return {
+        "job_id": job_id,
+        "validation": job.result.get("validation", {}),
+        "mesh_audit": job.result.get("validation", {}).get("mesh_audit", {})
+    }
+
+@app.post("/api/video/completion/{job_id}/export")
+async def export_video_completion_job(job_id: str, format: str = Form("glb")):
+    """Exports completed scene for job to GLB or JSON."""
+    job = video_service.get_job(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail=f"Job '{job_id}' not found.")
+    video_id = job.video_id
+    return await export_video_scene_format(video_id=video_id, format=format)
+
+@app.get("/api/video/completion/{job_id}/report")
+async def get_video_completion_report(job_id: str):
+    """Returns technical scientific report of completion, baseline, and ablation."""
+    job = video_service.get_job(job_id)
+    if not job or not job.result:
+        raise HTTPException(status_code=404, detail=f"Completed scene for job '{job_id}' not found.")
+    res = job.result
+    return {
+        "job_id": job_id,
+        "video_id": job.video_id,
+        "research_contribution": "Visibility-Aware Constraint Completion",
+        "baseline_comparison": res.get("baseline_comparison"),
+        "ablation_study": res.get("validation", {}).get("ablation_study", []),
+        "coverage_summary": res.get("coverage"),
+        "metrics": res.get("metrics"),
+        "provenance_breakdown": res.get("validation", {}).get("provenance_breakdown", {})
+    }
+
 
 
 
