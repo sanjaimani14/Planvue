@@ -1,0 +1,62 @@
+# ==============================================================================
+# PLANE VUE — Evaluation Configuration & Geometric Matching Parameters
+# Section 30: Configurable tolerances and weighting for research evaluation
+# ==============================================================================
+
+version: "1.0.0"
+reproducibility:
+  random_seed: 42
+  deterministic: true
+
+matching_tolerances:
+  # Wall matching: midpoint distance, angular orientation, length ratio
+  wall_max_midpoint_distance_px: 35.0
+  wall_max_midpoint_distance_m: 0.50
+  wall_max_orientation_angle_deg: 15.0
+  wall_min_length_ratio: 0.60
+  wall_max_length_ratio: 1.40
+
+  # Door matching: spatial proximity and parent wall orientation
+  door_max_distance_px: 45.0
+  door_max_distance_m: 0.70
+
+  # Window matching: spatial proximity along wall
+  window_max_distance_px: 55.0
+  window_max_distance_m: 0.80
+
+  # Room matching: spatial overlap (Intersection over Union)
+  room_min_iou_match_threshold: 0.25
+
+  # Dimensional tolerance: threshold for acceptable dimension match
+  dimension_acceptable_error_m: 0.15
+  scale_tolerance_relative_pct: 10.0
+
+layout_error_weights:
+  # Transparent formula weights for composite layout error score
+  wall_position_error_weight: 0.35
+  room_iou_error_weight: 0.30
+  door_position_error_weight: 0.15
+  window_position_error_weight: 0.10
+  scale_error_weight: 0.10
+
+ablation_settings:
+  run_full_sequence: true
+  configurations:
+    - id: "A0"
+      name: "Baseline"
+      description: "Otsu thresholding + Hough line fitting + primitive geometry extrusion"
+    - id: "A1"
+      name: "+ Preprocessing"
+      description: "Baseline + Bilateral denoising + CLAHE + Hough deskewing"
+    - id: "A2"
+      name: "+ Semantic Detection"
+      description: "A1 + Specialized wall/door/window kernels + room polygon extraction"
+    - id: "A3"
+      name: "+ Metric Scale"
+      description: "A2 + 5-tier metric scale calibration engine"
+    - id: "A4"
+      name: "+ Topology Constraints"
+      description: "A3 + Duplicate wall pruning + corner gap closure + door/window snapping"
+    - id: "A5"
+      name: "Full PLANE VUE"
+      description: "A4 + Complete constraint repair + architectural 3D lintels & sills"

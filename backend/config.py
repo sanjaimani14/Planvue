@@ -1,0 +1,25 @@
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DEMO_DIR = BASE_DIR / "demo"
+OUTPUTS_DIR = BASE_DIR / "outputs"
+MODELS_DIR = BASE_DIR / "models"
+DOCS_DIR = BASE_DIR / "docs"
+
+# Ensure runtime directories exist
+OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
+DEMO_DIR.mkdir(parents=True, exist_ok=True)
+
+DEFAULT_WALL_HEIGHT_METERS = 3.0
+DEFAULT_WALL_THICKNESS_METERS = 0.18
+DEFAULT_DOOR_WIDTH_METERS = 0.90
+DEFAULT_DOOR_HEIGHT_METERS = 2.10
+DEFAULT_WINDOW_WIDTH_METERS = 1.20
+DEFAULT_WINDOW_HEIGHT_METERS = 1.30
+DEFAULT_WINDOW_SILL_METERS = 0.90
+
+MAX_FILE_SIZE_MB = 100
+MAX_VIDEO_DURATION_SECONDS = 120
+KEYFRAME_SAMPLE_INTERVAL = 3
+TARGET_IMAGE_MAX_DIM = 2048

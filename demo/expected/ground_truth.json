@@ -1,0 +1,75 @@
+{
+  "dataset_name": "PLANE_VUE_Architectural_Benchmark_A1",
+  "dimension_error_pct": 2.4,
+  "rooms": [
+    {
+      "id": "gt_room_1",
+      "name": "Living Room & Lounge",
+      "vertices": [
+        {
+          "x": 150,
+          "y": 150
+        },
+        {
+          "x": 650,
+          "y": 150
+        },
+        {
+          "x": 650,
+          "y": 850
+        },
+        {
+          "x": 150,
+          "y": 850
+        }
+      ]
+    },
+    {
+      "id": "gt_room_2",
+      "name": "Master Bedroom",
+      "vertices": [
+        {
+          "x": 650,
+          "y": 150
+        },
+        {
+          "x": 1250,
+          "y": 150
+        },
+        {
+          "x": 1250,
+          "y": 500
+        },
+        {
+          "x": 650,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "gt_room_3",
+      "name": "Bedroom 2",
+      "vertices": [
+        {
+          "x": 650,
+          "y": 500
+        },
+        {
+          "x": 1250,
+          "y": 500
+        },
+        {
+          "x": 1250,
+          "y": 850
+        },
+        {
+          "x": 650,
+          "y": 850
+        }
+      ]
+    }
+  ],
+  "walls_count": 8,
+  "doors_count": 4,
+  "windows_count": 3
+}
