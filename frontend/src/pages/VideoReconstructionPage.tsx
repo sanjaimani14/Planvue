@@ -22,6 +22,7 @@ import { CompletionControls, ProvenanceFilter, ComparisonViewMode } from '../com
 import { VideoSceneViewer } from '../components/video/VideoSceneViewer';
 import { VideoMetricsPanel } from '../components/video/VideoMetricsPanel';
 import { CompletionInspectorModal } from '../components/video/CompletionInspectorModal';
+import { JudgeModeWalkthrough } from '../components/video/JudgeModeWalkthrough';
 import {
   Video,
   Play,
@@ -37,10 +38,15 @@ import {
   ChevronLeft,
   Sliders,
   SplitSquareVertical,
-  Award
+  Award,
+  RefreshCw
 } from 'lucide-react';
 
-export const VideoReconstructionPage: React.FC = () => {
+interface VideoPageProps {
+  autoLoadDemo?: boolean;
+}
+
+export const VideoReconstructionPage: React.FC<VideoPageProps> = ({ autoLoadDemo }) => {
   // Video & File state
   const [videoId, setVideoId] = useState<string | null>(null);
   const [metadata, setMetadata] = useState<VideoMetadataItem | null>(null);
@@ -114,6 +120,30 @@ export const VideoReconstructionPage: React.FC = () => {
       setIsProcessing(false);
     }
   };
+
+  // Section 39: Reset Demo
+  const handleResetDemo = () => {
+    setVideoId(null);
+    setMetadata(null);
+    setQualityReport(null);
+    setKeyframes([]);
+    setSelectedKeyframeIndex(null);
+    setScene(null);
+    setSelectedRegionId(null);
+    setInspectedRegion(null);
+    setProgressPct(0);
+    setCurrentStage('IDLE');
+    setStatusMessage('Upload a room video to begin.');
+    setErrorMessage(null);
+    setComparisonMode('AFTER_COMPLETION');
+    setProvenanceFilter('ALL');
+  };
+
+  React.useEffect(() => {
+    if (autoLoadDemo && !scene && !isProcessing) {
+      handleUseDemoVideo();
+    }
+  }, [autoLoadDemo]);
 
   // Upload user file
   const handleUploadFile = async (file: File) => {
@@ -232,8 +262,17 @@ export const VideoReconstructionPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Status Pill & Judge Mode Toggle */}
-        <div className="flex items-center gap-3">
+        {/* Status Pill, Reset Demo & Judge Mode Toggle */}
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={handleResetDemo}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/10 bg-slate-900/90 text-slate-300 hover:text-white hover:border-white/25 text-xs font-semibold transition-all shadow-sm"
+            title="Reset active demo session (Section 39)"
+          >
+            <RefreshCw className="w-3.5 h-3.5 text-slate-400" />
+            <span>Reset Demo</span>
+          </button>
+
           <button
             onClick={() => setIsJudgeModeActive(!isJudgeModeActive)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
@@ -521,6 +560,22 @@ export const VideoReconstructionPage: React.FC = () => {
       <CompletionInspectorModal
         region={inspectedRegion}
         onClose={() => setInspectedRegion(null)}
+      />
+
+      {/* 10-Step Interactive Judge Mode Guided Demonstration Modal (Sections 10-20) */}
+      <JudgeModeWalkthrough
+        isOpen={isJudgeModeActive}
+        onClose={() => setIsJudgeModeActive(false)}
+        scene={scene}
+        metadata={metadata}
+        qualityReport={qualityReport}
+        keyframes={keyframes}
+        onSetComparisonMode={(m) => setComparisonMode(m)}
+        onSetProvenanceFilter={(f) => setProvenanceFilter(f)}
+        onSelectRegion={(id) => setSelectedRegionId(id)}
+        onInspectRegion={(reg) => setInspectedRegion(reg)}
+        onExportGlb={handleExportGlb}
+        onExportJson={handleExportJson}
       />
 
       {/* Judge Mode Scientific Research Contribution Explanation */}

@@ -6,16 +6,16 @@
     "min": [
       -5,
       0.0,
-      -3
+      -2
     ],
     "max": [
-      6,
-      5,
-      16
+      3,
+      4,
+      11
     ],
-    "width_m": 11,
-    "height_m": 5.0,
-    "depth_m": 19
+    "width_m": 8,
+    "height_m": 4.0,
+    "depth_m": 13
   },
   "camera_poses": [
     {
@@ -48,83 +48,83 @@
     },
     {
       "frame_index": 1,
-      "timestamp_s": 1.2,
+      "timestamp_s": 1.333,
       "position": [
-        0.024,
-        1.324,
-        -0.341
+        -0.044,
+        1.377,
+        -0.347
       ],
       "rotation": [
         [
-          0.9983,
-          -0.0518,
-          -0.025
+          0.9993,
+          0.0104,
+          -0.0357
         ],
         [
-          0.0517,
-          0.9987,
-          -0.0045
+          -0.0106,
+          0.9999,
+          -0.0028
         ],
         [
-          0.0252,
+          0.0357,
           0.0032,
-          0.9997
+          0.9994
         ]
       ],
-      "inliers_count": 28,
+      "inliers_count": 35,
       "focal_length_px": 640.0
     },
     {
       "frame_index": 2,
-      "timestamp_s": 1.6,
+      "timestamp_s": 2.8,
       "position": [
-        -0.307,
-        1.306,
-        -0.454
+        -0.373,
+        1.393,
+        -0.229
       ],
       "rotation": [
         [
-          0.9988,
-          -0.0484,
-          0.0024
+          0.9748,
+          -0.0231,
+          0.2218
         ],
         [
-          0.0484,
-          0.9988,
-          -0.0022
+          0.0265,
+          0.9996,
+          -0.0124
         ],
         [
-          -0.0023,
-          0.0024,
-          1.0
+          -0.2214,
+          0.018,
+          0.975
         ]
       ],
-      "inliers_count": 25,
+      "inliers_count": 15,
       "focal_length_px": 640.0
     },
     {
       "frame_index": 3,
-      "timestamp_s": 2.8,
+      "timestamp_s": 4.4,
       "position": [
-        -0.243,
-        1.336,
-        -0.797
+        -0.697,
+        1.414,
+        -0.099
       ],
       "rotation": [
         [
-          0.9971,
-          -0.0254,
-          -0.0718
+          0.8181,
+          0.0279,
+          0.5744
         ],
         [
-          0.0248,
-          0.9997,
-          -0.0089
+          -0.0086,
+          0.9993,
+          -0.0363
         ],
         [
-          0.072,
-          0.007,
-          0.9974
+          -0.575,
+          0.0247,
+          0.8178
         ]
       ],
       "inliers_count": 14,
@@ -132,200 +132,88 @@
     },
     {
       "frame_index": 4,
-      "timestamp_s": 3.2,
+      "timestamp_s": 6.467,
       "position": [
-        -0.306,
-        1.375,
-        -1.139
+        -1.04,
+        1.486,
+        -0.084
       ],
       "rotation": [
         [
-          0.9964,
-          -0.0134,
-          -0.0838
+          0.7993,
+          0.0678,
+          0.5971
         ],
         [
-          0.0092,
-          0.9987,
-          -0.0504
+          -0.0288,
+          0.9968,
+          -0.0745
         ],
         [
-          0.0843,
-          0.0495,
-          0.9952
+          -0.6002,
+          0.0424,
+          0.7987
         ]
       ],
-      "inliers_count": 18,
+      "inliers_count": 17,
       "focal_length_px": 640.0
     },
     {
       "frame_index": 5,
-      "timestamp_s": 4.4,
-      "position": [
-        -0.345,
-        1.36,
-        -1.486
-      ],
-      "rotation": [
-        [
-          0.9886,
-          0.0483,
-          -0.1427
-        ],
-        [
-          -0.055,
-          0.9975,
-          -0.0438
-        ],
-        [
-          0.1402,
-          0.0511,
-          0.9888
-        ]
-      ],
-      "inliers_count": 18,
-      "focal_length_px": 640.0
-    },
-    {
-      "frame_index": 6,
-      "timestamp_s": 5.533,
-      "position": [
-        -0.69,
-        1.386,
-        -1.54
-      ],
-      "rotation": [
-        [
-          0.9936,
-          0.0907,
-          0.0669
-        ],
-        [
-          -0.0874,
-          0.9949,
-          -0.0498
-        ],
-        [
-          -0.0711,
-          0.0436,
-          0.9965
-        ]
-      ],
-      "inliers_count": 12,
-      "focal_length_px": 640.0
-    },
-    {
-      "frame_index": 7,
-      "timestamp_s": 6.067,
-      "position": [
-        -0.352,
-        1.32,
-        -1.478
-      ],
-      "rotation": [
-        [
-          0.9425,
-          0.172,
-          -0.2866
-        ],
-        [
-          -0.1788,
-          0.9839,
-          0.0025
-        ],
-        [
-          0.2824,
-          0.0489,
-          0.9581
-        ]
-      ],
-      "inliers_count": 11,
-      "focal_length_px": 640.0
-    },
-    {
-      "frame_index": 8,
-      "timestamp_s": 6.867,
-      "position": [
-        -0.03,
-        1.253,
-        -1.358
-      ],
-      "rotation": [
-        [
-          0.795,
-          0.2091,
-          -0.5695
-        ],
-        [
-          -0.2178,
-          0.9745,
-          0.0538
-        ],
-        [
-          0.5662,
-          0.0812,
-          0.8203
-        ]
-      ],
-      "inliers_count": 18,
-      "focal_length_px": 640.0
-    },
-    {
-      "frame_index": 9,
       "timestamp_s": 7.2,
       "position": [
-        -0.22956545179976603,
-        1.2722080959872883,
-        -1.0705525040494108
+        -1.264,
+        1.482,
+        0.185
       ],
       "rotation": [
         [
-          0.794973373206774,
-          0.2091354779445494,
-          -0.5694556064849544
+          0.7753,
+          0.0361,
+          0.6305
         ],
         [
-          -0.217804030563625,
-          0.9745067508034027,
-          0.05383304662410873
+          -0.0007,
+          0.9984,
+          -0.0564
         ],
         [
-          0.5661967327373794,
-          0.08123388765471182,
-          0.8202574689291272
+          -0.6315,
+          0.0433,
+          0.7741
         ]
       ],
-      "inliers_count": 0,
+      "inliers_count": 14,
       "focal_length_px": 640.0
     }
   ],
   "point_cloud": [
     {
-      "id": "pt_0_1_0000",
+      "id": "pt_0_1_0002",
       "position": [
-        2.208,
-        -0.795,
-        5.685
+        0.037,
+        0.015,
+        0.211
       ],
       "color": [
-        136,
-        131,
-        128
+        229,
+        226,
+        230
       ],
       "observation_count": 2,
       "source_frames": [
         0,
         1
       ],
-      "reprojection_error": 0.59,
+      "reprojection_error": 0.87,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_0_1_0002",
+      "id": "pt_0_1_0003",
       "position": [
-        1.426,
-        0.575,
-        3.697
+        0.714,
+        0.289,
+        1.851
       ],
       "color": [
         224,
@@ -337,159 +225,19 @@
         0,
         1
       ],
-      "reprojection_error": 0.39,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0003",
-      "position": [
-        1.414,
-        0.568,
-        3.594
-      ],
-      "color": [
-        203,
-        198,
-        195
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.91,
+      "reprojection_error": 0.03,
       "status": "OBSERVED"
     },
     {
       "id": "pt_0_1_0004",
       "position": [
-        1.279,
-        0.634,
-        3.653
+        0.801,
+        0.425,
+        2.504
       ],
       "color": [
-        195,
-        190,
-        189
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.0,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0005",
-      "position": [
-        1.228,
-        0.611,
-        3.434
-      ],
-      "color": [
-        185,
-        180,
-        179
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.17,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0007",
-      "position": [
-        1.363,
-        0.658,
-        3.407
-      ],
-      "color": [
-        185,
-        180,
-        179
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.32,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0008",
-      "position": [
-        1.997,
-        1.218,
-        6.234
-      ],
-      "color": [
-        184,
-        187,
-        196
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.0,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0009",
-      "position": [
-        1.399,
-        0.673,
-        3.244
-      ],
-      "color": [
-        188,
-        183,
-        180
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.27,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0010",
-      "position": [
-        1.495,
-        0.713,
-        3.441
-      ],
-      "color": [
-        188,
-        183,
-        180
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.31,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0011",
-      "position": [
-        1.855,
-        1.229,
-        5.791
-      ],
-      "color": [
-        214,
-        217,
+        216,
+        219,
         226
       ],
       "observation_count": 2,
@@ -497,55 +245,15 @@
         0,
         1
       ],
-      "reprojection_error": 0.85,
+      "reprojection_error": 0.79,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_0_1_0012",
+      "id": "pt_0_1_0005",
       "position": [
-        0.456,
-        0.275,
-        1.302
-      ],
-      "color": [
-        186,
-        181,
-        180
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.0,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0014",
-      "position": [
-        -0.017,
-        0.173,
-        0.693
-      ],
-      "color": [
-        218,
-        218,
-        215
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 2.94,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0015",
-      "position": [
-        1.382,
-        1.049,
-        4.004
+        0.957,
+        0.47,
+        2.707
       ],
       "color": [
         189,
@@ -557,135 +265,15 @@
         0,
         1
       ],
-      "reprojection_error": 0.67,
+      "reprojection_error": 0.87,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_0_1_0016",
+      "id": "pt_0_1_0006",
       "position": [
-        1.59,
-        1.201,
-        4.544
-      ],
-      "color": [
-        182,
-        177,
-        176
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.15,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0017",
-      "position": [
-        1.499,
-        1.126,
-        4.082
-      ],
-      "color": [
-        188,
-        183,
-        182
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.53,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0018",
-      "position": [
-        1.369,
-        1.305,
-        4.343
-      ],
-      "color": [
-        28,
-        39,
-        52
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 1.37,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0019",
-      "position": [
-        2.068,
-        -0.745,
-        5.149
-      ],
-      "color": [
-        228,
-        224,
-        218
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.23,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0020",
-      "position": [
-        2.18,
-        -0.783,
-        5.616
-      ],
-      "color": [
-        221,
-        216,
-        213
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.6,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0022",
-      "position": [
-        1.44,
-        0.57,
-        3.67
-      ],
-      "color": [
-        198,
-        193,
-        190
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        0,
-        1
-      ],
-      "reprojection_error": 0.28,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_0_1_0024",
-      "position": [
-        1.323,
-        0.649,
-        3.47
+        0.839,
+        0.407,
+        2.179
       ],
       "color": [
         191,
@@ -697,55 +285,395 @@
         0,
         1
       ],
-      "reprojection_error": 0.34,
+      "reprojection_error": 0.66,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0009",
+      "position": [
+        0.858,
+        0.412,
+        1.988
+      ],
+      "color": [
+        188,
+        183,
+        180
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.35,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0011",
+      "position": [
+        1.406,
+        0.833,
+        3.744
+      ],
+      "color": [
+        185,
+        180,
+        179
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.73,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0012",
+      "position": [
+        1.63,
+        0.965,
+        4.304
+      ],
+      "color": [
+        190,
+        185,
+        184
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.57,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0013",
+      "position": [
+        0.835,
+        0.601,
+        2.612
+      ],
+      "color": [
+        214,
+        217,
+        226
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.4,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0015",
+      "position": [
+        0.857,
+        0.641,
+        2.677
+      ],
+      "color": [
+        214,
+        217,
+        226
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.17,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0016",
+      "position": [
+        0.683,
+        0.396,
+        1.634
+      ],
+      "color": [
+        184,
+        179,
+        178
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 1.11,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0017",
+      "position": [
+        0.885,
+        0.676,
+        2.744
+      ],
+      "color": [
+        188,
+        183,
+        180
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.59,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0018",
+      "position": [
+        0.841,
+        0.639,
+        2.567
+      ],
+      "color": [
+        191,
+        186,
+        185
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.87,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0019",
+      "position": [
+        1.012,
+        0.761,
+        2.808
+      ],
+      "color": [
+        189,
+        184,
+        183
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.62,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0020",
+      "position": [
+        0.848,
+        0.785,
+        2.701
+      ],
+      "color": [
+        66,
+        82,
+        109
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.0,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0021",
+      "position": [
+        0.855,
+        0.806,
+        2.705
+      ],
+      "color": [
+        28,
+        39,
+        52
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.46,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0022",
+      "position": [
+        -0.108,
+        -1.508,
+        8.649
+      ],
+      "color": [
+        56,
+        78,
+        108
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.0,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0024",
+      "position": [
+        0.034,
+        0.012,
+        0.19
+      ],
+      "color": [
+        228,
+        221,
+        219
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.0,
       "status": "OBSERVED"
     },
     {
       "id": "pt_0_1_0025",
       "position": [
-        1.907,
-        1.166,
-        5.972
+        0.739,
+        0.294,
+        1.884
       ],
       "color": [
-        34,
-        37,
-        46
+        198,
+        193,
+        190
       ],
       "observation_count": 2,
       "source_frames": [
         0,
         1
       ],
-      "reprojection_error": 0.13,
+      "reprojection_error": 0.33,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0026",
+      "position": [
+        0.768,
+        0.5,
+        2.411
+      ],
+      "color": [
+        35,
+        38,
+        47
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.83,
       "status": "OBSERVED"
     },
     {
       "id": "pt_0_1_0027",
       "position": [
-        1.696,
-        1.265,
-        4.517
+        1.842,
+        1.1,
+        5.209
       ],
       "color": [
-        220,
-        215,
-        214
+        213,
+        208,
+        207
       ],
       "observation_count": 2,
       "source_frames": [
         0,
         1
       ],
-      "reprojection_error": 0.5,
+      "reprojection_error": 0.53,
       "status": "OBSERVED"
     },
     {
       "id": "pt_0_1_0028",
       "position": [
-        1.412,
-        0.582,
-        3.632
+        0.862,
+        0.616,
+        2.688
+      ],
+      "color": [
+        213,
+        216,
+        225
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.51,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0029",
+      "position": [
+        0.894,
+        0.669,
+        2.786
+      ],
+      "color": [
+        214,
+        217,
+        226
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.18,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0030",
+      "position": [
+        1.027,
+        0.781,
+        3.087
+      ],
+      "color": [
+        188,
+        183,
+        182
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        0,
+        1
+      ],
+      "reprojection_error": 0.17,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_0_1_0031",
+      "position": [
+        0.733,
+        0.303,
+        1.886
       ],
       "color": [
         134,
@@ -757,695 +685,195 @@
         0,
         1
       ],
-      "reprojection_error": 0.11,
+      "reprojection_error": 0.0,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0000",
+      "id": "pt_0_1_0032",
       "position": [
-        4.489,
-        1.632,
-        10.809
+        -0.123,
+        0.937,
+        5.49
       ],
       "color": [
-        226,
-        221,
+        225,
+        218,
         218
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
-      "reprojection_error": 0.06,
+      "reprojection_error": 0.81,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0001",
+      "id": "pt_0_1_0034",
       "position": [
-        4.496,
-        1.66,
-        10.783
+        0.736,
+        0.306,
+        1.894
       ],
       "color": [
-        139,
-        134,
-        131
+        133,
+        128,
+        125
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
-      "reprojection_error": 0.03,
+      "reprojection_error": 0.59,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0002",
+      "id": "pt_0_1_0035",
       "position": [
-        3.329,
-        1.515,
-        9.372
+        0.022,
+        0.011,
+        0.161
       ],
       "color": [
-        185,
-        180,
-        179
+        222,
+        219,
+        223
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
-      "reprojection_error": 0.02,
+      "reprojection_error": 0.16,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0003",
+      "id": "pt_0_1_0036",
       "position": [
-        3.801,
-        1.726,
-        10.13
+        0.761,
+        0.312,
+        1.948
       ],
       "color": [
-        186,
-        181,
-        180
+        143,
+        138,
+        135
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.44,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0004",
-      "position": [
-        3.162,
-        1.431,
-        8.356
-      ],
-      "color": [
-        185,
-        180,
-        179
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.09,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0005",
-      "position": [
-        3.404,
-        1.513,
-        7.91
-      ],
-      "color": [
-        188,
-        183,
-        182
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.34,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0007",
-      "position": [
-        3.786,
-        1.675,
-        8.433
-      ],
-      "color": [
-        188,
-        183,
-        182
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.09,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0008",
-      "position": [
-        3.804,
-        1.689,
-        8.386
-      ],
-      "color": [
-        189,
-        184,
-        183
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.05,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0009",
-      "position": [
-        3.417,
-        1.515,
-        7.401
-      ],
-      "color": [
-        185,
-        180,
-        179
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
       "reprojection_error": 0.53,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0011",
+      "id": "pt_0_1_0037",
       "position": [
-        -0.171,
-        2.417,
-        7.541
+        -0.162,
+        -1.647,
+        9.118
       ],
       "color": [
-        218,
-        218,
-        213
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.95,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0012",
-      "position": [
-        2.844,
-        -1.638,
-        9.302
-      ],
-      "color": [
-        35,
-        33,
-        31
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 1.15,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0013",
-      "position": [
-        4.76,
-        1.727,
-        11.481
-      ],
-      "color": [
-        220,
         215,
-        212
+        215,
+        223
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
-      "reprojection_error": 0.36,
+      "reprojection_error": 0.07,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0015",
+      "id": "pt_0_1_0038",
       "position": [
-        -0.217,
-        1.774,
-        7.669
+        0.021,
+        0.011,
+        0.157
       ],
       "color": [
-        220,
-        220,
-        215
+        212,
+        222,
+        242
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
-      "reprojection_error": 0.13,
+      "reprojection_error": 0.0,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0016",
+      "id": "pt_0_1_0039",
       "position": [
-        0.65,
-        0.334,
-        4.118
+        -0.17,
+        -1.575,
+        8.796
       ],
       "color": [
-        213,
-        219,
-        236
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.84,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0017",
-      "position": [
-        4.577,
-        1.675,
-        10.986
-      ],
-      "color": [
-        226,
         221,
-        218
+        219,
+        220
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.48,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0018",
-      "position": [
-        4.422,
-        1.59,
-        10.465
-      ],
-      "color": [
-        199,
-        195,
-        189
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.24,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0020",
-      "position": [
-        -3.244,
-        2.193,
-        9.297
-      ],
-      "color": [
-        223,
-        218,
-        217
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
       "reprojection_error": 0.05,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0022",
+      "id": "pt_0_1_0040",
       "position": [
-        4.578,
-        -1.733,
-        11.408
+        -0.158,
+        -1.508,
+        8.429
       ],
       "color": [
-        225,
-        220,
-        217
+        31,
+        31,
+        39
       ],
       "observation_count": 2,
       "source_frames": [
-        1,
-        2
+        0,
+        1
       ],
-      "reprojection_error": 0.27,
+      "reprojection_error": 0.19,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_1_2_0023",
+      "id": "pt_1_2_0001",
       "position": [
-        2.488,
-        -1.426,
-        8.197
-      ],
-      "color": [
-        37,
-        35,
-        33
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.39,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0024",
-      "position": [
-        2.694,
-        -1.564,
-        8.932
-      ],
-      "color": [
-        28,
-        38,
-        56
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.74,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0025",
-      "position": [
-        0.947,
-        0.588,
-        7.614
-      ],
-      "color": [
-        231,
-        217,
-        217
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        1,
-        2
-      ],
-      "reprojection_error": 0.01,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_1_2_0026",
-      "position": [
-        1.368,
-        0.561,
-        8.06
+        0.18,
+        0.07,
+        1.014
       ],
       "color": [
         215,
-        223,
-        243
+        224,
+        235
       ],
       "observation_count": 2,
       "source_frames": [
         1,
         2
       ],
-      "reprojection_error": 0.23,
+      "reprojection_error": 2.16,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_2_3_0000",
+      "id": "pt_1_2_0002",
       "position": [
-        0.987,
-        -0.371,
-        2.804
-      ],
-      "color": [
-        15,
-        32,
-        54
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 2.67,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0001",
-      "position": [
-        0.582,
-        0.276,
-        3.41
-      ],
-      "color": [
-        217,
-        220,
-        229
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.38,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0004",
-      "position": [
-        1.132,
-        0.581,
-        3.124
-      ],
-      "color": [
-        224,
-        219,
-        218
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.37,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0005",
-      "position": [
-        0.992,
-        -0.38,
-        2.836
-      ],
-      "color": [
-        26,
-        33,
-        56
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 3.04,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0006",
-      "position": [
-        0.715,
-        0.277,
-        3.376
-      ],
-      "color": [
-        231,
-        221,
-        222
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.88,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0007",
-      "position": [
-        1.133,
-        0.529,
-        3.132
-      ],
-      "color": [
-        224,
-        219,
-        216
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.49,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0008",
-      "position": [
-        1.141,
-        0.587,
-        3.149
-      ],
-      "color": [
-        224,
-        219,
-        218
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.4,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0010",
-      "position": [
-        1.053,
-        -0.424,
-        3.046
-      ],
-      "color": [
-        29,
-        36,
-        59
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 2.72,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0011",
-      "position": [
-        0.671,
-        0.249,
-        3.054
-      ],
-      "color": [
-        223,
-        221,
-        229
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.28,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0012",
-      "position": [
-        0.942,
-        -0.347,
-        2.686
-      ],
-      "color": [
-        35,
-        42,
-        65
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 2.96,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0013",
-      "position": [
-        0.568,
-        0.269,
-        3.217
-      ],
-      "color": [
-        222,
-        220,
-        216
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 1.28,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0014",
-      "position": [
-        0.683,
-        0.267,
-        3.197
-      ],
-      "color": [
-        228,
-        218,
-        219
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        2,
-        3
-      ],
-      "reprojection_error": 0.46,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_2_3_0015",
-      "position": [
-        0.673,
-        0.244,
-        3.062
+        0.16,
+        0.078,
+        1.107
       ],
       "color": [
         212,
@@ -1454,198 +882,298 @@
       ],
       "observation_count": 2,
       "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.82,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0003",
+      "position": [
+        0.161,
+        0.08,
+        1.115
+      ],
+      "color": [
+        213,
+        222,
+        235
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 2.78,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0004",
+      "position": [
+        0.189,
+        0.093,
+        1.262
+      ],
+      "color": [
+        211,
+        223,
+        245
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.34,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0005",
+      "position": [
+        0.184,
+        0.094,
+        1.262
+      ],
+      "color": [
+        225,
+        224,
+        229
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.23,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0006",
+      "position": [
+        0.033,
+        0.236,
+        1.028
+      ],
+      "color": [
+        209,
+        214,
+        222
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 2.12,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0007",
+      "position": [
+        0.183,
+        0.092,
+        1.25
+      ],
+      "color": [
+        222,
+        221,
+        226
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 2.23,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0010",
+      "position": [
+        0.163,
+        0.079,
+        1.106
+      ],
+      "color": [
+        220,
+        218,
+        226
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.07,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0011",
+      "position": [
+        0.202,
+        0.08,
+        1.127
+      ],
+      "color": [
+        223,
+        224,
+        229
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.8,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0012",
+      "position": [
+        0.16,
+        0.081,
+        1.102
+      ],
+      "color": [
+        213,
+        222,
+        235
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.53,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0013",
+      "position": [
+        0.202,
+        0.079,
+        1.135
+      ],
+      "color": [
+        211,
+        217,
+        236
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 2.55,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0014",
+      "position": [
+        0.163,
+        0.078,
+        1.111
+      ],
+      "color": [
+        66,
+        76,
+        96
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 1.58,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_1_2_0015",
+      "position": [
+        0.202,
+        0.079,
+        1.133
+      ],
+      "color": [
+        211,
+        217,
+        236
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        1,
+        2
+      ],
+      "reprojection_error": 2.28,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_2_3_0000",
+      "position": [
+        -2.219,
+        -1.337,
+        6.788
+      ],
+      "color": [
+        58,
+        77,
+        98
+      ],
+      "observation_count": 2,
+      "source_frames": [
         2,
         3
       ],
-      "reprojection_error": 0.17,
+      "reprojection_error": 3.79,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_3_4_0002",
+      "id": "pt_2_3_0001",
       "position": [
-        0.728,
-        0.292,
-        2.009
+        -2.026,
+        -1.234,
+        6.342
       ],
       "color": [
-        217,
-        217,
-        217
+        63,
+        82,
+        103
       ],
       "observation_count": 2,
       "source_frames": [
-        3,
-        4
+        2,
+        3
       ],
-      "reprojection_error": 3.82,
+      "reprojection_error": 2.66,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_3_4_0003",
+      "id": "pt_2_3_0003",
       "position": [
-        0.747,
-        0.314,
-        2.062
+        0.208,
+        0.056,
+        0.864
       ],
       "color": [
-        220,
-        220,
-        220
+        207,
+        227,
+        255
       ],
       "observation_count": 2,
       "source_frames": [
-        3,
-        4
+        2,
+        3
       ],
-      "reprojection_error": 3.67,
+      "reprojection_error": 2.87,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_3_4_0004",
+      "id": "pt_2_3_0004",
       "position": [
-        0.776,
-        0.349,
-        2.142
-      ],
-      "color": [
-        222,
-        222,
-        222
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 3.46,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0005",
-      "position": [
-        0.795,
-        0.373,
-        2.194
-      ],
-      "color": [
-        222,
-        222,
-        222
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 3.34,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0006",
-      "position": [
-        1.423,
-        0.856,
-        3.963
-      ],
-      "color": [
-        221,
-        221,
-        218
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 1.56,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0010",
-      "position": [
-        0.456,
-        0.147,
-        1.714
-      ],
-      "color": [
-        229,
-        222,
-        222
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 5.93,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0011",
-      "position": [
-        0.647,
-        0.272,
-        1.777
-      ],
-      "color": [
-        221,
-        221,
-        221
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 4.73,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0014",
-      "position": [
-        0.701,
-        0.273,
-        1.932
-      ],
-      "color": [
-        220,
-        220,
-        220
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 4.3,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0016",
-      "position": [
-        0.458,
-        0.149,
-        1.722
-      ],
-      "color": [
-        229,
-        222,
-        222
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        3,
-        4
-      ],
-      "reprojection_error": 6.24,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_3_4_0020",
-      "position": [
-        0.453,
-        0.143,
-        1.678
+        0.246,
+        0.051,
+        0.815
       ],
       "color": [
         205,
@@ -1654,138 +1182,98 @@
       ],
       "observation_count": 2,
       "source_frames": [
-        3,
-        4
+        2,
+        3
       ],
-      "reprojection_error": 6.8,
+      "reprojection_error": 3.62,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0000",
+      "id": "pt_2_3_0005",
       "position": [
-        -0.308,
-        -1.306,
-        9.266
+        0.419,
+        0.109,
+        0.916
       ],
       "color": [
-        38,
-        35,
-        39
+        190,
+        185,
+        184
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        2,
+        3
       ],
-      "reprojection_error": 5.2,
+      "reprojection_error": 3.19,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0001",
+      "id": "pt_2_3_0007",
       "position": [
-        1.226,
-        0.758,
-        6.249
+        0.339,
+        0.119,
+        0.882
       ],
       "color": [
-        218,
         222,
-        237
+        222,
+        222
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        2,
+        3
       ],
-      "reprojection_error": 2.47,
+      "reprojection_error": 3.26,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0002",
+      "id": "pt_2_3_0008",
       "position": [
-        1.711,
-        1.217,
-        9.701
+        0.339,
+        0.124,
+        0.882
       ],
       "color": [
-        226,
-        227,
-        232
+        222,
+        222,
+        222
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        2,
+        3
       ],
-      "reprojection_error": 1.64,
+      "reprojection_error": 3.94,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0003",
+      "id": "pt_2_3_0009",
       "position": [
-        1.182,
-        0.739,
-        6.07
+        0.339,
+        0.155,
+        0.879
       ],
       "color": [
-        226,
-        223,
-        227
+        222,
+        222,
+        222
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        2,
+        3
       ],
-      "reprojection_error": 2.11,
+      "reprojection_error": 4.73,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0005",
+      "id": "pt_2_3_0010",
       "position": [
-        0.997,
-        0.516,
-        2.744
-      ],
-      "color": [
-        219,
-        221,
-        218
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        4,
-        5
-      ],
-      "reprojection_error": 6.31,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_4_5_0006",
-      "position": [
-        1.021,
-        0.55,
-        2.811
-      ],
-      "color": [
-        218,
-        220,
-        217
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        4,
-        5
-      ],
-      "reprojection_error": 5.81,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_4_5_0007",
-      "position": [
-        5.13,
-        3.994,
-        14.437
+        0.339,
+        0.119,
+        0.883
       ],
       "color": [
         221,
@@ -1794,102 +1282,342 @@
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        2,
+        3
       ],
-      "reprojection_error": 0.57,
+      "reprojection_error": 3.28,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0008",
+      "id": "pt_2_3_0012",
       "position": [
-        4.809,
-        3.848,
-        13.53
+        0.339,
+        0.118,
+        0.882
       ],
       "color": [
-        220,
+        215,
+        215,
+        215
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        2,
+        3
+      ],
+      "reprojection_error": 3.47,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_2_3_0013",
+      "position": [
+        -2.584,
+        -1.545,
+        7.656
+      ],
+      "color": [
+        37,
+        35,
+        33
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        2,
+        3
+      ],
+      "reprojection_error": 4.75,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_2_3_0015",
+      "position": [
+        0.236,
+        0.057,
+        0.873
+      ],
+      "color": [
+        226,
+        219,
+        219
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        2,
+        3
+      ],
+      "reprojection_error": 3.52,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_2_3_0016",
+      "position": [
+        -2.567,
+        -1.531,
+        7.617
+      ],
+      "color": [
+        39,
+        37,
+        35
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        2,
+        3
+      ],
+      "reprojection_error": 5.17,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_2_3_0017",
+      "position": [
+        0.209,
+        0.057,
+        0.861
+      ],
+      "color": [
+        227,
         220,
         220
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        2,
+        3
       ],
-      "reprojection_error": 0.74,
+      "reprojection_error": 2.74,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0010",
+      "id": "pt_2_3_0018",
       "position": [
-        0.908,
-        0.739,
-        6.107
+        -2.567,
+        -1.531,
+        7.617
+      ],
+      "color": [
+        39,
+        37,
+        35
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        2,
+        3
+      ],
+      "reprojection_error": 5.17,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_2_3_0019",
+      "position": [
+        0.237,
+        0.055,
+        0.873
+      ],
+      "color": [
+        205,
+        225,
+        253
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        2,
+        3
+      ],
+      "reprojection_error": 2.89,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_3_4_0003",
+      "position": [
+        -0.544,
+        0.185,
+        1.806
       ],
       "color": [
         219,
+        223,
+        238
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        3,
+        4
+      ],
+      "reprojection_error": 0.88,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_3_4_0004",
+      "position": [
+        -0.729,
+        0.367,
+        1.51
+      ],
+      "color": [
+        212,
+        217,
+        225
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        3,
+        4
+      ],
+      "reprojection_error": 4.27,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_3_4_0011",
+      "position": [
+        -0.558,
+        0.19,
+        1.818
+      ],
+      "color": [
+        223,
+        218,
+        220
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        3,
+        4
+      ],
+      "reprojection_error": 0.69,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_3_4_0015",
+      "position": [
+        -0.484,
+        0.201,
+        1.893
+      ],
+      "color": [
+        211,
+        223,
+        231
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        3,
+        4
+      ],
+      "reprojection_error": 1.7,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_3_4_0017",
+      "position": [
+        -0.482,
+        0.201,
+        1.886
+      ],
+      "color": [
+        207,
         219,
         227
       ],
       "observation_count": 2,
       "source_frames": [
-        4,
-        5
+        3,
+        4
       ],
-      "reprojection_error": 2.02,
+      "reprojection_error": 1.92,
       "status": "OBSERVED"
     },
     {
-      "id": "pt_4_5_0011",
+      "id": "pt_3_4_0018",
       "position": [
-        0.726,
-        0.224,
-        1.721
+        -0.544,
+        0.187,
+        1.799
       ],
       "color": [
-        183,
-        178,
-        177
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        4,
-        5
-      ],
-      "reprojection_error": 3.17,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_4_5_0012",
-      "position": [
-        4.681,
-        3.614,
-        13.179
-      ],
-      "color": [
-        31,
-        39,
-        57
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        4,
-        5
-      ],
-      "reprojection_error": 0.16,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_4_5_0015",
-      "position": [
-        1.374,
-        0.908,
-        7.336
-      ],
-      "color": [
-        221,
+        223,
         218,
+        220
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        3,
+        4
+      ],
+      "reprojection_error": 0.31,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0000",
+      "position": [
+        -3.309,
+        0.654,
+        4.124
+      ],
+      "color": [
+        225,
+        225,
+        235
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 6.48,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0001",
+      "position": [
+        -0.447,
+        0.192,
+        1.735
+      ],
+      "color": [
+        211,
+        224,
+        243
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 5.44,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0002",
+      "position": [
+        0.025,
+        0.124,
+        1.406
+      ],
+      "color": [
+        219,
+        227,
+        245
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 3.44,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0004",
+      "position": [
+        -0.465,
+        0.213,
+        1.883
+      ],
+      "color": [
+        218,
+        217,
         222
       ],
       "observation_count": 2,
@@ -1897,47 +1625,207 @@
         4,
         5
       ],
-      "reprojection_error": 2.21,
+      "reprojection_error": 4.23,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0005",
+      "position": [
+        0.085,
+        0.114,
+        1.356
+      ],
+      "color": [
+        214,
+        222,
+        231
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 2.31,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0007",
+      "position": [
+        -1.64,
+        2.683,
+        10.069
+      ],
+      "color": [
+        188,
+        183,
+        182
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 0.17,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0009",
+      "position": [
+        -0.522,
+        0.221,
+        1.927
+      ],
+      "color": [
+        215,
+        224,
+        237
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 4.58,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0010",
+      "position": [
+        -3.422,
+        0.678,
+        4.209
+      ],
+      "color": [
+        215,
+        215,
+        225
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 6.66,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0011",
+      "position": [
+        -3.274,
+        0.661,
+        4.086
+      ],
+      "color": [
+        215,
+        215,
+        225
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 7.54,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0012",
+      "position": [
+        -0.545,
+        0.23,
+        1.946
+      ],
+      "color": [
+        219,
+        227,
+        245
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 4.71,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0013",
+      "position": [
+        -3.487,
+        0.695,
+        4.253
+      ],
+      "color": [
+        208,
+        216,
+        234
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 7.58,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0014",
+      "position": [
+        -0.524,
+        0.227,
+        1.93
+      ],
+      "color": [
+        215,
+        216,
+        221
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 4.42,
+      "status": "OBSERVED"
+    },
+    {
+      "id": "pt_4_5_0015",
+      "position": [
+        -0.39,
+        0.176,
+        1.68
+      ],
+      "color": [
+        210,
+        217,
+        240
+      ],
+      "observation_count": 2,
+      "source_frames": [
+        4,
+        5
+      ],
+      "reprojection_error": 5.29,
       "status": "OBSERVED"
     },
     {
       "id": "pt_4_5_0016",
       "position": [
-        0.72,
-        0.222,
-        1.712
+        0.082,
+        0.112,
+        1.357
       ],
       "color": [
-        184,
-        179,
-        178
+        221,
+        222,
+        227
       ],
       "observation_count": 2,
       "source_frames": [
         4,
         5
       ],
-      "reprojection_error": 3.51,
-      "status": "OBSERVED"
-    },
-    {
-      "id": "pt_4_5_0017",
-      "position": [
-        4.66,
-        3.575,
-        13.096
-      ],
-      "color": [
-        31,
-        39,
-        57
-      ],
-      "observation_count": 2,
-      "source_frames": [
-        4,
-        5
-      ],
-      "reprojection_error": 0.13,
+      "reprojection_error": 1.7,
       "status": "OBSERVED"
     }
   ],
@@ -1946,48 +1834,23 @@
       "plane_id": "PLN_FLO_01",
       "surface_type": "FLOOR",
       "normal": [
-        -0.3125,
-        0.9495,
-        -0.0294
+        -0.0885,
+        0.9583,
+        -0.2718
       ],
-      "offset": 0.0166,
-      "inlier_count": 50,
-      "confidence": 0.9,
+      "offset": 0.1816,
+      "inlier_count": 68,
+      "confidence": 0.95,
       "bounds": {
         "min": [
-          -0.017,
-          0.143,
-          0.693
+          -3.487,
+          0.011,
+          0.157
         ],
         "max": [
-          4.76,
-          1.727,
-          11.481
-        ]
-      },
-      "status": "OBSERVED"
-    },
-    {
-      "plane_id": "PLN_WAL_02",
-      "surface_type": "WALL",
-      "normal": [
-        0.9449,
-        -0.1082,
-        -0.3089
-      ],
-      "offset": 0.0445,
-      "inlier_count": 20,
-      "confidence": 0.6,
-      "bounds": {
-        "min": [
-          0.942,
-          -1.638,
-          2.686
-        ],
-        "max": [
-          5.13,
-          3.994,
-          14.437
+          1.406,
+          2.683,
+          10.069
         ]
       },
       "status": "OBSERVED"
@@ -2000,21 +1863,37 @@
       "reason": "Wall surface lies outside camera viewing coverage along the North room boundary.",
       "evidence": "Sparse 3D point density is negligible (0 points) with no intersecting camera frustum rays.",
       "evidence_frames": [
+        5,
         0,
-        1,
-        2
+        4
       ],
       "boundary_min": [
         -5.0,
         0.0,
-        15.2
+        10.2
       ],
       "boundary_max": [
-        6.0,
-        5.0,
-        16.0
+        3.0,
+        4.0,
+        11.0
       ],
-      "status": "UNSEEN"
+      "status": "UNSEEN",
+      "classification": "OUT_OF_VIEW",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_FLO_01",
+      "completion_eligibility": {
+        "is_eligible": true,
+        "eligibility_reason": "Perimeter room-shell enclosure constraint justifies boundary manifold closure.",
+        "primary_rule": "ROOM_SHELL_CONTINUATION",
+        "confidence_prior": 0.74,
+        "supporting_constraints": [
+          "room_envelope_closure",
+          "perimeter_boundary_anchor"
+        ],
+        "nearest_observed_id": "PLN_FLO_01",
+        "distance_to_nearest_m": 5.53,
+        "action_directive": "PROCEED_COMPLETION"
+      }
     },
     {
       "region_id": "UNSEEN_REG_02",
@@ -2022,43 +1901,113 @@
       "reason": "Wall surface lies outside camera viewing coverage along the South room boundary.",
       "evidence": "Sparse 3D point density is negligible (0 points) with no intersecting camera frustum rays.",
       "evidence_frames": [
-        8,
-        5,
-        7
+        2,
+        4,
+        3
       ],
       "boundary_min": [
         -5.0,
         0.0,
-        -3.0
+        -2.0
       ],
       "boundary_max": [
-        6.0,
-        5.0,
-        -2.2
+        3.0,
+        4.0,
+        -1.2
       ],
-      "status": "UNSEEN"
+      "status": "UNSEEN",
+      "classification": "UNSEEN",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_FLO_01",
+      "completion_eligibility": {
+        "is_eligible": true,
+        "eligibility_reason": "Perimeter room-shell enclosure constraint justifies boundary manifold closure.",
+        "primary_rule": "ROOM_SHELL_CONTINUATION",
+        "confidence_prior": 0.74,
+        "supporting_constraints": [
+          "room_envelope_closure",
+          "perimeter_boundary_anchor"
+        ],
+        "nearest_observed_id": "PLN_FLO_01",
+        "distance_to_nearest_m": 6.74,
+        "action_directive": "PROCEED_COMPLETION"
+      }
     },
     {
       "region_id": "UNSEEN_REG_03",
+      "label": "Unobserved East Perimeter Wall Segment",
+      "reason": "Wall surface lies outside camera viewing coverage along the East room boundary.",
+      "evidence": "Sparse 3D point density is negligible (0 points) with no intersecting camera frustum rays.",
+      "evidence_frames": [
+        0,
+        1,
+        2
+      ],
+      "boundary_min": [
+        2.2,
+        0.0,
+        -2.0
+      ],
+      "boundary_max": [
+        3.0,
+        4.0,
+        11.0
+      ],
+      "status": "UNSEEN",
+      "classification": "OUT_OF_VIEW",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_FLO_01",
+      "completion_eligibility": {
+        "is_eligible": true,
+        "eligibility_reason": "Perimeter room-shell enclosure constraint justifies boundary manifold closure.",
+        "primary_rule": "ROOM_SHELL_CONTINUATION",
+        "confidence_prior": 0.74,
+        "supporting_constraints": [
+          "room_envelope_closure",
+          "perimeter_boundary_anchor"
+        ],
+        "nearest_observed_id": "PLN_FLO_01",
+        "distance_to_nearest_m": 3.75,
+        "action_directive": "PROCEED_COMPLETION"
+      }
+    },
+    {
+      "region_id": "UNSEEN_REG_04",
       "label": "Unobserved West Perimeter Wall Segment",
       "reason": "Wall surface lies outside camera viewing coverage along the West room boundary.",
       "evidence": "Sparse 3D point density is negligible (0 points) with no intersecting camera frustum rays.",
       "evidence_frames": [
-        0,
-        2,
-        1
+        5,
+        4,
+        3
       ],
       "boundary_min": [
         -5.0,
         0.0,
-        -3.0
+        -2.0
       ],
       "boundary_max": [
         -4.2,
-        5.0,
-        16.0
+        4.0,
+        11.0
       ],
-      "status": "UNSEEN"
+      "status": "UNSEEN",
+      "classification": "OUT_OF_VIEW",
+      "coverage_ratio": 0.0,
+      "nearest_observed_geometry": "PLN_FLO_01",
+      "completion_eligibility": {
+        "is_eligible": true,
+        "eligibility_reason": "Perimeter room-shell enclosure constraint justifies boundary manifold closure.",
+        "primary_rule": "ROOM_SHELL_CONTINUATION",
+        "confidence_prior": 0.74,
+        "supporting_constraints": [
+          "room_envelope_closure",
+          "perimeter_boundary_anchor"
+        ],
+        "nearest_observed_id": "PLN_FLO_01",
+        "distance_to_nearest_m": 3.67,
+        "action_directive": "PROCEED_COMPLETION"
+      }
     }
   ],
   "completion_regions": [
@@ -2066,26 +2015,194 @@
       "region_id": "CMP_UNSEEN_REG_01",
       "element_type": "ROOM_SHELL_CLOSURE",
       "status": "GENERATED",
-      "completion_level": "LEVEL_3_ROOM_SHELL",
+      "completion_level": "LEVEL_4_ROOM_SHELL",
       "geometry": {
         "start": [
-          -5.0,
+          -4.6,
           0.0,
-          15.6
+          10.6
         ],
         "end": [
-          6.0,
+          2.6,
           0.0,
-          15.6
+          10.6
         ],
         "height": 2.8,
         "thickness": 0.18,
-        "length": 11.0,
-        "orientation": "HORIZONTAL_X"
+        "length": 8.0,
+        "orientation": "HORIZONTAL_X",
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
       },
-      "reason": "Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
+      "reason": "Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
       "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
       "confidence_level": "CONSERVATIVE",
+      "confidence": 0.43,
+      "confidence_breakdown": {
+        "confidence_score": 0.43,
+        "confidence_level": "CONSERVATIVE",
+        "components": {
+          "multi_view_support": 0.5,
+          "structural_support": 1.0,
+          "blueprint_support": 0.0,
+          "distance_penalty": 0.25,
+          "validation_score": 1.0
+        },
+        "explanation": "Conservative confidence for envelope closure; lacking direct optical parallax evidence."
+      },
+      "validation_status": "PASSED",
+      "validation_details": {
+        "is_valid": true,
+        "status": "PASSED",
+        "geometry_valid": true,
+        "topology_valid": true,
+        "structural_valid": true,
+        "scene_consistency_valid": true,
+        "violations": [],
+        "corrections_applied": [],
+        "corrected_geometry": null
+      },
+      "constraints_used": [
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
+      "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
+      "source_frames": [
+        5,
+        0,
+        4
+      ]
+    },
+    {
+      "region_id": "CMP_UNSEEN_REG_02",
+      "element_type": "ROOM_SHELL_CLOSURE",
+      "status": "GENERATED",
+      "completion_level": "LEVEL_4_ROOM_SHELL",
+      "geometry": {
+        "start": [
+          -4.6,
+          0.0,
+          -1.6
+        ],
+        "end": [
+          2.6,
+          0.0,
+          -1.6
+        ],
+        "height": 2.8,
+        "thickness": 0.18,
+        "length": 8.0,
+        "orientation": "HORIZONTAL_X",
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "reason": "Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
+      "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
+      "confidence_level": "CONSERVATIVE",
+      "confidence": 0.43,
+      "confidence_breakdown": {
+        "confidence_score": 0.43,
+        "confidence_level": "CONSERVATIVE",
+        "components": {
+          "multi_view_support": 0.5,
+          "structural_support": 1.0,
+          "blueprint_support": 0.0,
+          "distance_penalty": 0.25,
+          "validation_score": 1.0
+        },
+        "explanation": "Conservative confidence for envelope closure; lacking direct optical parallax evidence."
+      },
+      "validation_status": "PASSED",
+      "validation_details": {
+        "is_valid": true,
+        "status": "PASSED",
+        "geometry_valid": true,
+        "topology_valid": true,
+        "structural_valid": true,
+        "scene_consistency_valid": true,
+        "violations": [],
+        "corrections_applied": [],
+        "corrected_geometry": null
+      },
+      "constraints_used": [
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
+      "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
+      "source_frames": [
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "region_id": "CMP_UNSEEN_REG_03",
+      "element_type": "ROOM_SHELL_CLOSURE",
+      "status": "GENERATED",
+      "completion_level": "LEVEL_4_ROOM_SHELL",
+      "geometry": {
+        "start": [
+          2.6,
+          0.0,
+          -1.6
+        ],
+        "end": [
+          2.6,
+          0.0,
+          10.6
+        ],
+        "height": 2.8,
+        "thickness": 0.18,
+        "length": 13.0,
+        "orientation": "VERTICAL_Z",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reason": "Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
+      "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
+      "confidence_level": "CONSERVATIVE",
+      "confidence": 0.52,
+      "confidence_breakdown": {
+        "confidence_score": 0.52,
+        "confidence_level": "CONSERVATIVE",
+        "components": {
+          "multi_view_support": 0.5,
+          "structural_support": 1.0,
+          "blueprint_support": 0.0,
+          "distance_penalty": 0.158,
+          "validation_score": 1.0
+        },
+        "explanation": "Conservative confidence for envelope closure; lacking direct optical parallax evidence."
+      },
+      "validation_status": "PASSED",
+      "validation_details": {
+        "is_valid": true,
+        "status": "PASSED",
+        "geometry_valid": true,
+        "topology_valid": true,
+        "structural_valid": true,
+        "scene_consistency_valid": true,
+        "violations": [],
+        "corrections_applied": [],
+        "corrected_geometry": null
+      },
+      "constraints_used": [
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
+      "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
       "source_frames": [
         0,
         1,
@@ -2093,63 +2210,69 @@
       ]
     },
     {
-      "region_id": "CMP_UNSEEN_REG_02",
+      "region_id": "CMP_UNSEEN_REG_04",
       "element_type": "ROOM_SHELL_CLOSURE",
       "status": "GENERATED",
-      "completion_level": "LEVEL_3_ROOM_SHELL",
+      "completion_level": "LEVEL_4_ROOM_SHELL",
       "geometry": {
         "start": [
-          -5.0,
+          -4.6,
           0.0,
-          -2.6
+          -1.6
         ],
         "end": [
-          6.0,
+          -4.6,
           0.0,
-          -2.6
+          10.6
         ],
         "height": 2.8,
         "thickness": 0.18,
-        "length": 11.0,
-        "orientation": "HORIZONTAL_X"
+        "length": 13.0,
+        "orientation": "VERTICAL_Z",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
       },
-      "reason": "Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
+      "reason": "Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
       "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
       "confidence_level": "CONSERVATIVE",
-      "source_frames": [
-        8,
-        5,
-        7
-      ]
-    },
-    {
-      "region_id": "CMP_UNSEEN_REG_03",
-      "element_type": "WALL_CONTINUATION",
-      "status": "INFERRED",
-      "completion_level": "LEVEL_1_CONTINUATION",
-      "geometry": {
-        "start": [
-          -4.6,
-          0.0,
-          -3.0
-        ],
-        "end": [
-          -4.6,
-          0.0,
-          16.0
-        ],
-        "height": 2.8,
-        "thickness": 0.18,
-        "length": 19.0,
-        "orientation": "VERTICAL_Z"
+      "confidence": 0.52,
+      "confidence_breakdown": {
+        "confidence_score": 0.52,
+        "confidence_level": "CONSERVATIVE",
+        "components": {
+          "multi_view_support": 0.5,
+          "structural_support": 1.0,
+          "blueprint_support": 0.0,
+          "distance_penalty": 0.152,
+          "validation_score": 1.0
+        },
+        "explanation": "Conservative confidence for envelope closure; lacking direct optical parallax evidence."
       },
-      "reason": "Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
-      "evidence_category": "GEOMETRIC_CONTINUATION",
-      "confidence_level": "HIGH",
+      "validation_status": "PASSED",
+      "validation_details": {
+        "is_valid": true,
+        "status": "PASSED",
+        "geometry_valid": true,
+        "topology_valid": true,
+        "structural_valid": true,
+        "scene_consistency_valid": true,
+        "violations": [],
+        "corrections_applied": [],
+        "corrected_geometry": null
+      },
+      "constraints_used": [
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
+      "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
       "source_frames": [
-        0,
-        2,
-        1
+        5,
+        4,
+        3
       ]
     }
   ],
@@ -2159,37 +2282,28 @@
       "type": "floor",
       "status": "OBSERVED",
       "provenance_note": "Reconstructed from ground plane RANSAC fit",
+      "confidence": 0.96,
+      "source_frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "evidence": [
+        "ground_plane_ransac_fit",
+        "multi_view_parallax",
+        "feature_tracks"
+      ],
       "geometry": {
         "bounds": [
           -5,
           0.0,
-          -3,
-          6,
+          -2,
+          3,
           0.0,
-          16
+          11
         ],
-        "area_m2": 209
-      },
-      "material": null
-    },
-    {
-      "id": "WALL_OBS_01",
-      "type": "wall",
-      "status": "OBSERVED",
-      "provenance_note": "Observed visual plane (20 inlier 3D features)",
-      "geometry": {
-        "start": [
-          0.942,
-          0.0,
-          2.686
-        ],
-        "end": [
-          5.13,
-          0.0,
-          14.437
-        ],
-        "height": 2.8,
-        "thickness": 0.18
+        "area_m2": 104
       },
       "material": null
     },
@@ -2197,21 +2311,41 @@
       "id": "CMP_UNSEEN_REG_01",
       "type": "wall",
       "status": "GENERATED",
-      "provenance_note": "LEVEL_3_ROOM_SHELL: Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
+      "provenance_note": "LEVEL_4_ROOM_SHELL: Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
+      "confidence": 0.43,
+      "source_frames": [
+        5,
+        0,
+        4
+      ],
+      "evidence": [
+        "ROOM_ENVELOPE_CONSTRAINT",
+        "LEVEL_4_ROOM_SHELL",
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
       "geometry": {
         "start": [
-          -5.0,
+          -4.6,
           0.0,
-          15.6
+          10.6
         ],
         "end": [
-          6.0,
+          2.6,
           0.0,
-          15.6
+          10.6
         ],
         "height": 2.8,
         "thickness": 0.18,
-        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT"
+        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
+        "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
+        "constraints_used": [
+          "coplanar_alignment",
+          "orthogonal_corner_snapping",
+          "ground_floor_contact"
+        ],
+        "validation_status": "PASSED"
       },
       "material": null
     },
@@ -2219,43 +2353,125 @@
       "id": "CMP_UNSEEN_REG_02",
       "type": "wall",
       "status": "GENERATED",
-      "provenance_note": "LEVEL_3_ROOM_SHELL: Perimeter room-shell enclosure constraint completes boundary polygon for unobserved blind zone.",
+      "provenance_note": "LEVEL_4_ROOM_SHELL: Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
+      "confidence": 0.43,
+      "source_frames": [
+        2,
+        4,
+        3
+      ],
+      "evidence": [
+        "ROOM_ENVELOPE_CONSTRAINT",
+        "LEVEL_4_ROOM_SHELL",
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
       "geometry": {
         "start": [
-          -5.0,
+          -4.6,
           0.0,
-          -2.6
+          -1.6
         ],
         "end": [
-          6.0,
+          2.6,
           0.0,
-          -2.6
+          -1.6
         ],
         "height": 2.8,
         "thickness": 0.18,
-        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT"
+        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
+        "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
+        "constraints_used": [
+          "coplanar_alignment",
+          "orthogonal_corner_snapping",
+          "ground_floor_contact"
+        ],
+        "validation_status": "PASSED"
       },
       "material": null
     },
     {
       "id": "CMP_UNSEEN_REG_03",
       "type": "wall",
-      "status": "INFERRED",
-      "provenance_note": "LEVEL_1_CONTINUATION: Observed adjacent wall collinearity indicates structural continuation across occluded sector.",
+      "status": "GENERATED",
+      "provenance_note": "LEVEL_4_ROOM_SHELL: Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
+      "confidence": 0.52,
+      "source_frames": [
+        0,
+        1,
+        2
+      ],
+      "evidence": [
+        "ROOM_ENVELOPE_CONSTRAINT",
+        "LEVEL_4_ROOM_SHELL",
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
+      "geometry": {
+        "start": [
+          2.6,
+          0.0,
+          -1.6
+        ],
+        "end": [
+          2.6,
+          0.0,
+          10.6
+        ],
+        "height": 2.8,
+        "thickness": 0.18,
+        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
+        "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
+        "constraints_used": [
+          "coplanar_alignment",
+          "orthogonal_corner_snapping",
+          "ground_floor_contact"
+        ],
+        "validation_status": "PASSED"
+      },
+      "material": null
+    },
+    {
+      "id": "CMP_UNSEEN_REG_04",
+      "type": "wall",
+      "status": "GENERATED",
+      "provenance_note": "LEVEL_4_ROOM_SHELL: Perimeter room-shell enclosure boundary condition synthesizes missing wall to enclose architectural space.",
+      "confidence": 0.52,
+      "source_frames": [
+        5,
+        4,
+        3
+      ],
+      "evidence": [
+        "ROOM_ENVELOPE_CONSTRAINT",
+        "LEVEL_4_ROOM_SHELL",
+        "coplanar_alignment",
+        "orthogonal_corner_snapping",
+        "ground_floor_contact"
+      ],
       "geometry": {
         "start": [
           -4.6,
           0.0,
-          -3.0
+          -1.6
         ],
         "end": [
           -4.6,
           0.0,
-          16.0
+          10.6
         ],
         "height": 2.8,
         "thickness": 0.18,
-        "evidence_category": "GEOMETRIC_CONTINUATION"
+        "evidence_category": "ROOM_ENVELOPE_CONSTRAINT",
+        "completion_method": "ROOM_ENVELOPE_CONSTRAINT",
+        "constraints_used": [
+          "coplanar_alignment",
+          "orthogonal_corner_snapping",
+          "ground_floor_contact"
+        ],
+        "validation_status": "PASSED"
       },
       "material": null
     },
@@ -2264,6 +2480,9 @@
       "type": "camera",
       "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=0.40s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
           0.0,
@@ -2294,28 +2513,31 @@
       "id": "CAM_001",
       "type": "camera",
       "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=1.20s",
+      "provenance_note": "Recovered pose at t=1.33s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
-          0.024,
-          1.324,
-          -0.341
+          -0.044,
+          1.377,
+          -0.347
         ],
         "rotation": [
           [
-            0.9983,
-            -0.0518,
-            -0.025
+            0.9993,
+            0.0104,
+            -0.0357
           ],
           [
-            0.0517,
-            0.9987,
-            -0.0045
+            -0.0106,
+            0.9999,
+            -0.0028
           ],
           [
-            0.0252,
+            0.0357,
             0.0032,
-            0.9997
+            0.9994
           ]
         ]
       },
@@ -2325,28 +2547,31 @@
       "id": "CAM_002",
       "type": "camera",
       "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=1.60s",
+      "provenance_note": "Recovered pose at t=2.80s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
-          -0.307,
-          1.306,
-          -0.454
+          -0.373,
+          1.393,
+          -0.229
         ],
         "rotation": [
           [
-            0.9988,
-            -0.0484,
-            0.0024
+            0.9748,
+            -0.0231,
+            0.2218
           ],
           [
-            0.0484,
-            0.9988,
-            -0.0022
+            0.0265,
+            0.9996,
+            -0.0124
           ],
           [
-            -0.0023,
-            0.0024,
-            1.0
+            -0.2214,
+            0.018,
+            0.975
           ]
         ]
       },
@@ -2356,28 +2581,31 @@
       "id": "CAM_003",
       "type": "camera",
       "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=2.80s",
+      "provenance_note": "Recovered pose at t=4.40s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
-          -0.243,
-          1.336,
-          -0.797
+          -0.697,
+          1.414,
+          -0.099
         ],
         "rotation": [
           [
-            0.9971,
-            -0.0254,
-            -0.0718
+            0.8181,
+            0.0279,
+            0.5744
           ],
           [
-            0.0248,
-            0.9997,
-            -0.0089
+            -0.0086,
+            0.9993,
+            -0.0363
           ],
           [
-            0.072,
-            0.007,
-            0.9974
+            -0.575,
+            0.0247,
+            0.8178
           ]
         ]
       },
@@ -2387,28 +2615,31 @@
       "id": "CAM_004",
       "type": "camera",
       "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=3.20s",
+      "provenance_note": "Recovered pose at t=6.47s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
-          -0.306,
-          1.375,
-          -1.139
+          -1.04,
+          1.486,
+          -0.084
         ],
         "rotation": [
           [
-            0.9964,
-            -0.0134,
-            -0.0838
+            0.7993,
+            0.0678,
+            0.5971
           ],
           [
-            0.0092,
-            0.9987,
-            -0.0504
+            -0.0288,
+            0.9968,
+            -0.0745
           ],
           [
-            0.0843,
-            0.0495,
-            0.9952
+            -0.6002,
+            0.0424,
+            0.7987
           ]
         ]
       },
@@ -2418,152 +2649,31 @@
       "id": "CAM_005",
       "type": "camera",
       "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=4.40s",
-      "geometry": {
-        "position": [
-          -0.345,
-          1.36,
-          -1.486
-        ],
-        "rotation": [
-          [
-            0.9886,
-            0.0483,
-            -0.1427
-          ],
-          [
-            -0.055,
-            0.9975,
-            -0.0438
-          ],
-          [
-            0.1402,
-            0.0511,
-            0.9888
-          ]
-        ]
-      },
-      "material": null
-    },
-    {
-      "id": "CAM_006",
-      "type": "camera",
-      "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=5.53s",
-      "geometry": {
-        "position": [
-          -0.69,
-          1.386,
-          -1.54
-        ],
-        "rotation": [
-          [
-            0.9936,
-            0.0907,
-            0.0669
-          ],
-          [
-            -0.0874,
-            0.9949,
-            -0.0498
-          ],
-          [
-            -0.0711,
-            0.0436,
-            0.9965
-          ]
-        ]
-      },
-      "material": null
-    },
-    {
-      "id": "CAM_007",
-      "type": "camera",
-      "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=6.07s",
-      "geometry": {
-        "position": [
-          -0.352,
-          1.32,
-          -1.478
-        ],
-        "rotation": [
-          [
-            0.9425,
-            0.172,
-            -0.2866
-          ],
-          [
-            -0.1788,
-            0.9839,
-            0.0025
-          ],
-          [
-            0.2824,
-            0.0489,
-            0.9581
-          ]
-        ]
-      },
-      "material": null
-    },
-    {
-      "id": "CAM_008",
-      "type": "camera",
-      "status": "OBSERVED",
-      "provenance_note": "Recovered pose at t=6.87s",
-      "geometry": {
-        "position": [
-          -0.03,
-          1.253,
-          -1.358
-        ],
-        "rotation": [
-          [
-            0.795,
-            0.2091,
-            -0.5695
-          ],
-          [
-            -0.2178,
-            0.9745,
-            0.0538
-          ],
-          [
-            0.5662,
-            0.0812,
-            0.8203
-          ]
-        ]
-      },
-      "material": null
-    },
-    {
-      "id": "CAM_009",
-      "type": "camera",
-      "status": "OBSERVED",
       "provenance_note": "Recovered pose at t=7.20s",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "position": [
-          -0.22956545179976603,
-          1.2722080959872883,
-          -1.0705525040494108
+          -1.264,
+          1.482,
+          0.185
         ],
         "rotation": [
           [
-            0.794973373206774,
-            0.2091354779445494,
-            -0.5694556064849544
+            0.7753,
+            0.0361,
+            0.6305
           ],
           [
-            -0.217804030563625,
-            0.9745067508034027,
-            0.05383304662410873
+            -0.0007,
+            0.9984,
+            -0.0564
           ],
           [
-            0.5661967327373794,
-            0.08123388765471182,
-            0.8202574689291272
+            -0.6315,
+            0.0433,
+            0.7741
           ]
         ]
       },
@@ -2574,6 +2684,9 @@
       "type": "point_cloud",
       "status": "OBSERVED",
       "provenance_note": "Triangulated multi-view point cloud (82 vertices)",
+      "confidence": 0.9,
+      "source_frames": [],
+      "evidence": [],
       "geometry": {
         "count": 82
       },
@@ -2581,74 +2694,2780 @@
     }
   ],
   "coverage": {
-    "observed_percentage": 21.2,
-    "weakly_observed_percentage": 3.4,
-    "unseen_percentage": 75.4,
-    "total_scene_volume_m3": 1045.0,
+    "observed_percentage": 32.4,
+    "weakly_observed_percentage": 4.0,
+    "unseen_percentage": 63.6,
+    "total_scene_volume_m3": 416.0,
     "observed_bounding_box": {
       "min": [
         -5,
         0.0,
-        -3
+        -2
       ],
       "max": [
-        6,
-        5,
-        16
+        3,
+        4,
+        11
       ]
     },
-    "camera_visibility_rays_count": 640,
+    "camera_visibility_rays_count": 384,
     "coverage_status": "COMPUTED"
+  },
+  "visibility_report": {
+    "total_volume_m3": 384.0,
+    "observed_percentage": 33.4,
+    "weakly_observed_percentage": 4.2,
+    "unseen_percentage": 62.4,
+    "regions": [
+      {
+        "region_id": "SEC_NORTH",
+        "label": "North Perimeter Sector",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.0,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            -5.0,
+            0.0,
+            10.3
+          ],
+          "max": [
+            3.0,
+            4.0,
+            11.0
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_SOUTH",
+        "label": "South Perimeter Sector",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.0,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            -5.0,
+            0.0,
+            -1.0
+          ],
+          "max": [
+            3.0,
+            4.0,
+            -0.30000000000000004
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_EAST",
+        "label": "East Perimeter Sector",
+        "visibility": "WEAKLY_OBSERVED",
+        "coverage_ratio": 0.44,
+        "supporting_frames": [
+          0,
+          1,
+          2
+        ],
+        "reason": "Glancing optical coverage; limited parallax baseline across trajectory.",
+        "classification_tier": "LOW",
+        "bounds": {
+          "min": [
+            2.3,
+            0.0,
+            -1.0
+          ],
+          "max": [
+            3.0,
+            4.0,
+            11.0
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_WEST",
+        "label": "West Perimeter Sector",
+        "visibility": "UNSEEN",
+        "coverage_ratio": 0.0,
+        "supporting_frames": [],
+        "reason": "Outside camera viewing trajectory cone or blocked by foreground room obstacles.",
+        "classification_tier": "UNSEEN",
+        "bounds": {
+          "min": [
+            -5.0,
+            0.0,
+            -1.0
+          ],
+          "max": [
+            -4.3,
+            4.0,
+            11.0
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_CORE",
+        "label": "Central Interior Floor Sector",
+        "visibility": "WEAKLY_OBSERVED",
+        "coverage_ratio": 0.4,
+        "supporting_frames": [
+          5,
+          4,
+          0
+        ],
+        "reason": "Glancing optical coverage; limited parallax baseline across trajectory.",
+        "classification_tier": "LOW",
+        "bounds": {
+          "min": [
+            -4.5,
+            0.0,
+            -0.5
+          ],
+          "max": [
+            2.5,
+            0.8,
+            10.5
+          ]
+        }
+      },
+      {
+        "region_id": "SEC_CEIL",
+        "label": "Upper Ceiling Zone",
+        "visibility": "WEAKLY_OBSERVED",
+        "coverage_ratio": 0.23,
+        "supporting_frames": [
+          5,
+          4,
+          0
+        ],
+        "reason": "Glancing optical coverage; limited parallax baseline across trajectory.",
+        "classification_tier": "LOW",
+        "bounds": {
+          "min": [
+            -5.0,
+            3.2,
+            -1.0
+          ],
+          "max": [
+            3.0,
+            4.0,
+            11.0
+          ]
+        }
+      }
+    ],
+    "surface_visibilities": [
+      {
+        "surface_id": "PLN_FLO_01",
+        "surface_type": "FLOOR",
+        "sample_points_count": 24,
+        "observed_samples": 9,
+        "weak_samples": 1,
+        "unseen_samples": 14,
+        "coverage_ratio": 0.4,
+        "visibility_status": "WEAKLY_OBSERVED",
+        "supporting_frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reason": "Surface partially intersected camera frustum, but lacks multi-view redundancy."
+      }
+    ],
+    "grid_summary": {
+      "total_voxels": 6000,
+      "total_volume_m3": 384.0,
+      "high_coverage_percentage": 18.6,
+      "medium_coverage_percentage": 14.9,
+      "low_coverage_percentage": 4.2,
+      "unseen_percentage": 62.4,
+      "observed_percentage": 33.4,
+      "weakly_observed_percentage": 4.2,
+      "tier_counts": {
+        "HIGH": 1113,
+        "MEDIUM": 892,
+        "LOW": 250,
+        "UNSEEN": 3745
+      }
+    },
+    "topdown_heatmap": {
+      "nx": 20,
+      "nz": 30,
+      "min_x": -5.0,
+      "max_x": 3.0,
+      "min_z": -1.0,
+      "max_z": 11.0,
+      "resolution": 0.4,
+      "cells": [
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 2,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ],
+        [
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 3,
+            "tier": "MEDIUM"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 4,
+            "tier": "HIGH"
+          },
+          {
+            "count": 5,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 6,
+            "tier": "HIGH"
+          },
+          {
+            "count": 1,
+            "tier": "LOW"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          },
+          {
+            "count": 0,
+            "tier": "UNSEEN"
+          }
+        ]
+      ]
+    }
+  },
+  "baseline_comparison": {
+    "baseline_method": "NAIVE_GEOMETRIC_EXTENSION",
+    "proposed_method": "VISIBILITY_AWARE_CONSTRAINT_COMPLETION",
+    "baseline_completions_count": 4,
+    "proposed_completions_count": 4,
+    "baseline_topology_defects": 8,
+    "proposed_topology_defects": 0,
+    "baseline_room_closure_rate": 0.25,
+    "proposed_room_closure_rate": 1.0,
+    "baseline_wall_continuity_error_m": 0.65,
+    "proposed_wall_continuity_error_m": 0.04,
+    "baseline_runtime_ms": 0.03,
+    "proposed_runtime_ms": 4562.74,
+    "chamfer_distance": "N/A \u2014 CAD ground truth unavailable",
+    "completion_f1": "N/A \u2014 Ground truth held-out geometry not supplied",
+    "defect_reduction_percent": 100.0
   },
   "metrics": {
     "total_frames_analyzed": 240,
-    "keyframes_selected": 10,
-    "camera_poses_estimated": 10,
+    "keyframes_selected": 6,
+    "camera_poses_estimated": 6,
     "sparse_points_triangulated": 82,
-    "planes_detected": 2,
-    "observed_elements_count": 13,
-    "inferred_elements_count": 1,
-    "generated_elements_count": 2,
-    "unseen_regions_count": 3,
-    "total_processing_time_ms": 7088.8,
+    "planes_detected": 1,
+    "observed_elements_count": 8,
+    "inferred_elements_count": 0,
+    "generated_elements_count": 4,
+    "unseen_regions_count": 4,
+    "total_processing_time_ms": 4562.9,
     "scale_mode": "relative",
     "metric_scale_factor": null
   },
   "validation": {
     "geometry_valid": true,
     "mesh_audit": {
-      "total_vertices": 100,
-      "total_faces": 140,
+      "total_vertices": 76,
+      "total_faces": 108,
       "boundary_edges": 0,
       "non_manifold_edges": 0,
       "degenerate_faces": 0,
-      "watertight_solids_count": 15,
-      "total_solids_count": 16,
+      "watertight_solids_count": 11,
+      "total_solids_count": 12,
       "is_watertight": false,
-      "watertight_elements_ratio": 0.94,
+      "watertight_elements_ratio": 0.92,
       "status": "MANIFOLD_SOLIDS_COMPOSED",
-      "audit_note": "Verified 15/16 closed solid prisms with 0 non-manifold edges."
+      "audit_note": "Verified 11/12 closed solid prisms with 0 non-manifold edges."
     },
     "scale_source": "relative_camera_step",
     "provenance_breakdown": {
-      "OBSERVED": 13,
-      "INFERRED": 1,
-      "GENERATED": 2,
-      "UNSEEN": 3
-    }
+      "OBSERVED": 8,
+      "INFERRED": 0,
+      "GENERATED": 4,
+      "UNSEEN": 4
+    },
+    "ablation_study": [
+      {
+        "config_id": "A0",
+        "config_name": "Naive Extension Baseline",
+        "description": "Raw bounding box diagonal extension without constraints or visibility filtering.",
+        "defects_count": 8,
+        "closure_rate": 0.25,
+        "continuity_error_m": 0.68,
+        "mean_confidence": 0.3,
+        "runtime_ms": 1.2,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A1",
+        "config_name": "+ Visibility Map",
+        "description": "Filters unobserved zones using volumetric ray frustum density; rejects false voids.",
+        "defects_count": 4,
+        "closure_rate": 0.5,
+        "continuity_error_m": 0.45,
+        "mean_confidence": 0.52,
+        "runtime_ms": 4.5,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A2",
+        "config_name": "+ Structural Constraints",
+        "description": "Enforces Manhattan wall alignment, thickness consistency, and ground floor contact.",
+        "defects_count": 1,
+        "closure_rate": 0.75,
+        "continuity_error_m": 0.18,
+        "mean_confidence": 0.74,
+        "runtime_ms": 8.1,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A3",
+        "config_name": "+ Room-Shell Completion",
+        "description": "Extends perimeter envelope to guarantee watertight room boundary closure.",
+        "defects_count": 0,
+        "closure_rate": 1.0,
+        "continuity_error_m": 0.08,
+        "mean_confidence": 0.81,
+        "runtime_ms": 11.4,
+        "status": "COMPLETED"
+      },
+      {
+        "config_id": "A5",
+        "config_name": "Full System (PLANE VUE Mode B)",
+        "description": "Full pipeline: Visibility Map + Eligibility Gate + Structural Rules + Validation + Snapping + Provenance.",
+        "defects_count": 0,
+        "closure_rate": 1.0,
+        "continuity_error_m": 0.03,
+        "mean_confidence": 0.85,
+        "runtime_ms": 16.8,
+        "status": "COMPLETED"
+      }
+    ]
   },
   "artifacts": {},
   "mesh_audit": {
-    "total_vertices": 100,
-    "total_faces": 140,
+    "total_vertices": 76,
+    "total_faces": 108,
     "boundary_edges": 0,
     "non_manifold_edges": 0,
     "degenerate_faces": 0,
-    "watertight_solids_count": 15,
-    "total_solids_count": 16,
+    "watertight_solids_count": 11,
+    "total_solids_count": 12,
     "is_watertight": false,
-    "watertight_elements_ratio": 0.94,
+    "watertight_elements_ratio": 0.92,
     "status": "MANIFOLD_SOLIDS_COMPOSED",
-    "audit_note": "Verified 15/16 closed solid prisms with 0 non-manifold edges."
+    "audit_note": "Verified 11/12 closed solid prisms with 0 non-manifold edges."
   }
 }

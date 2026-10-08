@@ -20,7 +20,11 @@ const PROGRESS_STEPS = [
   { id: 5, name: '3D Scene' },
 ];
 
-export const BlueprintPage: React.FC = () => {
+interface BlueprintPageProps {
+  autoLoadDemo?: boolean;
+}
+
+export const BlueprintPage: React.FC<BlueprintPageProps> = ({ autoLoadDemo }) => {
   const [file, setFile] = useState<File | null>(null);
   const [pdfPage, setPdfPage] = useState<number>(1);
   const [totalPdfPages, setTotalPdfPages] = useState<number>(1);
@@ -125,6 +129,12 @@ export const BlueprintPage: React.FC = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (autoLoadDemo && !result && !loading) {
+      handleExecuteReconstruct(true, 'simple');
+    }
+  }, [autoLoadDemo]);
 
   // Re-generate 3D when wall height or thickness changes (Section 6)
   const handleRegenerate3D = async () => {

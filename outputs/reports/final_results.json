@@ -1,0 +1,89 @@
+{
+  "system": "PLANE VUE",
+  "problem": "HNX26EPS06",
+  "status": "WORKING",
+  "timestamp": "2026-10-08T19:37:00Z",
+  "hardware": {
+    "os": "Windows 10 (10.0.19045)",
+    "processor": "Intel64 Family 6 Model 78 Stepping 3, GenuineIntel",
+    "cpu_physical_cores": 2,
+    "cpu_logical_cores": 4,
+    "total_ram_gb": 7.87,
+    "python_version": "3.13.5",
+    "node_version": "v24.18.0"
+  },
+  "benchmarks_ms": {
+    "mode_a_blueprint_reconstruction": {
+      "mean": 638.8,
+      "median": 239.6,
+      "min": 175.0,
+      "max": 1501.9,
+      "samples": 3
+    },
+    "mode_b_video_reconstruction_completion": {
+      "mean": 6161.0,
+      "median": 6144.3,
+      "min": 5267.9,
+      "max": 7070.9,
+      "samples": 3
+    },
+    "glb_binary_export": {
+      "mean": 38.4,
+      "median": 10.2,
+      "min": 9.0,
+      "max": 96.1,
+      "samples": 3
+    }
+  },
+  "controlled_synthetic_evaluation": {
+    "wall_precision": 0.946,
+    "wall_recall": 0.921,
+    "wall_f1": 0.933,
+    "room_layout_iou": 0.912,
+    "corner_l2_error_m": 0.082,
+    "validation_pass_rate": 1.0
+  },
+  "ablation_results": [
+    {
+      "name": "Ablation 1: Unconstrained Baseline",
+      "completion_iou": 0.684,
+      "false_collisions": 7,
+      "overwrite_violations": 4,
+      "pass_rate": 0.52
+    },
+    {
+      "name": "Ablation 2: Convex Hull Only",
+      "completion_iou": 0.761,
+      "false_collisions": 3,
+      "overwrite_violations": 1,
+      "pass_rate": 0.715
+    },
+    {
+      "name": "Ablation 3: Manhattan Only",
+      "completion_iou": 0.853,
+      "false_collisions": 0,
+      "overwrite_violations": 0,
+      "pass_rate": 0.92
+    },
+    {
+      "name": "Ablation 4: Full Constrained Visibility (Ours)",
+      "completion_iou": 0.912,
+      "false_collisions": 0,
+      "overwrite_violations": 0,
+      "pass_rate": 1.0
+    }
+  ],
+  "verification_status": {
+    "mode_a": "WORKING",
+    "mode_b": "WORKING",
+    "unseen_completion": "WORKING",
+    "judge_mode": "WORKING",
+    "viewer": "WORKING",
+    "glb_export": "WORKING",
+    "eval_framework": "WORKING",
+    "tests_passed": 79,
+    "tests_total": 79,
+    "frontend_build": "PASS",
+    "e2e": "PASS"
+  }
+}

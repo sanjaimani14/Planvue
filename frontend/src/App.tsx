@@ -7,6 +7,18 @@ import { Box, Layers, Compass, ShieldCheck, BarChart3, Video } from 'lucide-reac
 
 export function App() {
   const [activePage, setActivePage] = useState<'home' | 'blueprint' | 'video' | 'evaluation'>('home');
+  const [autoBlueprintDemo, setAutoBlueprintDemo] = useState<boolean>(false);
+  const [autoVideoDemo, setAutoVideoDemo] = useState<boolean>(false);
+
+  const handleStartBlueprint = (autoDemo: boolean = false) => {
+    setAutoBlueprintDemo(autoDemo);
+    setActivePage('blueprint');
+  };
+
+  const handleStartVideo = (autoDemo: boolean = false) => {
+    setAutoVideoDemo(autoDemo);
+    setActivePage('video');
+  };
 
   return (
     <div className="min-h-screen bg-[#090b10] text-slate-100 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
@@ -51,7 +63,7 @@ export function App() {
           </button>
 
           <button
-            onClick={() => setActivePage('blueprint')}
+            onClick={() => handleStartBlueprint(false)}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activePage === 'blueprint'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
@@ -63,7 +75,7 @@ export function App() {
           </button>
 
           <button
-            onClick={() => setActivePage('video')}
+            onClick={() => handleStartVideo(false)}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activePage === 'video'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
@@ -98,17 +110,18 @@ export function App() {
       <main className="flex-1 relative z-10">
         {activePage === 'home' && (
           <HomePage
-            onStartBlueprint={() => setActivePage('blueprint')}
-            onStartVideo={() => setActivePage('video')}
+            onStartBlueprint={(autoDemo) => handleStartBlueprint(autoDemo)}
+            onStartVideo={(autoDemo) => handleStartVideo(autoDemo)}
+            onOpenEvaluation={() => setActivePage('evaluation')}
           />
         )}
 
         {activePage === 'blueprint' && (
-          <BlueprintPage />
+          <BlueprintPage autoLoadDemo={autoBlueprintDemo} />
         )}
 
         {activePage === 'video' && (
-          <VideoReconstructionPage />
+          <VideoReconstructionPage autoLoadDemo={autoVideoDemo} />
         )}
 
         {activePage === 'evaluation' && (
